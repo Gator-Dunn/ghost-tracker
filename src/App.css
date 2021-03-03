@@ -1,38 +1,120 @@
+body {
+  background-color: #282c34;
+}
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template: 
+    'header'
+    'evidence'
+    'ghosts'
 }
 
 .App-header {
+  padding: 5px;
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  min-height: 5vh;
+  justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
+  grid-area: header;
+}
+
+.App-section-evidence {
+  padding: 5px;
+  background-color: #282c34;
+  min-height: 5vh;
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: start;
+  grid-row: row 2;
+  grid-area: evidence;
+}
+
+.App-section-ghosts {
+  padding: 5px;
+  background-color: #282c34;
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: stretch;
+  grid-area: ghosts;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+span.Tag-evidence-checked {
+  border: none;
+  color: green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+span.Tag-evidence-unchecked { 
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+span.Evidence-status {
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+span.Evidence-status {
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+
+span.Evidence-name {
+  color: white;
+  cursor: default;
+}
+
+span.Tag-ghost-valid {
+  background-color: #ddd;
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+span.Tag-ghost-invalid {
+  background-color: rgb(243, 243, 243);
+  border: none;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  opacity: 0.15;
 }

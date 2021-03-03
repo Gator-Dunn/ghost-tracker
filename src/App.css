@@ -9,10 +9,15 @@ body {
   justify-content: center;
   grid-template-columns: auto;
   grid-template-rows: auto;
-  grid-template: 
-    'header'
-    'evidence'
-    'ghosts'
+  grid-template:
+    "header"
+    "evidence"
+    "ghosts";
+  user-select: none; 
+  -webkit-user-select: none; 
+  -khtml-user-select: none;
+  -moz-user-select: none; 
+  -ms-user-select: none;
 }
 
 .App-header {
@@ -63,7 +68,7 @@ span.Tag-evidence-checked {
   border-radius: 16px;
 }
 
-span.Tag-evidence-unchecked { 
+span.Tag-evidence-unchecked {
   border: none;
   color: white;
   padding: 10px 20px;
@@ -75,10 +80,8 @@ span.Tag-evidence-unchecked {
   border-radius: 16px;
 }
 
-span.Evidence-status {
-  padding-left: 5px;
-  padding-right: 5px;
-  cursor: pointer;
+span.Evidence-item:hover span.Evidence-name {
+  opacity: 0.75;
 }
 
 span.Evidence-status {
@@ -89,7 +92,7 @@ span.Evidence-status {
 
 span.Evidence-name {
   color: white;
-  cursor: default;
+  cursor: pointer;
 }
 
 span.Tag-ghost-valid {

@@ -149,13 +149,8 @@ function App() {
         <header className="App-header">Phasmophobia Evidence Matrix</header>
         <section className="App-section-evidence">
           {evidence.map(({ key, name, status }) => (
-            <span key={key}>
-              <span
-                onClick={() => statusHandleClick(status, key)}
-                className="Evidence-status"
-              >
-                {status}
-              </span>
+            <span className="Evidence-item" onClick={() => statusHandleClick(status, key)} key={key}>
+              <span className="Evidence-status">{status}</span>
               <span className="Evidence-name">{name}</span>
             </span>
           ))}

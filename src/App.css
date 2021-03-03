@@ -12,11 +12,12 @@ body {
   grid-template:
     "header"
     "evidence"
-    "ghosts";
-  user-select: none; 
-  -webkit-user-select: none; 
+    "ghosts"
+    "controls";
+  user-select: none;
+  -webkit-user-select: none;
   -khtml-user-select: none;
-  -moz-user-select: none; 
+  -moz-user-select: none;
   -ms-user-select: none;
 }
 
@@ -52,6 +53,37 @@ body {
   grid-area: ghosts;
 }
 
+.App-section-controls {
+  grid-area: controls;
+  justify-self: flex-end;
+}
+
+.App-section-controls button {
+  width: 150px;
+  font-family: "Times New Roman", Times, serif;
+  color:rgb(224, 224, 224) !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #9b201e;
+  padding: 10px;
+  margin-right: 7px;
+  border-radius: 7px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+  outline: none;
+}
+
+.App-section-controls button:hover {
+  color: rgb(224, 224, 224) !important;
+  background: #d82f2c;
+}
+
+.App-section-controls button:active {
+  color: #fff !important;
+  background: #8b1e1d;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -80,19 +112,33 @@ span.Tag-evidence-unchecked {
   border-radius: 16px;
 }
 
-span.Evidence-item:hover span.Evidence-name {
-  opacity: 0.75;
+span.Evidence-item span.Evidence-name {
+  opacity: 1;
 }
 
-span.Evidence-status {
+span.Evidence-item:hover span.Evidence-name-active,
+span.Evidence-item:hover span.Evidence-name-default,
+span.Evidence-item:hover span.Evidence-name-inverted {
+  opacity: 1;
+}
+
+span.Evidence-name-active,
+span.Evidence-name-default,
+span.Evidence-name-inverted {
   padding-left: 5px;
   padding-right: 5px;
   cursor: pointer;
+  opacity: 0.35;
+  color: white;
 }
 
-span.Evidence-name {
-  color: white;
-  cursor: pointer;
+span.Evidence-name-active {
+  opacity: 1;
+}
+
+span.Evidence-name-inverted {
+  opacity: 0.35;
+  text-decoration: line-through;
 }
 
 span.Tag-ghost-valid {

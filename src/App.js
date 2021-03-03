@@ -74,9 +74,11 @@ const GHOSTS = [
 ];
 
 const statuses = ["⚪", "✔️", "❌"];
+const statusStrings = ["default", "active", "inverted"];
 
 function App() {
   const [ghosts, setGhosts] = React.useState([]);
+  const [selectedGhost, setSelectedGhost] = React.useState("");
   const [invalidGhosts, setInvalidGhosts] = React.useState([]);
   const [evidence, setEvidence] = React.useState([]);
   const [loaded, setLoaded] = React.useState(false);
@@ -88,6 +90,7 @@ function App() {
         key,
         name,
         status: statuses[0],
+        statusString: "default",
       }))
     );
     setLoaded(true);
@@ -100,11 +103,40 @@ function App() {
           ? 0
           : statuses.indexOf(status) + 1;
 
+      const newStatus = e.key === key ? statuses[statusIndex] : e.status;
+      const newStatusString =
+        e.key === key ? statusStrings[statusIndex] : e.statusString;
       return {
         ...e,
-        status: e.key === key ? statuses[statusIndex] : e.status,
+        status: newStatus,
+        statusString: newStatusString,
       };
     });
+
+    setEvidence(newEvidence);
+  };
+
+  const ghostHandleClick = ({ evidence: ghostEvidence, name }) => {
+    const selected = selectedGhost === name;
+    let newEvidence = [];
+    if (!selected) {
+      newEvidence = evidence.map((e) => {
+        const status = ghostEvidence.includes(e.name);
+        return {
+          ...e,
+          status: status ? statuses[1] : statuses[0],
+          statusString: status ? statusStrings[1] : statusStrings[0],
+        };
+      });
+      setSelectedGhost(name);
+    } else {
+      newEvidence = evidence.map((e) => ({
+        ...e,
+        status: statuses[0],
+        statusString: statusStrings[0],
+      }));
+      setSelectedGhost("");
+    }
 
     setEvidence(newEvidence);
   };
@@ -136,6 +168,16 @@ function App() {
     setInvalidGhosts(filtered);
   }, [evidence, ghosts, loaded]);
 
+  const resetHandleClick = () => {
+    const newEvidence = evidence.map((e) => ({
+      ...e,
+      status: statuses[0],
+      statusString: statusStrings[0],
+    }));
+    setSelectedGhost("");
+    setEvidence(newEvidence);
+  }
+
   const isInvalidGhost = React.useCallback(
     (ghost) => {
       return invalidGhosts && invalidGhosts.includes(ghost.name);
@@ -148,10 +190,16 @@ function App() {
       <div className="App">
         <header className="App-header">Phasmophobia Evidence Matrix</header>
         <section className="App-section-evidence">
-          {evidence.map(({ key, name, status }) => (
-            <span className="Evidence-item" onClick={() => statusHandleClick(status, key)} key={key}>
-              <span className="Evidence-status">{status}</span>
-              <span className="Evidence-name">{name}</span>
+          {evidence.map(({ key, name, status, statusString }) => (
+            <span
+              className="Evidence-item"
+              onClick={() => statusHandleClick(status, key)}
+              key={key}
+            >
+              <span className="Evidence-status">
+                {status}
+              </span>
+              <span className={`Evidence-name-${statusString}`}>{name}</span>
             </span>
           ))}
         </section>
@@ -159,6 +207,7 @@ function App() {
           {ghosts.map((ghost) => (
             <span
               key={ghost.name}
+              onClick={() => ghostHandleClick(ghost)}
               className={`Tag-ghost-${
                 isInvalidGhost(ghost) ? "invalid" : "valid"
               }`}
@@ -166,6 +215,9 @@ function App() {
               {ghost.name}
             </span>
           ))}
+        </section>
+        <section className="App-section-controls">
+          <button onClick={resetHandleClick}>Reset</button>
         </section>
       </div>
     )

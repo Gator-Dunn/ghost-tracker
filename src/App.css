@@ -6,7 +6,6 @@ body {
   text-align: center;
   display: grid;
   align-content: center;
-  justify-content: center;
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template:
@@ -14,17 +13,19 @@ body {
     "evidence"
     "ghosts"
     "controls";
+  grid-auto-flow: dense;
+  grid-gap: 0.15rem;
   user-select: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  max-width: 500px;
 }
 
 .App-header {
   padding: 5px;
   background-color: #282c34;
-  min-height: 5vh;
   justify-content: flex-start;
   font-size: calc(10px + 2vmin);
   color: white;
@@ -34,39 +35,40 @@ body {
 .App-section-evidence {
   padding: 5px;
   background-color: #282c34;
-  min-height: 5vh;
-  max-width: 600px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
+  grid-auto-flow: dense;
+  grid-gap: 0.15rem;
+  justify-content: space-around;
   justify-items: start;
-  grid-row: row 2;
   grid-area: evidence;
 }
 
 .App-section-ghosts {
   padding: 5px;
   background-color: #282c34;
-  max-width: 600px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 200px));
+  grid-auto-flow: dense;
+  grid-gap: 0.15rem;
   justify-items: stretch;
   grid-area: ghosts;
 }
 
 .App-section-controls {
   grid-area: controls;
-  justify-self: flex-end;
+  justify-self: flex-start;
+  padding-left: 7px;
 }
 
 .App-section-controls button {
   width: 150px;
   font-family: "Times New Roman", Times, serif;
-  color:rgb(224, 224, 224) !important;
+  color: rgb(224, 224, 224) !important;
   text-transform: uppercase;
   text-decoration: none;
   background: #9b201e;
   padding: 10px;
-  margin-right: 7px;
   border-radius: 7px;
   display: inline-block;
   border: none;
@@ -142,9 +144,10 @@ span.Evidence-name-inverted {
 }
 
 span.Tag-ghost-valid {
-  background-color: #ddd;
+  border: 2px solid transparent !important;
+  background-color: #184e77;
   border: none;
-  color: black;
+  color: white;
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
@@ -155,7 +158,8 @@ span.Tag-ghost-valid {
 }
 
 span.Tag-ghost-invalid {
-  background-color: rgb(243, 243, 243);
+  border: 2px solid transparent !important;
+  background-color: #ddd;
   border: none;
   color: black;
   padding: 10px 20px;
@@ -166,4 +170,10 @@ span.Tag-ghost-invalid {
   cursor: pointer;
   border-radius: 16px;
   opacity: 0.15;
+}
+
+span.Tag-ghost-invalid:hover,
+span.Tag-ghost-valid:hover {
+  border: 2px solid white !important;
+  background-color: #1a759f;
 }

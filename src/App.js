@@ -4,7 +4,7 @@ import "./App.css";
 const EVIDENCE = {
   emf: "EMF Level 5",
   fingerprints: "Fingerprints",
-  freezing: "Freezing Temperatures",
+  freezing: "Freezing",
   orbs: "Ghost Orbs",
   writing: "Ghost Writing",
   box: "Spirit Box",

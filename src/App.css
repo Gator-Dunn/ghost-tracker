@@ -26,7 +26,7 @@ body {
 .App-header {
   padding: 5px;
   background-color: #282c34;
-  justify-content: flex-start;
+  justify-self: start;
   font-size: calc(10px + 2vmin);
   color: white;
   grid-area: header;
@@ -39,7 +39,7 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
   grid-auto-flow: dense;
   grid-gap: 0.15rem;
-  justify-content: space-around;
+  justify-content: space-between;
   justify-items: start;
   grid-area: evidence;
 }
@@ -48,7 +48,7 @@ body {
   padding: 5px;
   background-color: #282c34;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 200px));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 145px));
   grid-auto-flow: dense;
   grid-gap: 0.15rem;
   justify-items: stretch;

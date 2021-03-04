@@ -2,12 +2,11 @@ import React from "react";
 import { DataProvider } from "../DataProvider";
 import { STATUSES, STATUS_STRINGS } from "../constants";
 
-export const Ghosts = ({ setEvidence }) => {
+export const Ghosts = () => {
   const [selectedGhost, setSelectedGhost] = React.useState("");
-  const { evidence, ghosts, invalidGhosts, loaded } = React.useContext(
-    DataProvider
-  );
-
+  const { data, actions } = React.useContext(DataProvider);
+  const { evidence, ghosts, invalidGhosts, loaded } = data;
+  const { setEvidence } = actions;
   const isInvalidGhost = React.useCallback(
     (ghost) => {
       return invalidGhosts && invalidGhosts.includes(ghost.name);
@@ -25,6 +24,7 @@ export const Ghosts = ({ setEvidence }) => {
           ...e,
           status: status ? STATUSES[1] : STATUSES[0],
           statusString: status ? STATUS_STRINGS[1] : STATUS_STRINGS[0],
+          valid: status,
         };
       });
       setSelectedGhost(name);

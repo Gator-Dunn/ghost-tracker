@@ -1,11 +1,15 @@
 import React from "react";
 
-const data = {
-  evidence: [],
-  ghosts: [],
-  invalidGhosts: [],
-  loaded: false,
-  selectedGhost: '',
+const state = {
+  data: {
+    evidence: [],
+    ghosts: [],
+    invalidGhosts: [],
+    loaded: false,
+    selectedGhost: '',
+    validEvidence: [],
+  },
+  actions: {}
 };
 
-export const DataProvider = React.createContext(data);
+export const DataProvider = React.createContext(state);

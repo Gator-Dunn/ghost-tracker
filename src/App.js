@@ -2,7 +2,13 @@ import React from "react";
 import { DataProvider } from "./DataProvider";
 import { Ghosts } from "./components/Ghosts";
 import { Evidence } from "./components/Evidence";
-import { EVIDENCE, GHOSTS, STATUSES, STATUS_STRINGS } from "./constants";
+import {
+  EVIDENCE,
+  EVIDENCE_MAP,
+  GHOSTS,
+  STATUSES,
+  STATUS_STRINGS,
+} from "./constants";
 import "./App.css";
 
 function App() {
@@ -10,46 +16,57 @@ function App() {
   const [selectedGhost, setSelectedGhost] = React.useState("");
   const [invalidGhosts, setInvalidGhosts] = React.useState([]);
   const [evidence, setEvidence] = React.useState([]);
+  const [validEvidence, setValidEvidence] = React.useState([]);
   const [loaded, setLoaded] = React.useState(false);
 
   React.useEffect(() => {
     setGhosts(GHOSTS);
-    setEvidence(
-      Object.entries(EVIDENCE).map(([key, name]) => ({
-        key,
-        name,
-        status: STATUSES[0],
-        statusString: "default",
-      }))
-    );
+    setEvidence(EVIDENCE);
     setLoaded(true);
   }, []);
 
   React.useEffect(() => {
     const filtered = ghosts
       .filter((ghost) => {
-        const checkedEvidence = evidence
+        // All confirmed evidence
+        const confirmedEvidence = evidence
           .filter(({ status }) => status === STATUSES[1])
-          .map((e) => EVIDENCE[e.key]);
+          .map((e) => EVIDENCE_MAP[e.key]);
 
-        const invertedEvidence = evidence
+        // All excluded evidence
+        const excludedEvidence = evidence
           .filter(({ status }) => status === STATUSES[2])
-          .map((e) => EVIDENCE[e.key]);
+          .map((e) => EVIDENCE_MAP[e.key]);
 
-        const hasInvalidEvidence = checkedEvidence.some(
+        // Is any of the confirmed evidence *not* for this ghost?
+        const hasInvalidEvidence = confirmedEvidence.some(
           (e) => !ghost.evidence.includes(e)
         );
 
-        const hasValidEvidence = invertedEvidence.some((e) =>
+        // Is any of the excluded evidence for this ghost?
+        const hasExcludedEvidence = excludedEvidence.some((e) =>
           ghost.evidence.includes(e)
         );
 
-        return hasInvalidEvidence || hasValidEvidence;
+        return hasInvalidEvidence || hasExcludedEvidence;
       })
       .map((ghost) => ghost.name);
 
     setInvalidGhosts(filtered);
   }, [evidence, ghosts]);
+
+  React.useEffect(() => {
+    const valid = [
+      ...new Set(
+        GHOSTS.filter(({ name }) => !invalidGhosts.includes(name))
+          .map((ghost) => ghost.evidence)
+      ),
+    ];
+    // const invalidEvidence = selectInvalidEvidence(state);
+    console.log('poop', state);
+
+    //setValidEvidence(valid);
+  }, [invalidGhosts, evidence]);
 
   const resetHandleClick = () => {
     const newEvidence = evidence.map((e) => ({
@@ -63,13 +80,24 @@ function App() {
 
   const state = React.useMemo(() => {
     return {
-      evidence,
-      ghosts,
-      invalidGhosts,
-      loaded,
-      selectedGhost,
+      data: {
+        evidence,
+        ghosts,
+        invalidGhosts,
+        loaded,
+        selectedGhost,
+        validEvidence,
+      },
+      actions: {
+        setEvidence,
+        setGhosts,
+        setInvalidGhosts,
+        setLoaded,
+        setSelectedGhost,
+        setValidEvidence,
+      }
     };
-  }, [evidence, ghosts, invalidGhosts, loaded, selectedGhost]);
+  }, [evidence, ghosts, invalidGhosts, loaded, selectedGhost, validEvidence]);
 
   return (
     loaded && (
@@ -77,13 +105,10 @@ function App() {
         <div className="App">
           <header className="App-header">Phasmophobia Evidence Matrix</header>
           <section data-testid="test-evidence" className="App-section-evidence">
-            <Evidence setEvidence={setEvidence} />
+            <Evidence />
           </section>
           <section data-testid="test-ghosts" className="App-section-ghosts">
-            <Ghosts
-              setSelectedGhost={setSelectedGhost}
-              setEvidence={setEvidence}
-            />
+            <Ghosts />
           </section>
           <section className="App-section-controls">
             <button onClick={resetHandleClick}>Reset</button>

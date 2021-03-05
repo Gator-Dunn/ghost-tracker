@@ -1,4 +1,5 @@
 import React from "react";
+import pkgJson from '../package.json';
 import { Ghosts } from "./components/Ghosts";
 import { Evidence } from "./components/Evidence";
 import { Reset } from './components/Reset';
@@ -10,7 +11,6 @@ import "./App.css";
 function App() {
   const evidence = useEvidence();
   const ghosts = useGhosts();
-
   return (
     evidence &&
     ghosts && (
@@ -27,6 +27,9 @@ function App() {
         </section>
         <section className="App-section-controls">
           <Reset ghosts={ghosts} evidence={evidence} />
+        </section>
+        <section className="App-section-version">
+          beta version {pkgJson.version}
         </section>
       </div>
     )

@@ -27,8 +27,9 @@ body {
   padding: 5px;
   background-color: #282c34;
   justify-self: start;
+  font-family: Verdana, sans-serif;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(163, 163, 163);
   grid-area: header;
 }
 
@@ -86,32 +87,18 @@ body {
   background: #8b1e1d;
 }
 
+.App-section-version {
+  color: lightgray;
+  opacity: 0.3;
+  text-align: left;
+  padding: 5px;
+  padding-left: 8px;
+  font-size: 0.65rem;
+  font-family: Verdana, sans-serif;
+}
+
 .App-link {
   color: #61dafb;
-}
-
-span.Tag-evidence-checked {
-  border: none;
-  color: green;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 16px;
-}
-
-span.Tag-evidence-unchecked {
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 16px;
 }
 
 span.Evidence-item span.Evidence-name {

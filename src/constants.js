@@ -111,3 +111,11 @@ export const GHOSTS = [
 ];
 
 export const GHOST_NAMES = GHOSTS.map((g) => g.name);
+
+export const GHOST_NAME_MAP = GHOST_NAMES.reduce(
+  (ghosts, ghost) => ({
+    ...ghosts,
+    [ghost]: ghost,
+  }),
+  {}
+);

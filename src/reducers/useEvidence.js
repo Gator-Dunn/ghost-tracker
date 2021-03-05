@@ -76,7 +76,8 @@ export const reducer = (state = INITIAL_STATE.evidence, { type, payload }) => {
         ...new Set(
           state.ghosts
             .filter((ghost) =>
-              state.confirmed.every((e) => ghost.evidence.includes(e))
+              state.confirmed.every((e) => ghost.evidence.includes(e)) &&
+              state.excluded.every((e) => !ghost.evidence.includes(e))
             )
             .map((ghost) => ghost.evidence)
             .flat()
@@ -84,7 +85,10 @@ export const reducer = (state = INITIAL_STATE.evidence, { type, payload }) => {
       ];
 
       if (validEvidence.length === 0) {
-        return state;
+        return {
+          ...state,
+          validGhosts: [],
+        }
       }
 
       const validGhosts = [
@@ -99,7 +103,7 @@ export const reducer = (state = INITIAL_STATE.evidence, { type, payload }) => {
         e === payload && state.excluded.includes(payload);
 
       const excluded = state.all.filter(
-        (e) => payloadExcluded(e) || !validEvidence.includes(e)
+        (e) => payloadExcluded(e) || !validEvidence.includes(e) || state.excluded.includes(e)
       );
 
       const unconfirmed = state.all.filter(

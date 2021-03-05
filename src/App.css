@@ -87,6 +87,20 @@ body {
   background: #8b1e1d;
 }
 
+.App-section-secondary-evidence {
+  padding: 5px;
+  background-color: #282c34;
+  display: grid;
+  color: rgb(163, 163, 163);
+  justify-content: space-between;
+  justify-items: start;
+}
+
+.App-section-secondary-evidence div:hover {
+  color: rgb(226, 222, 222);
+  cursor: pointer;
+}
+
 .App-section-version {
   color: lightgray;
   opacity: 0.3;

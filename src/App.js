@@ -3,6 +3,7 @@ import pkgJson from '../package.json';
 import { Ghosts } from "./components/Ghosts";
 import { Evidence } from "./components/Evidence";
 import { Reset } from './components/Reset';
+import { Secondary } from './components/Secondary';
 import { useGhosts } from "./reducers/useGhosts";
 import { useEvidence } from "./reducers/useEvidence";
 
@@ -24,6 +25,9 @@ function App() {
         </section>
         <section data-testid="test-ghosts" className="App-section-ghosts">
           <Ghosts evidence={evidence} ghosts={ghosts} />
+        </section>
+        <section className="App-section-secondary-evidence">
+          <Secondary />
         </section>
         <section className="App-section-controls">
           <Reset ghosts={ghosts} evidence={evidence} />

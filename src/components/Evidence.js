@@ -1,42 +1,37 @@
 import React from "react";
-import { DataProvider } from "../DataProvider";
-import { STATUSES, STATUS_STRINGS } from "../constants";
+import { STATUS } from "../constants";
 
-export const Evidence = ({setEvidence}) => {
-  const { evidence, loaded } = React.useContext(
-    DataProvider
-  );
+export const Evidence = ({evidence: { state, incrementStatus }}) => {
+  const evidenceMap = React.useMemo(() => {
+    const confirmed = state.confirmed.map((evidenceName) => ({
+      evidenceName,
+      statusIcon: STATUS.confirmed.icon,
+      statusText: STATUS.confirmed.text,
+    }));
+    const excluded = state.excluded.map((evidenceName) => ({
+      evidenceName,
+      statusIcon: STATUS.excluded.icon,
+      statusText: STATUS.excluded.text,
+    }));
+    const unconfirmed = state.unconfirmed.map((evidenceName) => ({
+      evidenceName,
+      statusIcon: STATUS.unconfirmed.icon,
+      statusText: STATUS.unconfirmed.text,
+    }));
+    const all = [...confirmed, ...excluded, ...unconfirmed];
+    all.sort((a, b) => a.evidenceName.localeCompare(b.evidenceName));
 
-  const handleClick = (status, key) => {
-    const newEvidence = evidence.map((e) => {
-      const statusIndex =
-        STATUSES.indexOf(status) === STATUSES.length - 1
-          ? 0
-          : STATUSES.indexOf(status) + 1;
+    return all;
+  }, [state]);
 
-      const newStatus = e.key === key ? STATUSES[statusIndex] : e.status;
-      const newStatusString =
-        e.key === key ? STATUS_STRINGS[statusIndex] : e.statusString;
-      return {
-        ...e,
-        status: newStatus,
-        statusString: newStatusString,
-      };
-    });
-
-    setEvidence(newEvidence);
-  };
-
-  return (
-    loaded && evidence.map(({ key, name, status, statusString }) => (
-      <span
-        className="Evidence-item"
-        onClick={() => handleClick(status, key)}
-        key={key}
-      >
-        <span className="Evidence-status">{status}</span>
-        <span className={`Evidence-name-${statusString}`}>{name}</span>
-      </span>
-    ))
-  )
+  return evidenceMap.map((e, key) => (
+    <span
+      className="Evidence-item"
+      onClick={() => incrementStatus(e.evidenceName)}
+      key={key}
+    >
+      <span className="Evidence-status">{e.statusIcon}</span>
+      <span className={`Evidence-name-${e.statusText}`}>{e.evidenceName}</span>
+    </span>
+  ));
 };

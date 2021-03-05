@@ -1,55 +1,46 @@
 import React from "react";
-import { DataProvider } from "../DataProvider";
-import { STATUSES, STATUS_STRINGS } from "../constants";
+import { actionTypes } from '../reducers/useGhosts';
 
-export const Ghosts = () => {
-  const [selectedGhost, setSelectedGhost] = React.useState("");
-  const { data, actions } = React.useContext(DataProvider);
-  const { evidence, ghosts, invalidGhosts, loaded } = data;
-  const { setEvidence } = actions;
-  const isInvalidGhost = React.useCallback(
-    (ghost) => {
-      return invalidGhosts && invalidGhosts.includes(ghost.name);
-    },
-    [invalidGhosts]
-  );
+export const Ghosts = ({
+  ghosts: { dispatch, filterGhosts, state, toggleGhost },
+  evidence: {
+    state: { validGhosts },
+    toggleGhostEvidence
+  },
+}) => {
+  const ghostMap = React.useMemo(() => {
+    const valid = state.valid.map((ghostName) => ({
+      ghostName,
+      status: "valid",
+    }));
+    const invalid = state.invalid.map((ghostName) => ({
+      ghostName,
+      status: "invalid",
+    }));
+    const all = [...valid, ...invalid].sort((a, b) =>
+      a.ghostName.localeCompare(b.ghostName)
+    );
+    return all;
+  }, [state]);
 
-  const handleClick = ({ evidence: ghostEvidence, name }) => {
-    const selected = selectedGhost === name;
-    let newEvidence = [];
-    if (!selected) {
-      newEvidence = evidence.map((e) => {
-        const status = ghostEvidence.includes(e.name);
-        return {
-          ...e,
-          status: status ? STATUSES[1] : STATUSES[0],
-          statusString: status ? STATUS_STRINGS[1] : STATUS_STRINGS[0],
-          valid: status,
-        };
-      });
-      setSelectedGhost(name);
-    } else {
-      newEvidence = evidence.map((e) => ({
-        ...e,
-        status: STATUSES[0],
-        statusString: STATUS_STRINGS[0],
-      }));
-      setSelectedGhost("");
-    }
+  React.useEffect(() => {
+      dispatch({payload: validGhosts, type: actionTypes.filter });
+  }, [dispatch, validGhosts]);
 
-    setEvidence(newEvidence);
-  };
+  const handleClick = (ghost) => {
+    toggleGhost(ghost.ghostName);
+    toggleGhostEvidence(ghost);
+  }
 
-  return (
-    loaded &&
-    ghosts.map((ghost) => (
-      <span
-        key={ghost.name}
-        onClick={() => handleClick(ghost)}
-        className={`Tag-ghost-${isInvalidGhost(ghost) ? "invalid" : "valid"}`}
-      >
-        {ghost.name}
-      </span>
-    ))
-  );
+  return ghostMap
+    ? ghostMap.map((ghost) => (
+        <span
+          key={ghost.ghostName}
+          onClick={() => handleClick(ghost)}
+          className={`Tag-ghost-${ghost.status}`}
+        >
+          {ghost.ghostName}
+        </span>
+      ))
+    : null;
 };

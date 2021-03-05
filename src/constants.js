@@ -1,5 +1,17 @@
-export const STATUSES = ["⚪", "✔️", "❌"];
-export const STATUS_STRINGS = ["default", "active", "inverted"];
+export const STATUS = {
+  unconfirmed: {
+    icon: "⚪",
+    text: "unconfirmed",
+  },
+  confirmed: {
+    icon: "✔️",
+    text: "confirmed",
+  },
+  excluded: {
+    icon: "❌",
+    text: "excluded",
+  },
+};
 
 export const EVIDENCE_MAP = {
   emf: "EMF Level 5",
@@ -10,11 +22,13 @@ export const EVIDENCE_MAP = {
   box: "Spirit Box",
 };
 
+export const EVIDENCE_NAMES = Object.values(EVIDENCE_MAP);
+
 export const EVIDENCE = Object.entries(EVIDENCE_MAP).map(([key, name]) => ({
   key,
   name,
-  status: STATUSES[0],
-  statusString: STATUS_STRINGS[0],
+  statusIcon: STATUS.unconfirmed.icon,
+  statusText: STATUS.unconfirmed.text,
 }));
 
 export const GHOSTS = [
@@ -96,3 +110,4 @@ export const GHOSTS = [
   },
 ];
 
+export const GHOST_NAMES = GHOSTS.map((g) => g.name);

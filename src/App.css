@@ -118,15 +118,15 @@ span.Evidence-item span.Evidence-name {
   opacity: 1;
 }
 
-span.Evidence-item:hover span.Evidence-name-active,
-span.Evidence-item:hover span.Evidence-name-default,
-span.Evidence-item:hover span.Evidence-name-inverted {
+span.Evidence-item:hover span.Evidence-name-confirmed,
+span.Evidence-item:hover span.Evidence-name-unconfirmed,
+span.Evidence-item:hover span.Evidence-name-excluded {
   opacity: 1;
 }
 
-span.Evidence-name-active,
-span.Evidence-name-default,
-span.Evidence-name-inverted {
+span.Evidence-name-confirmed,
+span.Evidence-name-unconfirmed,
+span.Evidence-name-excluded {
   padding-left: 5px;
   padding-right: 5px;
   cursor: pointer;
@@ -134,11 +134,11 @@ span.Evidence-name-inverted {
   color: white;
 }
 
-span.Evidence-name-active {
+span.Evidence-name-confirmed {
   opacity: 1;
 }
 
-span.Evidence-name-inverted {
+span.Evidence-name-excluded {
   opacity: 0.35;
   text-decoration: line-through;
 }

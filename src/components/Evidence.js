@@ -1,57 +1,37 @@
 import React from "react";
-import { DataProvider } from "../DataProvider";
-import { STATUSES, STATUS_STRINGS } from "../constants";
-import { selectValidEvidence } from "../selectors";
+import { STATUS } from "../constants";
 
-export const Evidence = () => {
-  const { actions, data } = React.useContext(DataProvider);
-  const { evidence, loaded } = data;
-  const { setEvidence } = actions;
+export const Evidence = ({evidence: { state, incrementStatus }}) => {
+  const evidenceMap = React.useMemo(() => {
+    const confirmed = state.confirmed.map((evidenceName) => ({
+      evidenceName,
+      statusIcon: STATUS.confirmed.icon,
+      statusText: STATUS.confirmed.text,
+    }));
+    const excluded = state.excluded.map((evidenceName) => ({
+      evidenceName,
+      statusIcon: STATUS.excluded.icon,
+      statusText: STATUS.excluded.text,
+    }));
+    const unconfirmed = state.unconfirmed.map((evidenceName) => ({
+      evidenceName,
+      statusIcon: STATUS.unconfirmed.icon,
+      statusText: STATUS.unconfirmed.text,
+    }));
+    const all = [...confirmed, ...excluded, ...unconfirmed];
+    all.sort((a, b) => a.evidenceName.localeCompare(b.evidenceName));
 
-  const handleClick = (status, key, name) => {
-    const validEvidence = selectValidEvidence(name, data);
+    return all;
+  }, [state]);
 
-    const newEvidence = evidence.map((e) => {
-      const isValidEvidence = validEvidence.includes(e.name);
-      const statusIndex =
-        STATUSES.indexOf(status) === STATUSES.length - 1
-          ? 0
-          : STATUSES.indexOf(status) + 1;
-
-      console.log("isInvalidEvidence", { name: e.name, validEvidence });
-
-      if (e.key !== key) {
-        return {
-          ...e,
-          status: isValidEvidence ? e.status : STATUSES[2],
-          statusString: isValidEvidence ? e.statusString : STATUS_STRINGS[2],
-        };
-      }
-
-      return {
-        ...e,
-        status: isValidEvidence ? STATUSES[statusIndex] : STATUSES[2],
-        statusString: isValidEvidence
-          ? STATUS_STRINGS[statusIndex]
-          : STATUS_STRINGS[2],
-        valid: isValidEvidence,
-      };
-    });
-
-    setEvidence(newEvidence);
-  };
-
-  return (
-    loaded &&
-    evidence.map(({ key, name, status, statusString }) => (
-      <span
-        className="Evidence-item"
-        onClick={() => handleClick(status, key, name)}
-        key={key}
-      >
-        <span className="Evidence-status">{status}</span>
-        <span className={`Evidence-name-${statusString}`}>{name}</span>
-      </span>
-    ))
-  );
+  return evidenceMap.map((e, key) => (
+    <span
+      className="Evidence-item"
+      onClick={() => incrementStatus(e.evidenceName)}
+      key={key}
+    >
+      <span className="Evidence-status">{e.statusIcon}</span>
+      <span className={`Evidence-name-${e.statusText}`}>{e.evidenceName}</span>
+    </span>
+  ));
 };

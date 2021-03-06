@@ -6,7 +6,7 @@ body {
 .App {
   text-align: left;
   display: grid;
-  justify-content: flex-start;
+  justify-content: center;
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template:
@@ -14,7 +14,8 @@ body {
     "evidence"
     "ghosts"
     "secondary"
-    "controls";
+    "controls"
+    "version";
   grid-gap: 0.15rem;
   user-select: none;
   -webkit-user-select: none;
@@ -30,7 +31,7 @@ body {
   background-image: url(./creepy-ghost.svg);
   background-repeat: no-repeat;
   opacity: 0.7;
-  background-size: 50vw;
+  background-size: 100%;
   top: 0;
   left: 0;
   bottom: 0;
@@ -46,6 +47,7 @@ body {
   font-size: calc(10px + 2vmin);
   color: rgb(163, 163, 163);
   grid-area: header;
+  display: none;
 }
 
 /* Evidence */
@@ -53,14 +55,10 @@ body {
   padding-left: 10px;
   background-color: transparent;
   display: grid;
-  grid-template-columns: minmax(min-content, 165px) minmax(min-content, 165px) minmax(
-      min-content,
-      165px
-    );
+  grid-template-columns: repeat(3, minmax(min-content, 165px));
   grid-gap: 0.15rem;
   grid-area: evidence;
   justify-content: flex-start;
-  /* font-weight: bold; */
   font-family: Verdana, sans-serif;
 }
 
@@ -72,10 +70,7 @@ body {
   padding-left: 10px;
   background-color: transparent;
   display: grid;
-  grid-template-columns: minmax(min-content, 145px) minmax(min-content, 145px) minmax(
-      min-content,
-      145px
-    );
+  grid-template-columns: repeat(3, 145px);
   grid-gap: 0.15rem;
   justify-content: flex-start;
   grid-area: ghosts;
@@ -120,6 +115,7 @@ body {
   padding-left: 8px;
   font-size: 0.65rem;
   font-family: Verdana, sans-serif;
+  grid-area: version;
 }
 
 .App-link {

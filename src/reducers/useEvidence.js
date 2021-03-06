@@ -73,18 +73,52 @@ export const reducer = (state = INITIAL_STATE.evidence, { type, payload }) => {
       };
     }
     case actionTypes.validate: {
-      const validEvidence = [
-        ...new Set(
+      let validEvidence = [];
+      let validGhosts = [];
+      if (
+        state.unconfirmed.length === 1 &&
+        state.unconfirmed.includes(payload)
+      ) {
+        validEvidence = [
+          ...new Set(
+            state.ghosts
+              .filter((ghost) =>
+                state.confirmed.every((e) => ghost.evidence.includes(e))
+              )
+              .map((ghost) => ghost.evidence)
+              .flat()
+          ),
+        ];
+        validGhosts = [
+          state.ghosts
+            .filter((ghost) =>
+              state.confirmed.every((e) => ghost.evidence.includes(e))
+            )
+            .map((ghost) => ghost.name),
+        ].flat();
+      } else {
+        validEvidence = [
+          ...new Set(
+            state.ghosts
+              .filter(
+                (ghost) =>
+                  state.confirmed.every((e) => ghost.evidence.includes(e)) &&
+                  state.excluded.every((e) => !ghost.evidence.includes(e))
+              )
+              .map((ghost) => ghost.evidence)
+              .flat()
+          ),
+        ];
+        validGhosts = [
           state.ghosts
             .filter(
               (ghost) =>
                 state.confirmed.every((e) => ghost.evidence.includes(e)) &&
                 state.excluded.every((e) => !ghost.evidence.includes(e))
             )
-            .map((ghost) => ghost.evidence)
-            .flat()
-        ),
-      ];
+            .map((ghost) => ghost.name),
+        ].flat();
+      }
 
       if (validEvidence.length === 0) {
         return {
@@ -93,22 +127,13 @@ export const reducer = (state = INITIAL_STATE.evidence, { type, payload }) => {
         };
       }
 
-      const validGhosts = [
-        state.ghosts
-          .filter((ghost) =>
-            state.confirmed.every((e) => ghost.evidence.includes(e))
-          )
-          .map((ghost) => ghost.name),
-      ].flat();
-
       const payloadExcluded = (e) =>
         e === payload && state.excluded.includes(payload);
 
       const excluded = state.all.filter(
         (e) =>
-          payloadExcluded(e) ||
-          !validEvidence.includes(e) ||
-          state.excluded.includes(e)
+          (payloadExcluded(e) && state.excluded.includes(e)) ||
+          !validEvidence.includes(e)
       );
 
       const unconfirmed = state.all.filter(

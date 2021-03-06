@@ -60,6 +60,8 @@ body {
   grid-gap: 0.15rem;
   grid-area: evidence;
   justify-content: flex-start;
+  /* font-weight: bold; */
+  font-family: Verdana, sans-serif;
 }
 
 /* Ghosts */
@@ -123,7 +125,10 @@ body {
 .App-link {
   color: #61dafb;
 }
-
+span.Evidence-item {
+  display: inline;
+  vertical-align: middle;
+}
 span.Evidence-item span.Evidence-name {
   opacity: 1;
 }
@@ -137,6 +142,8 @@ span.Evidence-item:hover span.Evidence-name-excluded {
 span.Evidence-name-confirmed,
 span.Evidence-name-unconfirmed,
 span.Evidence-name-excluded {
+  display: inline;
+  vertical-align: middle;
   padding-left: 5px;
   padding-right: 5px;
   cursor: pointer;
@@ -274,15 +281,37 @@ ul.Secondary-evidence
   color: rgb(0, 0, 0);
 }
 
+.material-icons.grey-disabled {
+  color: grey;
+}
+
+.material-icons.green-neon {
+  color: #39ff14;
+}
+
+.material-icons.size-small {
+  font-size: 12px;
+}
+
+.material-icons.size-medium {
+  font-size: 14px;
+}
+
+.material-icons.size-large {
+  font-size: 16px;
+}
+
+.material-icons.size-extra-large {
+  font-size: 18px;
+}
+
 .material-icons {
   font-size: 18px;
   padding: 0;
   margin: 0;
   padding-left: 5px;
-}
-
-.material-icons.green-neon {
-  color: #39ff14;
+  display: inline;
+  vertical-align: middle;
 }
 
 /* Background Opacities */

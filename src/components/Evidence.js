@@ -1,6 +1,7 @@
 import React from "react";
+import classNames from "classnames";
 import { Icon } from "./Icon";
-import { STATUS } from "../constants";
+import { GHOST_EVIDENCE_MAP, STATUS } from "../constants";
 
 export const Evidence = ({ evidence: { state, incrementStatus } }) => {
   const evidenceMap = React.useMemo(() => {
@@ -28,6 +29,17 @@ export const Evidence = ({ evidence: { state, incrementStatus } }) => {
     return all;
   }, [state]);
 
+  const ghostMap = React.useCallback(
+    (evidence) => {
+      const data = state.validGhosts
+        .filter((g) => GHOST_EVIDENCE_MAP[g].includes(evidence))
+        .map((g) => ({ [g]: GHOST_EVIDENCE_MAP[g]})).filter((e) => e === evidence)
+      console.log("data", { data, evidence, validGhosts: state.validGhosts });
+      return data;
+    },
+    [state.validGhosts]
+  );
+
   return evidenceMap.map((e, key) => (
     <span
       className="Evidence-item"
@@ -37,7 +49,15 @@ export const Evidence = ({ evidence: { state, incrementStatus } }) => {
       <span className="Evidence-status">
         <Icon classes={[e.class]} icon={e.statusIcon} size="small" />
       </span>
-      <span className={`Evidence-name-${e.statusText}`}>{e.evidenceName}</span>
+      <span
+        className={classNames({
+          "Evidence-item": true,
+          [`Evidence-name-${e.statusText}`]: true,
+        })}
+      >
+        {console.log("ghostMap", ghostMap(e.evidenceName))}
+        {e.evidenceName}
+      </span>
     </span>
   ));
 };

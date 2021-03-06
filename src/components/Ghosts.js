@@ -1,11 +1,12 @@
 import React from "react";
-import { actionTypes } from '../reducers/useGhosts';
+import classNames from "classnames";
+import { actionTypes } from "../reducers/useGhosts";
 
 export const Ghosts = ({
   ghosts: { dispatch, state, toggleGhost },
   evidence: {
     state: { validGhosts },
-    toggleGhostEvidence
+    toggleGhostEvidence,
   },
 }) => {
   const ghostMap = React.useMemo(() => {
@@ -24,23 +25,34 @@ export const Ghosts = ({
   }, [state]);
 
   React.useEffect(() => {
-      dispatch({payload: validGhosts, type: actionTypes.filter });
+    dispatch({ payload: validGhosts, type: actionTypes.filter });
   }, [dispatch, validGhosts]);
 
   const handleClick = (ghost) => {
     toggleGhost(ghost.ghostName);
     toggleGhostEvidence(ghost);
-  }
+  };
 
   return ghostMap
     ? ghostMap.map((ghost) => (
-        <span
-          key={ghost.ghostName}
-          onClick={() => handleClick(ghost)}
-          className={`Tag-ghost-${ghost.status}`}
-        >
-          {ghost.ghostName}
-        </span>
+        <React.Fragment>
+          <span
+            key={ghost.ghostName}
+            onClick={() => handleClick(ghost)}
+            className={classNames({
+              "Tag-ghost": true,
+              [`Tag-ghost-${ghost.status}`]: true,
+            })}
+          >
+            <span
+              className={classNames({
+                "Ghosts-ghost-name": true,
+              })}
+            >
+              {ghost.ghostName}
+            </span>
+          </span>
+        </React.Fragment>
       ))
     : null;
 };

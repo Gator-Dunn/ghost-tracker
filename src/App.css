@@ -30,7 +30,7 @@ body {
   background-image: url(./creepy-ghost.svg);
   background-repeat: no-repeat;
   opacity: 0.7;
-  background-size: 50vw;
+  background-size: 100vw;
   top: 0;
   left: 0;
   bottom: 0;
@@ -72,10 +72,13 @@ body {
   padding-left: 10px;
   background-color: transparent;
   display: grid;
-  grid-template-columns: minmax(min-content, 145px) minmax(min-content, 145px) minmax(
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 145px));
+  /* grid-template-columns:
+    minmax(min-content, 145px) minmax(min-content, 145px) minmax(
       min-content,
       145px
-    );
+    )
+    minmax(min-content, 145px); */
   grid-gap: 0.15rem;
   justify-content: flex-start;
   grid-area: ghosts;
@@ -160,6 +163,14 @@ span.Evidence-name-excluded {
   text-decoration: line-through;
 }
 
+span.Tag-ghost {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template:
+    "ghostname"
+    "lastevidence";
+}
+
 span.Tag-ghost-valid {
   border: 2px solid transparent !important;
   background-color: #184e77;
@@ -168,7 +179,7 @@ span.Tag-ghost-valid {
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  /* display: inline-block; */
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
@@ -194,6 +205,48 @@ span.Tag-ghost-valid:hover {
   border: 2px solid white !important;
   background-color: #1a759f;
 }
+
+span.Ghosts-ghost-name {
+  display: inline;
+  text-transform: capitalize;
+  grid-area: ghostname;
+}
+span.Ghosts-last-evidence {
+  display: inline;
+  grid-area: lastevidence;
+}
+
+span.Ghosts-last-evidence {
+  min-height: 12px;
+  font-size: 12px;
+  color: rgb(216, 216, 216);
+}
+
+span.Ghosts-last-evidence-1 {
+  border: 2px solid #80b918 !important;
+}
+
+span.Ghosts-last-evidence-2 {
+  border: 2px solid #fca311 !important;
+}
+
+span.Ghosts-last-evidence-3 {
+  border: 2px solid #f72585 !important;
+}
+
+.Evidence-last-evidence-1 {
+  color: #80b918 !important;
+}
+
+.Evidence-last-evidence-2 {
+  color: #fca311 !important;
+}
+
+.Evidence-last-evidence-3 {
+  color: #f72585 !important;
+}
+
+sup { vertical-align: top; font-size: 0.6em; }
 
 /* Secondary */
 .App-section-secondary-evidence {

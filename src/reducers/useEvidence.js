@@ -1,5 +1,6 @@
 import React from "react";
 import { INITIAL_STATE } from "./constants";
+import { EVIDENCE_NAMES, GHOST_EVIDENCE_MAP } from "../constants";
 
 export const actionTypes = {
   add: {
@@ -151,6 +152,7 @@ export const reducer = (state = INITIAL_STATE.evidence, { type, payload }) => {
         excluded,
         unconfirmed,
         confirmed,
+        validEvidence,
         validGhosts,
       };
     }
@@ -186,7 +188,24 @@ export const useEvidence = () => {
 
   const resetEvidence = () => dispatch({ type: actionTypes.reset });
 
+  const getLastEvidenceMap = () => {
+    const ghostMap = state.validGhosts.reduce((ghosts, ghost) => {
+      const evidenceIndices = GHOST_EVIDENCE_MAP[ghost].map(
+        (e) => EVIDENCE_NAMES.indexOf(e) + 1
+      );
+
+      return {
+        ...ghosts,
+        [ghost]: evidenceIndices,
+      };
+    }, {});
+    return ghostMap;
+  };
+
+  
+
   return {
+    getLastEvidenceMap,
     incrementStatus,
     resetEvidence,
     state,

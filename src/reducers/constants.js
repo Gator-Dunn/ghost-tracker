@@ -13,6 +13,7 @@ export const INITIAL_STATE = {
     unconfirmed: EVIDENCE_NAMES,
     status: STATUS,
     ghosts: GHOSTS,
+    validEvidence: EVIDENCE_NAMES,
     validGhosts: GHOST_NAMES,
   },
   ghosts: {

@@ -1,9 +1,9 @@
 body {
   background-color: #31343a;
+  font-family: "Ink Free", sans-serif;
 }
 
 .App {
-  font-family: "Ink Free", sans-serif;
   display: grid;
   justify-content: space-evenly;
   grid-template:

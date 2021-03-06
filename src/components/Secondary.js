@@ -67,9 +67,30 @@ const SECONDARY_EVIDENCE = [
         icon: "directions_run",
         classes: ["orange-warning"],
       },
+      {
+        icon: "bolt",
+        classes: ["yellow-bright"],
+      },
     ],
     description:
-      "While hunting, closes with player quickly, then slows to normal",
+      "While hunting, moves fast while far away if breaker is on",
+  },
+  {
+    ghostName: GHOST_NAME_MAP.jinn,
+    icon: "directions_run",
+    key: "normal_hunt_speed_with_power_off",
+    icons: [
+      {
+        icon: "directions_run",
+        classes: ["inverted"],
+      },
+      {
+        icon: "bolt",
+        classes: ["inverted"],
+      },
+    ],
+    description:
+      "While hunting, moves normal speed if breaker is off",
   },
   {
     ghostName: GHOST_NAME_MAP.banshee,

@@ -234,7 +234,6 @@ span.Secondary-evidence-description-highlighted {
 
 span.Secondary-evidence-description-disabled {
   opacity: 0.35;
-  cursor: default;
 }
 
 span.Secondary-evidence-icon {
@@ -245,7 +244,7 @@ span.Secondary-evidence-icon {
 
 ul.Secondary-evidence
   li:hover
-  span.Secondary-evidence-description:not(.Secondary-evidence-description-highlighted) {
+  span.Secondary-evidence-description:not(.Secondary-evidence-description-selected) {
   color: gray;
   border-left: 2px solid lightgray;
   cursor: pointer;

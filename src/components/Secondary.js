@@ -181,6 +181,7 @@ export const Secondary = ({
   ghosts: { toggleGhost },
 }) => {
   const [selectedGhost, setSelectedGhost] = React.useState();
+  
   const handleClick = (ghost) => {
     if (selectedGhost && ghost.ghostName === selectedGhost) {
       setSelectedGhost(null);
@@ -191,9 +192,9 @@ export const Secondary = ({
     toggleGhostEvidence(ghost);
   };
 
-  const isSelectedGhost = React.useCallback(
-    (ghostName) => selectedGhost === ghostName,
-    [selectedGhost]
+  const highlighted = React.useCallback(
+    (ghostName) => validGhosts.includes(ghostName),
+    [validGhosts]
   );
 
   return (
@@ -210,8 +211,9 @@ export const Secondary = ({
               <span
                 className={classNames({
                   "Secondary-evidence-description": true,
-                  "Secondary-evidence-description-highlighted": isSelectedGhost(ghost.ghostName),
-                  "Secondary-evidence-description-disabled": !isSelectedGhost(ghost.ghostName)
+                  "Secondary-evidence-description-highlighted": highlighted(ghost.ghostName),
+                  "Secondary-evidence-description-disabled": !highlighted(ghost.ghostName),
+                  "Secondary-evidence-description-selected": selectedGhost === ghost.ghostName,
                 })}
               >
                 <span>{description}</span>

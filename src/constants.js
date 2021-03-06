@@ -14,7 +14,7 @@ export const STATUS = {
     icon: "not_interested",
     text: "excluded",
   },
-}
+};
 
 export const EVIDENCE_MAP = {
   emf: "EMF Level 5",
@@ -24,6 +24,11 @@ export const EVIDENCE_MAP = {
   writing: "Ghost Writing",
   box: "Spirit Box",
 };
+
+export const EVIDENCE_CSS_MAP = Object.entries(EVIDENCE_MAP).reduce(
+  (acc, [key, val]) => ({ ...acc, [val]: key }),
+  {}
+);
 
 export const EVIDENCE_NAMES = Object.values(EVIDENCE_MAP);
 
@@ -201,8 +206,7 @@ export const SECONDARY_EVIDENCE = [
         classes: ["yellow-bright"],
       },
     ],
-    description:
-      "While hunting, moves fast while far away if breaker is on",
+    description: "While hunting, moves fast while far away if breaker is on",
   },
   {
     ghostName: GHOST_NAME_MAP.jinn,
@@ -218,8 +222,7 @@ export const SECONDARY_EVIDENCE = [
         classes: ["inverted"],
       },
     ],
-    description:
-      "While hunting, moves normal speed if breaker is off",
+    description: "While hunting, moves normal speed if breaker is off",
   },
   {
     ghostName: GHOST_NAME_MAP.banshee,
@@ -299,9 +302,6 @@ export const SECONDARY_EVIDENCE = [
   },
 ].map((s) => ({
   ...s,
-  icons: [
-    ...s.icons,
-    "Secondary-evidence-icon",
-  ],
+  icons: [...s.icons, "Secondary-evidence-icon"],
   evidence: GHOST_EVIDENCE_MAP[s.ghostName],
 }));

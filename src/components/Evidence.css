@@ -1,0 +1,49 @@
+.Evidence-emf::after {
+  content: "EMF Level 5";
+}
+
+.Evidence-freezing::after {
+  content: "Freezing Temps";
+}
+
+.Evidence-writing::after {
+  content: "Ghost Writing";
+}
+
+.Evidence-fingerprints::after {
+  content: "Fingerprints";
+}
+
+.Evidence-orbs::after {
+  content: "Ghost Orbs";
+}
+
+.Evidence-box::after {
+  content: "Spirit Box";
+}
+
+@media only screen and (max-width: 768px) {
+  .Evidence-emf::after {
+    content: "EMF 5";
+  }
+  
+  .Evidence-freezing::after {
+    content: "Freezing";
+  }
+  
+  .Evidence-writing::after {
+    content: "Writing";
+  }
+  
+  .Evidence-fingerprints::after {
+    content: "Fingerprints";
+  }
+  
+  .Evidence-orbs::after {
+    content: "Orbs";
+  }
+  
+  .Evidence-box::after {
+    content: "Spirit Box";
+  }
+}

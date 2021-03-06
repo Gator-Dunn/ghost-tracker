@@ -1,6 +1,8 @@
 import React from "react";
+import classNames from "classnames";
 import { Icon } from "./Icon";
-import { STATUS } from "../constants";
+import { EVIDENCE_CSS_MAP, STATUS } from "../constants";
+import "./Evidence.css";
 
 export const Evidence = ({ evidence: { state, incrementStatus } }) => {
   const evidenceMap = React.useMemo(() => {
@@ -37,7 +39,12 @@ export const Evidence = ({ evidence: { state, incrementStatus } }) => {
       <span className="Evidence-status">
         <Icon classes={[e.class]} icon={e.statusIcon} size="small" />
       </span>
-      <span className={`Evidence-name-${e.statusText}`}>{e.evidenceName}</span>
+      <span
+        className={classNames(
+          `Evidence-${EVIDENCE_CSS_MAP[e.evidenceName]}`,
+          `Evidence-name-${e.statusText}`
+        )}
+      ></span>
     </span>
   ));
 };

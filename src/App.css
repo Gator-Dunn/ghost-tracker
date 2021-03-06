@@ -1,12 +1,13 @@
 body {
-  background-color: #282c34;
+  background-color: #31343a;
 }
 
-/* App */
 .App {
+  font-family: "Ink Free", sans-serif;
   display: grid;
   justify-content: space-evenly;
   grid-template:
+    "header"
     "evidence"
     "ghosts"
     "secondary"
@@ -37,11 +38,11 @@ body {
 
 .App-header {
   background-color: transparent;
-  font-family: Verdana, sans-serif;
+  font-weight: bold;
   font-size: calc(10px + 2vmin);
   color: rgb(163, 163, 163);
   grid-area: header;
-  display: none;
+  justify-content: flex-start;
 }
 
 /* Evidence */
@@ -53,7 +54,6 @@ body {
   grid-gap: 0.15rem;
   grid-area: evidence;
   justify-content: flex-start;
-  font-family: Verdana, sans-serif;
 }
 
 /* Ghosts */
@@ -68,6 +68,7 @@ body {
   grid-gap: 0.15rem;
   justify-content: flex-start;
   grid-area: ghosts;
+  text-transform: capitalize;
 }
 
 .App-section-controls {
@@ -78,7 +79,6 @@ body {
 
 .App-section-controls button {
   width: 150px;
-  font-family: "Times New Roman", Times, serif;
   color: rgb(224, 224, 224) !important;
   text-transform: uppercase;
   text-decoration: none;
@@ -108,7 +108,6 @@ body {
   padding: 5px;
   padding-left: 8px;
   font-size: 0.65rem;
-  font-family: Verdana, sans-serif;
   grid-area: version;
 }
 
@@ -153,7 +152,6 @@ span.Evidence-name-excluded {
 span.Tag-ghost-valid {
   border: 2px solid transparent !important;
   background-color: #184e77;
-  border: none;
   color: white;
   padding: 10px 20px;
   text-align: center;
@@ -167,7 +165,6 @@ span.Tag-ghost-valid {
 span.Tag-ghost-invalid {
   border: 2px solid transparent !important;
   background-color: #ddd;
-  border: none;
   color: black;
   padding: 10px 20px;
   text-align: center;
@@ -306,11 +303,12 @@ ul.Secondary-evidence
 
 @media only screen and (max-width: 768px) {
   .App {
-    /* padding-left: 30px; */
+    font-family: "Ink Free", sans-serif;
     display: grid;
     justify-content: center;
     justify-self: center;
     grid-template:
+      "header"
       "evidence"
       "ghosts"
       "secondary"
@@ -322,13 +320,20 @@ ul.Secondary-evidence
     -moz-user-select: none;
     -ms-user-select: none;
   }
+  .App-header {
+    background-color: transparent;
+    font-weight: bold;
+    font-size: calc(10px + 2vmin);
+    color: rgb(163, 163, 163);
+    grid-area: header;
+    justify-self: center;
+  }
   .App-section-evidence {
     background-color: transparent;
     display: grid;
     grid-template-columns: repeat(2, calc(50vw - 60px));
     grid-area: evidence;
     justify-content: space-between;
-    font-family: Verdana, sans-serif;
   }
   .App-section-ghosts {
     background-color: transparent;
@@ -337,6 +342,7 @@ ul.Secondary-evidence
     justify-items: space-around;
     grid-area: ghosts;
     padding: 0;
+    text-transform: capitalize;
   }
   .App-section-controls {
     grid-area: controls;
@@ -368,14 +374,13 @@ ul.Secondary-evidence
     opacity: 0.3;
     justify-content: space-evenly;
     font-size: 0.65rem;
-    font-family: Verdana, sans-serif;
+
     grid-area: version;
   }
   .material-icons {
     font-size: 14px;
     padding: 0;
     margin: 0;
-    /* padding-left: 5px; */
     display: inline;
     vertical-align: middle;
   }

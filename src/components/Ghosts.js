@@ -2,7 +2,7 @@ import React from "react";
 import { actionTypes } from '../reducers/useGhosts';
 
 export const Ghosts = ({
-  ghosts: { dispatch, filterGhosts, state, toggleGhost },
+  ghosts: { dispatch, state, toggleGhost },
   evidence: {
     state: { validGhosts },
     toggleGhostEvidence

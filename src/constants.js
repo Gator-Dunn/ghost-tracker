@@ -110,6 +110,14 @@ export const GHOSTS = [
   },
 ];
 
+export const GHOST_EVIDENCE_MAP = GHOSTS.reduce(
+  (map, ghost) => ({
+    ...map,
+    [ghost.name]: ghost.evidence,
+  }),
+  {}
+);
+
 export const GHOST_NAMES = GHOSTS.map((g) => g.name);
 
 export const GHOST_NAME_MAP = GHOST_NAMES.reduce(

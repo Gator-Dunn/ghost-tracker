@@ -60,9 +60,13 @@ export const useGhosts = () => {
 
   const resetGhosts = () => dispatch({ type: actionTypes.reset });
 
+  const getGhost = (payload) =>
+    state.all.filter((ghost) => ghost.name === payload);
+
   return {
     dispatch,
     filterGhosts,
+    getGhost,
     isValid,
     resetGhosts,
     state,

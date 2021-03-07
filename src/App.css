@@ -28,7 +28,7 @@ body {
   font-size: calc(10px + 2vmin);
   color: rgb(163, 163, 163);
   grid-area: header;
-  justify-content: flex-start;
+  justify-self: center;
 }
 
 .App-background {

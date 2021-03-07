@@ -3,7 +3,7 @@ import "../styles/Icon.css";
 
 const validSizes = ["small", "medium", "large", "extra-large"];
 
-export const Icon = ({ classes = [], icon, size = "medium" }) => {
+export const Icon = ({ classes = [], icon, size = "medium", ...props }) => {
   const sizeStyle = validSizes.includes(size) ? size : "medium";
   const classesMap = classes.reduce(
     (list, c) => ({
@@ -15,6 +15,7 @@ export const Icon = ({ classes = [], icon, size = "medium" }) => {
 
   return (
   <span
+    {...props}
     className={classNames({
       "material-icons": true,
       [sizeStyle]: true,

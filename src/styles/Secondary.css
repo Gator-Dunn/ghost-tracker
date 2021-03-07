@@ -1,15 +1,42 @@
-
-ul.Secondary-evidence {
-  padding-left: 0;
-  padding-top: 0;
+.Secondary-evidence-header {
+  text-align: center;
+  margin-top: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size: 16px;
+  display: inline;
+  min-width: calc(50vw - 55px);
+  border-radius: 5px;
 }
 
-ul.Secondary-evidence li {
+.Secondary-evidence-header-open {
+  color: white;
+}
+.Secondary-evidence-header:hover {
+  cursor: pointer;
+  background-color: #3e4249;
+}
+
+ul.Secondary-evidence-visible {
+  justify-self: center;
+  padding-left: 15px;
+  transition: all 0.4s ease 0.4s;
+}
+
+ul.Secondary-evidence-visible li {
   text-align: left;
   list-style-type: none;
   display: grid;
   grid-template: "icons description";
   grid-template-columns: 36px max-content;
+}
+
+ul.Secondary-evidence-hidden {
+  transition: all 0.4s ease 0.4s;
+  display: none;
+  min-width: var(--main-width);
+  padding-left: 0;
+  padding-top: 0;
 }
 
 span.Secondary-evidence-icons {
@@ -21,10 +48,11 @@ span.Secondary-evidence-icons {
 span.Secondary-evidence-description {
   grid-area: description;
   border-left: 2px solid transparent;
+  border-radius: 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: calc(100vw - 50px);
+  max-width: 100vw;
 }
 
 span.Secondary-evidence-description span {
@@ -40,13 +68,13 @@ span.Secondary-evidence-description-disabled {
   opacity: 0.35;
 }
 
-span.Secondary-evidence-icon {
+span.Secondary-evidence-icons {
   display: inline;
   vertical-align: middle;
   cursor: pointer;
 }
 
-ul.Secondary-evidence
+ul.Secondary-evidence-visible
   li:hover
   span.Secondary-evidence-description:not(.Secondary-evidence-description-selected) {
   color: gray;

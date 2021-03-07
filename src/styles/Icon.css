@@ -1,5 +1,3 @@
-
-/* Icon Styling */
 .material-icons.yellow-bright {
   color: #fff600;
 }
@@ -45,6 +43,13 @@
 
 .material-icons.size-extra-large {
   font-size: 18px;
+}
+
+.material-icons.expander {
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .material-icons {

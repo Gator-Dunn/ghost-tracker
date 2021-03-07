@@ -1,4 +1,5 @@
 import React from "react";
+import classNames from "classnames";
 import "../styles/Ghosts.css";
 import { actionTypes } from "../reducers/useGhosts";
 
@@ -33,12 +34,20 @@ export const Ghosts = ({
     toggleGhostEvidence(ghost);
   };
 
+  const isLastGhost = React.useCallback(
+    (ghost) => validGhosts.length === 1 && validGhosts[0] === ghost,
+    [validGhosts]
+  );
+
   return ghostMap
     ? ghostMap.map((ghost) => (
         <span
           key={ghost.ghostName}
           onClick={() => handleClick(ghost)}
-          className={`Tag-ghost-${ghost.status}`}
+          className={classNames({
+            [`Tag-ghost-${ghost.status}`]: true,
+            "Tag-ghost-last": isLastGhost(ghost.ghostName),
+          })}
         >
           {ghost.ghostName}
         </span>

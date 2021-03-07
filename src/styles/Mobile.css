@@ -1,4 +1,8 @@
 @media only screen and (max-width: 768px) {
+  * {
+    --main-width: calc(100vw);
+    z-index: 1;
+  }
   .App {
     font-family: "Ink Free", sans-serif;
     display: grid;
@@ -8,8 +12,8 @@
       "header"
       "evidence"
       "ghosts"
-      "secondary"
       "controls"
+      "secondary"
       "version";
     user-select: none;
     -webkit-user-select: none;
@@ -24,61 +28,101 @@
     color: rgb(163, 163, 163);
     grid-area: header;
     justify-self: center;
+    height: 30px;
   }
   .App-section-evidence {
     background-color: transparent;
     display: grid;
-    grid-template-columns: repeat(2, calc(50vw - 60px));
+    grid-template-columns: repeat(2, 175px);
     grid-area: evidence;
-    justify-content: space-between;
+    justify-self: center;
+    height: 65px;
   }
   .App-section-ghosts {
     background-color: transparent;
     display: grid;
-    grid-template-columns: repeat(2, calc(50vw - 7px));
-    justify-items: space-around;
+    grid-template-columns: repeat(2, 175px);
+    justify-self: center;
     grid-area: ghosts;
-    padding: 0;
+    padding: 10px;
     text-transform: capitalize;
+    z-index: 0;
   }
   .App-section-controls {
     grid-area: controls;
-    justify-self: space-evenly;
-    padding-left: 7px;
+    justify-self: center;
+    padding-right: 7px;
   }
+
   .App-section-secondary-evidence {
     background-color: transparent;
     display: grid;
     color: rgb(163, 163, 163);
     font-size: 14px;
     grid-area: secondary;
-    justify-content: flex-start;
-    overflow: hidden;
-    white-space: nowrap;
-    overflow: hidden;
   }
-  ul.Secondary-evidence li {
+
+  .Secondary-evidence-header {
+    text-align: center;
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    display: inline;
+    min-width: calc(100vw);
+  }
+
+  .App-background {
+    content: "";
+    background-image: url(./creepy-ghost.svg);
+    background-repeat: no-repeat;
+    background-position: center top;
+    opacity: 0.7;
+    background-size: calc(100vw - 10px);
+    top: 20px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -3;
+    transition: all 0.4s ease 0s;
+  }
+
+  ul.Secondary-evidence-visible li {
     text-align: left;
     list-style-type: none;
     display: grid;
     grid-template: "icons description";
-    grid-template-columns: 36px calc(100vw - 100px);
+    grid-template-columns: 36px calc(100vw - 40px);
     overflow: hidden;
     white-space: nowrap;
     overflow: hidden;
+  }
+
+  ul.Secondary-evidence-visible {
+    transition: all 0.4s ease 0.4s;
+    justify-self: center;
+    padding-left: 15px;
+  }
+
+  span.Secondary-evidence-description {
+    grid-area: description;
+    border-left: 2px solid transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
   }
   span.Secondary-evidence-description span {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     padding-left: 5px;
-    max-width: calc(100vw - 200px);
-    width: 300px;
   }
   .App-section-version {
     color: lightgray;
     opacity: 0.3;
-    justify-content: space-evenly;
+    justify-self: center;
     font-size: 0.65rem;
     grid-area: version;
   }

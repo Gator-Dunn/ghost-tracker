@@ -30,3 +30,10 @@ span.Tag-ghost-valid:hover {
   border: 2px solid white !important;
   background-color: #1a759f;
 }
+
+span.Tag-ghost-last {
+  outline: none;
+  border-color: #9ecaed !important;
+  box-shadow: 0 0 10px #9ecaed !important;
+  color: #3ed42d;
+}

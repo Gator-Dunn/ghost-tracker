@@ -29,11 +29,21 @@ span.Tag-ghost-invalid:hover,
 span.Tag-ghost-valid:hover {
   border: 2px solid white !important;
   background-color: #1a759f;
+  color: white;
 }
 
 span.Tag-ghost-last {
   outline: none;
-  border-color: #9ecaed !important;
-  box-shadow: 0 0 10px #9ecaed !important;
-  color: #3ed42d;
+  border-color: lightgray !important;
+  box-shadow: 0 0 10px #ed9e9e !important;
+  color: lightgray;
+  background-color: darkred;
+}
+
+span.Tag-ghost-last:hover {
+  outline: none;
+  border-color: white !important;
+  box-shadow: 0 0 10px #ed9e9e !important;
+  color: white;
+  background-color: rgb(153, 1, 1);;
 }

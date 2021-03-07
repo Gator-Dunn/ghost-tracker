@@ -21,8 +21,6 @@ body {
   -ms-user-select: none;
 }
 
-
-
 .App-header {
   --main-width: calc(100vw);
   background-color: transparent;
@@ -39,7 +37,7 @@ body {
   background-repeat: no-repeat;
   background-position: center top;
   opacity: 0.7;
-  background-size: calc(--main-width);
+  background-size: calc(var(--main-width));
   top: 0;
   left: 0;
   bottom: 0;

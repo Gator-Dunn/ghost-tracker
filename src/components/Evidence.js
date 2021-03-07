@@ -2,7 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import { Icon } from "./Icon";
 import { EVIDENCE_CSS_MAP, STATUS } from "../constants";
-import "./Evidence.css";
+import "../styles/Evidence.css";
 
 export const Evidence = ({ evidence: { state, incrementStatus } }) => {
   const evidenceMap = React.useMemo(() => {

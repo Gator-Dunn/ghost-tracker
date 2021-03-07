@@ -8,7 +8,9 @@ import { Secondary } from "./components/Secondary";
 import { useGhosts } from "./reducers/useGhosts";
 import { useEvidence } from "./reducers/useEvidence";
 
-import "./App.css";
+import "./styles/App.css";
+import "./styles/Mobile.css";
+import "./styles/Background.css";
 
 function App() {
   const evidence = useEvidence();

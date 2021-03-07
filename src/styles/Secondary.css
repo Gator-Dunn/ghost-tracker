@@ -1,0 +1,55 @@
+
+ul.Secondary-evidence {
+  padding-left: 0;
+  padding-top: 0;
+}
+
+ul.Secondary-evidence li {
+  text-align: left;
+  list-style-type: none;
+  display: grid;
+  grid-template: "icons description";
+  grid-template-columns: 36px max-content;
+}
+
+span.Secondary-evidence-icons {
+  grid-area: icons;
+  justify-self: flex-end;
+  padding-right: 3px;
+}
+
+span.Secondary-evidence-description {
+  grid-area: description;
+  border-left: 2px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100vw - 50px);
+}
+
+span.Secondary-evidence-description span {
+  padding-left: 5px;
+}
+
+span.Secondary-evidence-description-highlighted {
+  color: rgb(224, 224, 224);
+  opacity: 1;
+}
+
+span.Secondary-evidence-description-disabled {
+  opacity: 0.35;
+}
+
+span.Secondary-evidence-icon {
+  display: inline;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+ul.Secondary-evidence
+  li:hover
+  span.Secondary-evidence-description:not(.Secondary-evidence-description-selected) {
+  color: gray;
+  border-left: 2px solid lightgray;
+  cursor: pointer;
+}

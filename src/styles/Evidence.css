@@ -1,3 +1,39 @@
+span.Evidence-item {
+  display: inline;
+  vertical-align: middle;
+}
+
+span.Evidence-item span.Evidence-name {
+  opacity: 1;
+}
+
+span.Evidence-item:hover span.Evidence-name-confirmed,
+span.Evidence-item:hover span.Evidence-name-unconfirmed,
+span.Evidence-item:hover span.Evidence-name-excluded {
+  opacity: 1;
+}
+
+span.Evidence-name-confirmed,
+span.Evidence-name-unconfirmed,
+span.Evidence-name-excluded {
+  display: inline;
+  vertical-align: middle;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+  opacity: 0.35;
+  color: white;
+}
+
+span.Evidence-name-confirmed {
+  opacity: 1;
+}
+
+span.Evidence-name-excluded {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+
 .Evidence-emf::after {
   content: "EMF Level 5";
 }

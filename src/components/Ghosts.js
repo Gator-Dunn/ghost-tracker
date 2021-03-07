@@ -1,11 +1,12 @@
 import React from "react";
-import { actionTypes } from '../reducers/useGhosts';
+import "../styles/Ghosts.css";
+import { actionTypes } from "../reducers/useGhosts";
 
 export const Ghosts = ({
   ghosts: { dispatch, state, toggleGhost },
   evidence: {
     state: { validGhosts },
-    toggleGhostEvidence
+    toggleGhostEvidence,
   },
 }) => {
   const ghostMap = React.useMemo(() => {
@@ -24,13 +25,13 @@ export const Ghosts = ({
   }, [state]);
 
   React.useEffect(() => {
-      dispatch({payload: validGhosts, type: actionTypes.filter });
+    dispatch({ payload: validGhosts, type: actionTypes.filter });
   }, [dispatch, validGhosts]);
 
   const handleClick = (ghost) => {
     toggleGhost(ghost.ghostName);
     toggleGhostEvidence(ghost);
-  }
+  };
 
   return ghostMap
     ? ghostMap.map((ghost) => (

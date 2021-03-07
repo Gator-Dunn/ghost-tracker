@@ -2,6 +2,7 @@ import React from "react";
 import classNames from "classnames";
 import { SECONDARY_EVIDENCE } from "../constants";
 import { Icon } from "./Icon";
+import "../styles/Secondary.css";
 
 export const Secondary = ({
   evidence: {

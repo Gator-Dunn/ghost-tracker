@@ -1,0 +1,32 @@
+span.Tag-ghost-valid {
+  border: 2px solid transparent !important;
+  background-color: #184e77;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
+
+span.Tag-ghost-invalid {
+  border: 2px solid transparent !important;
+  background-color: #ddd;
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+  opacity: 0.15;
+}
+
+span.Tag-ghost-invalid:hover,
+span.Tag-ghost-valid:hover {
+  border: 2px solid white !important;
+  background-color: #1a759f;
+}

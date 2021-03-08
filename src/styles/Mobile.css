@@ -126,7 +126,7 @@
     color: lightgray;
     opacity: 0.3;
     justify-self: center;
-    font-size: 0.65rem;
+    font-size: 14px;
     grid-area: version;
   }
   .material-icons {

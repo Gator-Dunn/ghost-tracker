@@ -122,11 +122,6 @@ export const reducer = (state = INITIAL_STATE.evidence, { type, payload }) => {
 
       const payloadExcluded = (e) =>
         e === payload && state.excluded.includes(payload);
-     
-      // Do nothing if user clicks evidence that can not be valid right now
-      if (payloadExcluded(payload) && !validGhosts.includes(payload)) {
-        return state;
-      }
 
       if (validEvidence.length === 0) {
         return {
@@ -150,7 +145,7 @@ export const reducer = (state = INITIAL_STATE.evidence, { type, payload }) => {
       const confirmed = state.all.filter(
         (e) => !unconfirmed.includes(e) && !excluded.includes(e)
       );
-      console.log(payload, { state, unconfirmed, confirmed, excluded, validEvidence, validGhosts})
+
       return {
         ...state,
         excluded,

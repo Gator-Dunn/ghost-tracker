@@ -4,12 +4,13 @@
     z-index: 1;
   }
   .App {
-    font-family: "Ink Free", sans-serif;
+    font-family: "Indie Flower", cursive;
     display: grid;
     justify-content: center;
     justify-self: center;
     grid-template:
       "header"
+      "tools"
       "evidence"
       "ghosts"
       "controls"
@@ -35,7 +36,7 @@
     display: grid;
     grid-template-columns: repeat(2, 175px);
     grid-area: evidence;
-    justify-self: center;
+    justify-self: flex-end;
     height: 65px;
   }
   .App-section-ghosts {

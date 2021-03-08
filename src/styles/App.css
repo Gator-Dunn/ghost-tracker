@@ -12,6 +12,7 @@ body {
   justify-content: space-evenly;
   grid-template:
     "header"
+    "tools"
     "evidence"
     "ghosts"
     "controls"
@@ -25,6 +26,10 @@ body {
   -ms-user-select: none;
 }
 
+.App-section-tools {
+  grid-area: tools;
+}
+
 .App-header {
   --main-width: calc(100vw);
   background-color: transparent;
@@ -33,7 +38,7 @@ body {
   color: rgb(163, 163, 163);
   grid-area: header;
   justify-self: center;
-  --header-height: 100vh;
+  /* --header-height: 100vh; */
 }
 
 .App-section-ghosts {
@@ -58,7 +63,6 @@ body {
   grid-template-columns: repeat(3, 175px);
   grid-area: evidence;
   justify-self: center;
-  justify-items: stretch;
   --evidence-height: 100vh;
 }
 
@@ -97,11 +101,6 @@ body {
   outline: none;
 }
 
-.App-section-controls button:hover {
-  color: rgb(224, 224, 224) !important;
-  background: #d82f2c;
-}
-
 .App-section-controls button:active {
   color: #fff !important;
   background: #8b1e1d;
@@ -125,4 +124,10 @@ body {
   font-size: 18px;
   grid-area: secondary;
   justify-content: center;
+}
+
+.Button-reset:hover {
+  cursor: pointer;
+  color: rgb(224, 224, 224) !important;
+  background: #d82f2c;
 }

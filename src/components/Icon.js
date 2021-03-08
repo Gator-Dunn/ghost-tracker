@@ -4,7 +4,7 @@ import "../styles/Icon.css";
 const validSizes = ["small", "medium", "large", "extra-large"];
 
 export const Icon = ({ classes = [], icon, size = "medium", ...props }) => {
-  const sizeStyle = validSizes.includes(size) ? size : "medium";
+  const sizeStyle = validSizes.includes(size) ? `size-${size}` : "size-medium";
   const classesMap = classes.reduce(
     (list, c) => ({
       ...list,

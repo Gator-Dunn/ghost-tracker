@@ -6,6 +6,6 @@ export const Reset = ({ evidence: { resetEvidence }, ghosts: { resetGhosts }}) =
     resetGhosts();
   }
   return (
-    <button onClick={handleClick}>Reset</button>
+    <button className="Button-reset" onClick={handleClick}>Reset</button>
   )
 }

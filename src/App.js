@@ -5,6 +5,7 @@ import { Ghosts } from "./components/Ghosts";
 import { Evidence } from "./components/Evidence";
 import { Reset } from "./components/Reset";
 import { Secondary } from "./components/Secondary";
+import { Tools } from "./components/Tools";
 import { useGhosts } from "./reducers/useGhosts";
 import { useEvidence } from "./reducers/useEvidence";
 
@@ -31,6 +32,9 @@ function App() {
     ghosts && (
       <React.Fragment>
         <div className="App">
+          <section className="App-section-tools">
+            <Tools />
+          </section>
           <header className="App-header">Phasmophobia Evidence Matrix</header>
           <section data-testid="test-evidence" className="App-section-evidence">
             <Evidence evidence={evidence} ghosts={ghosts} />

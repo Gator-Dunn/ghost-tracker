@@ -38,7 +38,6 @@ body {
   color: rgb(163, 163, 163);
   grid-area: header;
   justify-self: center;
-  /* --header-height: 100vh; */
 }
 
 .App-section-ghosts {
@@ -63,12 +62,13 @@ body {
   grid-template-columns: repeat(3, 175px);
   grid-area: evidence;
   justify-self: center;
+  justify-items: stretch;
   --evidence-height: 100vh;
 }
 
 .App-section-controls {
   grid-area: controls;
-  justify-self: flex-end;
+  justify-self: center;
   padding-right: 7px;
 }
 
@@ -125,7 +125,9 @@ body {
   grid-area: secondary;
   justify-content: center;
 }
-
+.Button-reset {
+  font-family: "Indie Flower", cursive;
+}
 .Button-reset:hover {
   cursor: pointer;
   color: rgb(224, 224, 224) !important;

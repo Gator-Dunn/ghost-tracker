@@ -37,6 +37,8 @@
     grid-template-columns: repeat(2, 175px);
     grid-area: evidence;
     justify-self: flex-end;
+    justify-content: flex-end;
+    justify-self: flex-end;
     height: 65px;
   }
   .App-section-ghosts {

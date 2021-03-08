@@ -127,9 +127,10 @@ body {
 }
 .Button-reset {
   font-family: "Indie Flower", cursive;
+  cursor: pointer;
 }
 .Button-reset:hover {
-  cursor: pointer;
+  cursor: pointer !important;
   color: rgb(224, 224, 224) !important;
-  background: #d82f2c;
+  background: #d82f2c !important;
 }

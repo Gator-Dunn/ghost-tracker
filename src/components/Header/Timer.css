@@ -1,0 +1,71 @@
+.Timer {
+  padding-top: 10px;
+  display: grid;
+  grid-template: "timerIcon timerOptions timerCounter";
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-self: center;
+  width: 50vw;
+  padding: 0;
+  align-self: end;
+}
+
+.Timer-icon {
+  grid-area: timerIcon;
+  align-self: center;
+}
+
+.Timer-options {
+  grid-area: timerOptions;
+  align-self: end;
+}
+
+.Timer-options span {
+  color: gray;
+  padding: 3px 5px 3px 5px;
+  border-radius: 5px;
+  vertical-align: middle;
+  display: inline;
+}
+
+.Timer-options span:hover {
+  background-color: #3e4249;
+  cursor: pointer;
+}
+
+.Timer-counter {
+  grid-area: timerCounter;
+  color: grey !important;
+  align-self: end;
+}
+
+.Timer-counter-warning {
+  color: yellow !important;
+}
+
+.Timer-counter-expiring {
+  color: orangered !important;
+}
+
+.Timer-counter-expired {
+  color: red !important;
+  animation: blinker 2s linear infinite;
+}
+
+.Timer-counter span {
+  display: inline;
+  vertical-align: middle;
+}
+
+.Timer-selected {
+  color: green !important;
+}
+
+.Timer-options-expired {
+  color: red !important;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

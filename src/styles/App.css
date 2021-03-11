@@ -11,9 +11,10 @@ body {
   display: grid;
   justify-content: space-evenly;
   grid-template:
-    "header"
+    "title"
     "tools"
     "evidence"
+    "timer"
     "ghosts"
     "controls"
     "secondary"
@@ -30,19 +31,36 @@ body {
   grid-area: tools;
 }
 
-.App-header {
+.App-section-timer {
+  text-align: center;
+  grid-area: timer;
+  grid-template-columns: 100vw;
+  background-color: transparent;
+  display: grid;
+  width: 100vw;
+}
+
+.App-section-title {
   --main-width: calc(100vw);
   background-color: transparent;
   font-weight: bold;
   font-size: calc(10px + 2vmin);
+  color: rgb(163, 163, 163);
+  grid-area: title;
+  justify-self: center;
+}
+
+.App-header {
+  --main-width: calc(100vw);
+  background-color: transparent;
+  font-weight: bold;
   color: rgb(163, 163, 163);
   grid-area: header;
   justify-self: center;
 }
 
 .App-section-ghosts {
-  padding-top: 10px;
-  padding-bottom: 0;
+  padding: 0;
   margin: 0;
   padding-left: 10px;
   background-color: transparent;
@@ -125,10 +143,12 @@ body {
   grid-area: secondary;
   justify-content: center;
 }
+
 .Button-reset {
   font-family: "Indie Flower", cursive;
   cursor: pointer;
 }
+
 .Button-reset:hover {
   cursor: pointer !important;
   color: rgb(224, 224, 224) !important;

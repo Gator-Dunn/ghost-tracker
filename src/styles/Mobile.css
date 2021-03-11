@@ -9,9 +9,10 @@
     justify-content: center;
     justify-self: center;
     grid-template:
-      "header"
+      "title"
       "tools"
       "evidence"
+      "timer"
       "ghosts"
       "controls"
       "secondary"
@@ -22,15 +23,15 @@
     -moz-user-select: none;
     -ms-user-select: none;
   }
+
   .App-header {
     background-color: transparent;
     font-weight: bold;
-    font-size: calc(10px + 2vmin);
     color: rgb(163, 163, 163);
     grid-area: header;
-    justify-self: center;
-    height: 30px;
+    justify-self: flex-end;
   }
+
   .App-section-evidence {
     background-color: transparent;
     display: grid;
@@ -41,16 +42,36 @@
     justify-self: flex-end;
     height: 65px;
   }
+  .App-section-timer {
+    grid-area: timer;
+    grid-template-columns: 1fr;
+    width: 100vw;
+    justify-self: center;
+    justify-content: space-around;
+    background-color: transparent;
+  }
+
   .App-section-ghosts {
     background-color: transparent;
     display: grid;
     grid-template-columns: repeat(2, 175px);
     justify-self: center;
     grid-area: ghosts;
-    padding: 10px;
+    padding: 0px 5px 0px 5px;
     text-transform: capitalize;
     z-index: 0;
   }
+
+  .Timer {
+    padding-top: 10px !important;
+    display: grid;
+    grid-template: "timerIcon timerOptions timerCounter";
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100vw;
+    padding: 0;
+    align-self: end;
+  }  
+
   .App-section-controls {
     grid-area: controls;
     justify-self: center;

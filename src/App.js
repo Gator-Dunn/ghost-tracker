@@ -1,10 +1,11 @@
 import React from "react";
 import classNames from "classnames";
 import pkgJson from "../package.json";
-import { Ghosts } from "./components/Ghosts";
 import { Evidence } from "./components/Evidence";
+import { Ghosts } from "./components/Ghosts";
 import { Reset } from "./components/Reset";
 import { Secondary } from "./components/Secondary";
+import { Timer } from "./components/Header/Timer";
 import { Tools } from "./components/Tools";
 import { useGhosts } from "./reducers/useGhosts";
 import { useEvidence } from "./reducers/useEvidence";
@@ -32,15 +33,20 @@ function App() {
     ghosts && (
       <React.Fragment>
         <div className="App">
+          <section className="App-section-title">
+            Phasmophobia Evidence Matrix
+          </section>
           <section className="App-section-tools">
             <Tools />
           </section>
-          <header className="App-header">Phasmophobia Evidence Matrix</header>
           <section data-testid="test-evidence" className="App-section-evidence">
             <Evidence evidence={evidence} ghosts={ghosts} />
           </section>
           <section data-testid="test-ghosts" className="App-section-ghosts">
             <Ghosts evidence={evidence} ghosts={ghosts} />
+          </section>
+          <section data-testid="test-timer" className="App-section-timer">
+            <Timer />
           </section>
           <section className="App-section-secondary-evidence">
             <Secondary evidence={evidence} ghosts={ghosts} />

@@ -160,7 +160,7 @@ export const reducer = (state = INITIAL_STATE.evidence, { type, payload }) => {
   }
 };
 
-export const useEvidence = () => {
+const useEvidence = () => {
   const [state, dispatch] = React.useReducer(reducer, INITIAL_STATE.evidence);
 
   const incrementStatus = (payload) => {
@@ -193,3 +193,5 @@ export const useEvidence = () => {
     toggleGhostEvidence,
   };
 };
+
+export default useEvidence;

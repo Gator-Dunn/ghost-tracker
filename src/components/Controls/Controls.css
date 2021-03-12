@@ -1,0 +1,124 @@
+/* Controls */
+.controls {
+  padding-top: 5px;
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  width: 50vw;
+}
+
+/* Reset Button */
+.resetButton__button {
+  width: 150px;
+  color: rgb(224, 224, 224) !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #9b201e;
+  padding: 10px;
+  border-radius: 7px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+  outline: none;
+}
+
+.resetButton__button:hover {
+  cursor: pointer !important;
+  color: white;
+  background: #d82f2c !important;
+}
+
+.resetButton__button:active {
+  color: #fff !important;
+  background: #9b201e !important;
+}
+
+/* RandomItem */
+.randomizer {
+  display: grid;
+  max-height: 36px;
+  grid-template-columns: 100px 150px;
+  grid-template-rows: 36px;
+  grid-template-areas: "randomizerControls randomizerResult";
+}
+
+.randomizer__controls {
+  padding-right: 5px;
+  vertical-align: bottom;
+  display: inline;
+  grid-area: randomizerControls;
+}
+
+.randomizer__controls span:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.randomizer__fadeIn span {
+  animation: fadeIn ease-out 1.2s;
+  -webkit-animation: fadeIn ease-out 1.2s;
+  -moz-animation: fadeIn ease-out 1.2s;
+  -o-animation: fadeIn ease-out 1.2s;
+  -ms-animation: fadeIn ease-out 1.2s;
+}
+
+.randomizer__result span {
+  color: white;
+  display: grid;
+  grid-area: randomizerResult;
+  z-index: -1;
+}
+
+@keyframes fadeIn {
+  0% {
+    filter: blur(1px);
+    opacity: 0.5;
+  }
+  100% {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    filter: blur(1px);
+    opacity: 0.5;
+  }
+  100% {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    filter: blur(1px);
+    opacity: 0.5;
+  }
+  100% {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    filter: blur(1px);
+    opacity: 0.5;
+  }
+  100% {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    filter: blur(1px);
+    opacity: 0.5;
+  }
+  100% {
+    filter: none;
+    opacity: 1;
+  }
+}

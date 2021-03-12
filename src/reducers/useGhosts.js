@@ -47,7 +47,7 @@ export const reducer = (state = INITIAL_STATE.ghosts, { type, payload }) => {
   }
 };
 
-export const useGhosts = () => {
+const useGhosts = () => {
   const [state, dispatch] = React.useReducer(reducer, INITIAL_STATE.ghosts);
 
   const isValid = (payload) => state.valid.includes(payload);
@@ -73,3 +73,5 @@ export const useGhosts = () => {
     toggleGhost,
   };
 };
+
+export default useGhosts;

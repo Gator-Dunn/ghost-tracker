@@ -1,0 +1,96 @@
+.evidence__items {
+  display: grid;
+  grid-gap: 2px;
+  grid-template-columns: repeat(3, 150px);
+}
+.evidence__item {
+  display: inline;
+  vertical-align: middle;
+  min-width: 150px;
+  max-width: 150px;
+}
+
+.evidence__item--name {
+  transition: all 0.4s ease 0s;
+}
+
+.evidence__item .evidence__name {
+  opacity: 1;
+}
+
+.evidence__item:hover .evidence__name-confirmed,
+.evidence__item:hover .evidence__name-unconfirmed,
+.evidence__item:hover .evidence__name-excluded {
+  opacity: 1;
+}
+
+.evidence__name-confirmed,
+.evidence__name-unconfirmed,
+.evidence__name-excluded {
+  display: inline;
+  vertical-align: middle;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+  opacity: 0.35;
+  color: white;
+}
+
+.evidence__name-confirmed {
+  opacity: 1;
+}
+
+.evidence__name-excluded {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+
+.evidence__emf::after {
+  content: "EMF Level 5";
+}
+
+.evidence__freezing::after {
+  content: "Freezing Temps";
+}
+
+.evidence__writing::after {
+  content: "Ghost Writing";
+}
+
+.evidence__fingerprints::after {
+  content: "Fingerprints";
+}
+
+.evidence__orbs::after {
+  content: "Ghost Orbs";
+}
+
+.evidence__box::after {
+  content: "Spirit Box";
+}
+
+@media only screen and (max-width: 768px) {
+  .evidence__emf::after {
+    content: "EMF 5";
+  }
+  
+  .evidence__freezing::after {
+    content: "Freezing";
+  }
+  
+  .evidence__writing::after {
+    content: "Writing";
+  }
+  
+  .evidence__fingerprints::after {
+    content: "Fingerprints";
+  }
+  
+  .evidence__orbs::after {
+    content: "Orbs";
+  }
+  
+  .evidence__box::after {
+    content: "Spirit Box";
+  }
+}

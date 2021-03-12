@@ -1,0 +1,8 @@
+.Utilities__section {
+  display: grid;
+  width: 100vw;
+  justify-self: center !important;
+  justify-items: center !important;
+  justify-items: center !important;
+  grid-area: utilities;
+}

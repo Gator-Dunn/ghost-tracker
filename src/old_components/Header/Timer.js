@@ -47,7 +47,7 @@ export const Timer = () => {
   };
 
   return (
-    <React.Fragment>
+    <section data-testid="test-timer" className="App-section-timer">
       <span className="Timer">
         <Icon
           classes={["Timer-icon", "grey-disabled"]}
@@ -78,6 +78,6 @@ export const Timer = () => {
           onComplete={() => setTimerOn(false)}
         />
       </span>
-    </React.Fragment>
+    </section>
   );
 };

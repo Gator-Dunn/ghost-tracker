@@ -1,0 +1,68 @@
+.material-icons.yellow-bright {
+  color: #fff600;
+}
+
+.material-icons.red-stop {
+  color: #cf142b;
+}
+
+.material-icons.orange-warning {
+  color: orangered;
+}
+
+.material-icons.yellow-caution {
+  color: #eed202;
+}
+
+.material-icons.green-good {
+  color: green;
+}
+.material-icons.inverted {
+  color: rgb(0, 0, 0);
+}
+
+.material-icons.grey-disabled {
+  color: grey;
+}
+
+.material-icons.grey-inactive {
+  color: grey;
+}
+
+.material-icons.grey-active {
+  color: rgb(231, 231, 231);
+}
+
+.material-icons.green-neon {
+  color: #39ff14;
+}
+
+.material-icons.size-small {
+  font-size: 12px;
+}
+
+.material-icons.size-medium {
+  font-size: 14px;
+}
+
+.material-icons.size-large {
+  font-size: 16px;
+}
+
+.material-icons.size-extra-large {
+  font-size: 18px;
+}
+
+.material-icons.expander {
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.material-icons {
+  font-size: 18px;
+  padding-left: 5px;
+  display: inline;
+  vertical-align: middle;
+}

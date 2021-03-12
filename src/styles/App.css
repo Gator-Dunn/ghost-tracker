@@ -14,6 +14,7 @@ body {
     "title"
     "tools"
     "evidence"
+    "utilities"
     "timer"
     "ghosts"
     "controls"
@@ -25,6 +26,16 @@ body {
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+}
+
+.Utilities__section {
+  display: grid;
+  grid-area: utilities;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  /* grid-template-columns: 100vw; */
+  /* grid-auto-flow: column; */
+  /* justify-content: space-evenly; */
 }
 
 .App-section-tools {

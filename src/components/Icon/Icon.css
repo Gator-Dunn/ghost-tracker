@@ -29,8 +29,12 @@
   color: grey;
 }
 
+.material-icons.grey-inactive:hover {
+  color: lightgray;
+}
+
 .material-icons.grey-active {
-  color: rgb(231, 231, 231);
+  color: white;
 }
 
 .material-icons.green-neon {

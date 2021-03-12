@@ -36,21 +36,17 @@
 .randomizer {
   display: grid;
   max-height: 36px;
-  grid-template-columns: 100px 150px;
+  grid-template-columns: 100px 1fr;
   grid-template-rows: 36px;
   grid-template-areas: "randomizerControls randomizerResult";
 }
 
 .randomizer__controls {
-  padding-right: 5px;
-  vertical-align: bottom;
-  display: inline;
   grid-area: randomizerControls;
 }
 
 .randomizer__controls span:hover {
   cursor: pointer;
-  color: white;
 }
 
 .randomizer__fadeIn span {
@@ -62,7 +58,7 @@
 }
 
 .randomizer__result span {
-  color: white;
+  color: rgb(255, 166, 0);
   display: grid;
   grid-area: randomizerResult;
   z-index: -1;
@@ -72,10 +68,12 @@
   0% {
     filter: blur(1px);
     opacity: 0.5;
+    color: rgb(223, 223, 223);
   }
   100% {
     filter: none;
     opacity: 1;
+    color: rgb(255, 166, 0);
   }
 }
 

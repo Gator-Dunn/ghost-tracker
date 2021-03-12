@@ -11,6 +11,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #31343a;
   font-family: "Indie Flower", cursive;
+  padding: 0;
+  margin: 0;
 }
 
 code {
@@ -22,16 +24,15 @@ code {
   user-select: none;
   display: grid;
   justify-items: center;
-  grid-template-columns: 50px 1fr 50px;
-  grid-template-rows: auto;
+  grid-template-columns: 1fr;
   grid-template-areas:
-    " . header . "
-    " . ghostName . "
-    " . evidence . "
-    " . ghosts . "
-    " . controls . "
-    " . secondaryEvidence . "
-    " . version . ";
+    "header"
+    "ghostName"
+    "evidence"
+    "ghosts"
+    "controls"
+    "secondaryEvidence"
+    "version";
 }
 
 .main__header {
@@ -40,6 +41,7 @@ code {
 
 .main__ghostName {
   grid-area: ghostName;
+  background-color: #3e4249;
 }
 
 .main__evidence {

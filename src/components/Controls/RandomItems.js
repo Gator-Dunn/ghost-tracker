@@ -66,28 +66,28 @@ const RandomItems = () => {
           onClick={handleClick}
           icon="search"
           data-type={ITEM_TYPES.evidence}
-          classes={[isActive(ITEM_TYPES.evidence) ? "green-good" : "grey-inactive"]}
+          classes={[isActive(ITEM_TYPES.evidence) ? "grey-active" : "grey-inactive"]}
           size="large"
         />
         <Icon
           onClick={handleClick}
           data-type={ITEM_TYPES.tools}
           icon="build"
-          classes={[isActive(ITEM_TYPES.tools) ? "green-good" : "grey-inactive"]}
+          classes={[isActive(ITEM_TYPES.tools) ? "grey-active" : "grey-inactive"]}
           size="large"
         />
         <Icon
           onClick={handleClick}
           data-type={ITEM_TYPES.objectives}
           icon="check"
-          classes={[isActive(ITEM_TYPES.objectives) ? "green-good" : "grey-inactive"]}
+          classes={[isActive(ITEM_TYPES.objectives) ? "grey-active" : "grey-inactive"]}
           size="large"
         />
         <Icon
           onClick={handleClick}
           data-type={ITEM_TYPES.photos}
           icon="photo_camera"
-          classes={[isActive(ITEM_TYPES.photos) ? "green-good" : "grey-inactive"]}
+          classes={[isActive(ITEM_TYPES.photos) ? "grey-active" : "grey-inactive"]}
           size="large"
         />
       </span>

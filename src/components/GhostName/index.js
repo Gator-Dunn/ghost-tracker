@@ -57,64 +57,66 @@ const GhostName = () => {
         {show.surname && "Select Ghost's Last Name"}
         {show.all && "Ghost Name"}
       </span>
-      {show.any && (
-        <Icon
-          onClick={handleClick}
-          classes={["ghostname__results-reset", "size-medium"]}
-          icon="backspace"
-        />
-      )}
       <span className="ghostname__results">
-        {!firstName && firstNameFirstLetter && `[${firstNameFirstLetter}]`}
-        {firstName}{" "}
-        {!surname && surnameFirstLetter && `[${surnameFirstLetter}]`}
-        {surname}
-      </span>
-      <span className="ghostname__options">
-        {!firstNameFirstLetter &&
-          FIRST_NAME_FIRST_LETTERS.map((x) => (
-            <span
-              key={x}
-              onClick={() => setFirstLetter(x)}
-              className="ghostname__item"
-            >
-              {x}
-            </span>
-          ))}
-        {firstNameFirstLetter &&
-          !firstName &&
-          filteredFirstNames.map((x) => (
-            <span
-              key={x}
-              onClick={() => setFirstName(x)}
-              className="ghostname__item"
-            >
-              {x}
-            </span>
-          ))}
-        {firstName &&
-          !surnameFirstLetter &&
-          SURNAME_FIRST_LETTERS.map((x) => (
-            <span
-              key={x}
-              onClick={() => setSurnameFirstLetter(x)}
-              className="ghostname__item"
-            >
-              {x}
-            </span>
-          ))}
-        {firstName &&
-          surnameFirstLetter &&
-          !surname &&
-          filteredSurnames.map((x) => (
-            <span
-              key={x}
-              onClick={() => setSurname(x)}
-              className="ghostname__item"
-            >
-              {x}
-            </span>
-          ))}
+        {show.any && (
+          <Icon
+            onClick={handleClick}
+            classes={["ghostname__results-reset", "size-medium"]}
+            icon="backspace"
+          />
+        )}
+        <span className="ghostname__result">
+          {!firstName && firstNameFirstLetter && `[${firstNameFirstLetter}]`}
+          {firstName}{" "}
+          {!surname && surnameFirstLetter && `[${surnameFirstLetter}]`}
+          {surname}
+        </span>
+        <span className="ghostname__options">
+          {!firstNameFirstLetter &&
+            FIRST_NAME_FIRST_LETTERS.map((x) => (
+              <span
+                key={x}
+                onClick={() => setFirstLetter(x)}
+                className="ghostname__item"
+              >
+                {x}
+              </span>
+            ))}
+          {firstNameFirstLetter &&
+            !firstName &&
+            filteredFirstNames.map((x) => (
+              <span
+                key={x}
+                onClick={() => setFirstName(x)}
+                className="ghostname__item"
+              >
+                {x}
+              </span>
+            ))}
+          {firstName &&
+            !surnameFirstLetter &&
+            SURNAME_FIRST_LETTERS.map((x) => (
+              <span
+                key={x}
+                onClick={() => setSurnameFirstLetter(x)}
+                className="ghostname__item"
+              >
+                {x}
+              </span>
+            ))}
+          {firstName &&
+            surnameFirstLetter &&
+            !surname &&
+            filteredSurnames.map((x) => (
+              <span
+                key={x}
+                onClick={() => setSurname(x)}
+                className="ghostname__item"
+              >
+                {x}
+              </span>
+            ))}
+        </span>
       </span>
     </span>
   );

@@ -1,13 +1,74 @@
 .evidence__items {
+  --auto-grid-min-size: 10rem;
   display: grid;
-  grid-gap: 2px;
-  grid-template-columns: repeat(3, 150px);
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--auto-grid-min-size), 1fr)
+  );
+  padding-top: 10px;
+  grid-auto-rows: minmax(20px, 30px);
+  grid-gap: 1rem;
 }
+
+@media (max-width: 1200px) {
+  .evidence__items {
+    --auto-grid-min-size: 8rem;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    grid-gap: 0;
+    justify-items: flex-start;
+  }
+}
+
+@media (max-width: 1024px) {
+  .evidence__items {
+    --auto-grid-min-size: 8rem;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    grid-gap: 0;
+    justify-items: center;
+    grid-auto-rows: minmax(10px, 25px);
+  }
+}
+
+@media (max-width: 768px) {
+  .evidence__items {
+    --auto-grid-min-size: 8rem;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    grid-gap: 0;
+    justify-items: center;
+    grid-auto-rows: minmax(10px, 25px);
+  }
+}
+@media (max-width: 480px) {
+  .evidence__items {
+    --auto-grid-min-size: 8rem;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    grid-gap: 0;
+    justify-items: flex-start;
+    grid-auto-rows: minmax(10px, 20px);
+    padding-left: 2rem;
+  }
+}
+
+
 .evidence__item {
   display: inline;
   vertical-align: middle;
-  min-width: 150px;
-  max-width: 150px;
 }
 
 .evidence__item--name {
@@ -73,23 +134,23 @@
   .evidence__emf::after {
     content: "EMF 5";
   }
-  
+
   .evidence__freezing::after {
     content: "Freezing";
   }
-  
+
   .evidence__writing::after {
     content: "Writing";
   }
-  
+
   .evidence__fingerprints::after {
     content: "Fingerprints";
   }
-  
+
   .evidence__orbs::after {
     content: "Orbs";
   }
-  
+
   .evidence__box::after {
     content: "Spirit Box";
   }

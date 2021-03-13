@@ -1,22 +1,15 @@
 import React from "react";
 import classNames from "classnames";
-import Controls from './components/Controls';
+import Tools from "./components/Tools";
 import Header from "./components/Header";
 import Evidence from "./components/Evidence";
-import Ghosts from './components/Ghosts';
+import Ghosts from "./components/Ghosts";
 import GhostName from "./components/GhostName";
-import {StoreProvider} from './StoreProvider';
+import SecondaryEvidence from "./components/SecondaryEvidence";
+import Version from './components/Version';
+import { StoreProvider } from "./StoreProvider";
 
 function App() {
-  // const sections = [
-  //   "ghostName",
-  //   "evidence",
-  //   "ghosts",
-  //   "controls",
-  //   "secondaryEvidence",
-  //   "version",
-  // ];
-
   const sections = [
     {
       class: "ghostName",
@@ -31,9 +24,17 @@ function App() {
       render: <Ghosts />,
     },
     {
-      class: "controls",
-      render: <Controls />,
+      class: "tools",
+      render: <Tools />,
     },
+    {
+      class: "secondaryEvidence",
+      render: <SecondaryEvidence />,
+    },
+    {
+      class: 'version',
+      render: <Version />,
+    }
   ];
 
   return (

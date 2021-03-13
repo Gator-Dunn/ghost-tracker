@@ -3,7 +3,7 @@ import "./Header.css";
 
 const Header = () => (
   <header className="main__header">
-    <span className="header__title">Phasmophobia Evidence Matrix</span>
+    <h3 className="header__title">Phasmophobia Evidence Matrix</h3>
   </header>
 );
 

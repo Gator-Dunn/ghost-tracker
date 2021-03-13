@@ -1,0 +1,270 @@
+/* Controls */
+.tools__container {
+  width: 100vw;
+  background-color: #31343a !important;
+  display: grid;
+  --auto-grid-min-size: 250px;
+  grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+  grid-template-areas:
+    "randomizerLabel randomizerControls randomizerResult randomizerDescription"
+    "timerLabel timerOptions timerCounter timerIcon";
+}
+
+/* Reset Button */
+.resetButton__button {
+  grid-area: resetButton;
+  width: 144px;
+  color: rgb(224, 224, 224) !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #9b201e;
+  border-radius: 7px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+  outline: none;
+  max-height: 40px;
+  min-height: 40px;
+}
+
+.resetButton__button:hover {
+  cursor: pointer !important;
+  color: white;
+  background: #d82f2c !important;
+}
+
+.resetButton__button:active {
+  color: #fff !important;
+  background: #9b201e !important;
+}
+
+/* RandomItem */
+.randomizer {
+  background-color: #3e4249;
+  width: 100vw;
+}
+
+.randomizer__controls {
+  grid-area: randomizerControls;
+  color: lightgray;
+  display: inline !important;
+  vertical-align: middle !important;
+}
+
+.randomizer__label {
+  grid-area: randomizerLabel;
+  color: lightgray;
+}
+
+.randomizer__result {
+  grid-area: randomizerResult;
+  min-width: 150px;
+  max-width: 150px;
+}
+
+.randomizer__description {
+  grid-area: randomizerDescription;
+  min-width: 285px;
+  max-width: 285px;
+}
+
+.randomizer__controls span {
+  display: inline !important;
+  vertical-align: middle !important;
+}
+
+.randomizer__controls--icon {
+  padding-right: 5px;
+}
+
+.randomizer__controls--icon:hover {
+  cursor: pointer;
+}
+
+.randomizer__fadeIn span {
+  animation: fadeIn ease-out 1.2s;
+  -webkit-animation: fadeIn ease-out 1.2s;
+  -moz-animation: fadeIn ease-out 1.2s;
+  -o-animation: fadeIn ease-out 1.2s;
+  -ms-animation: fadeIn ease-out 1.2s;
+}
+
+.randomizer__default {
+  color: lightgray;
+}
+
+.randomizer__hoverText {
+  color: darkgray;
+}
+
+.randomizer__selectedText {
+  color: #f6ae2d;
+}
+
+.randomizer__result span {
+  color: #86bbd8;
+  display: inline;
+  vertical-align: middle;
+}
+
+@keyframes fadeIn {
+  0% {
+    filter: blur(1px);
+    opacity: 0.5;
+    color: #466474;
+  }
+  50% {
+    opacity: 0.75;
+    color: #60869b;
+  }
+  100% {
+    filter: none;
+    opacity: 1;
+    color: #86bbd8;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    filter: blur(1px);
+    opacity: 0.5;
+    color: #466474;
+  }
+  50% {
+    opacity: 0.75;
+    color: #60869b;
+  }
+  100% {
+    filter: none;
+    opacity: 1;
+    color: #86bbd8;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    filter: blur(1px);
+    opacity: 0.5;
+    color: #466474;
+  }
+  50% {
+    opacity: 0.75;
+    color: #60869b;
+  }
+  100% {
+    filter: none;
+    opacity: 1;
+    color: #86bbd8;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    filter: blur(1px);
+    opacity: 0.5;
+    color: #466474;
+  }
+  50% {
+    opacity: 0.75;
+    color: #60869b;
+  }
+  100% {
+    filter: none;
+    opacity: 1;
+    color: #86bbd8;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    filter: blur(1px);
+    opacity: 0.5;
+    color: #466474;
+  }
+  50% {
+    opacity: 0.75;
+    color: #60869b;
+  }
+  100% {
+    filter: none;
+    opacity: 1;
+    color: #86bbd8;
+  }
+}
+
+/* Timer */
+.timer__container {
+  background-color: #3e4249;
+  width: 100vw;
+}
+
+.timer__icon {
+  color: lightgray;
+  grid-area: timerIcon;
+  align-self: center;
+}
+
+.timer__label {
+  color: lightgray;
+  grid-area: timerLabel;
+  align-self: center;
+}
+
+.timer__options {
+  grid-area: timerOptions;
+  align-self: end;
+}
+
+.timer__options span {
+  color: darkgray;
+  padding: 3px 5px 3px 5px;
+  border-radius: 5px;
+  vertical-align: middle;
+  display: inline;
+}
+
+.timer__options span:hover {
+  background-color: #3e4249;
+  cursor: pointer;
+}
+
+.timer__counter {
+  grid-area: timerCounter;
+  color: darkgray !important;
+  align-self: end;
+}
+
+.timer__counter--warning {
+  color: yellow !important;
+}
+
+.timer__counter--expiring {
+  color: orangered !important;
+}
+
+.timer__counter--expired {
+  color: red !important;
+  animation: blinker 2s linear infinite;
+}
+
+.timer__counter span {
+  display: inline;
+  vertical-align: middle;
+}
+
+.timer__selected {
+  color: green !important;
+}
+
+.timer__options--expired {
+  color: red !important;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

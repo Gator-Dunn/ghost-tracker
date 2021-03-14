@@ -1,12 +1,15 @@
 .ghost__list {
   --auto-grid-min-size: 16rem;
   display: grid;
-  grid-gap: 0.35em;
+  grid-gap: 0.75em;
   grid-template-columns: repeat(
     auto-fill,
     minmax(var(--auto-grid-min-size), 1fr)
   );
-  padding: 5px;
+  padding: 10px;
+  justify-self: flex-start;
+  justify-items: stretch;
+  padding-right: 25px;
 }
 
 @media (max-width: 1200px) {
@@ -18,7 +21,7 @@
       auto-fill,
       minmax(var(--auto-grid-min-size), 1fr)
     );
-    padding: 5px;
+    padding: 10px;
   }
 }
 
@@ -31,20 +34,19 @@
       auto-fill,
       minmax(var(--auto-grid-min-size), 1fr)
     );
-    padding: 5px;
+    padding: 10px;
   }
 }
 
 @media (max-width: 768px) {
   .ghost__list {
-    --auto-grid-min-size: 10rem;
+    --auto-grid-min-size: 12rem;
     display: grid;
-    grid-gap: 0.45em;
     grid-template-columns: repeat(
       auto-fill,
       minmax(var(--auto-grid-min-size), 1fr)
     );
-    padding: 5px;
+    padding: 10px;
   }
 }
 @media (max-width: 480px) {
@@ -56,7 +58,7 @@
       auto-fill,
       minmax(var(--auto-grid-min-size), 1fr)
     );
-    padding: 5px;
+    padding: 10px;
   }
 }
 
@@ -67,11 +69,9 @@
   padding: 10px 20px;
   text-align: center;
   text-decoration: none;
-  margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
-  min-width: 120px;
-  /* max-width: 120px; */
+  min-width: 8em;
 }
 
 .ghost__button-valid {

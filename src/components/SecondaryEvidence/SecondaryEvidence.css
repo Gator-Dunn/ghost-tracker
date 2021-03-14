@@ -1,90 +1,166 @@
 .secondaryEvidence {
+  padding-top: 10px;
   display: grid;
-  grid-gap: 2px;
+  justify-items: center;
   grid-template-columns: 1fr;
-  padding: 5px;
+  grid-template:
+    "secondaryEvidenceHeader"
+    "secondaryEvidence";
+}
+
+@media (max-width: 1200px) {
+  .secondaryEvidence {
+    padding-top: 10px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-template:
+      "secondaryEvidenceHeader"
+      "secondaryEvidence";
+  }
+}
+
+@media (max-width: 1024px) {
+  .secondaryEvidence {
+    padding-top: 10px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-template:
+      "secondaryEvidenceHeader"
+      "secondaryEvidence";
+  }
+}
+
+@media (max-width: 768px) {
+  .secondaryEvidence {
+    padding-top: 10px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-template:
+      "secondaryEvidenceHeader"
+      "secondaryEvidence";
+  }
+}
+
+@media (max-width: 480px) {
+  .secondaryEvidence {
+    padding-top: 10px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr;
+    grid-template:
+      "secondaryEvidenceHeader"
+      "secondaryEvidence";
+  }
 }
 
 .secondaryEvidence__evidence__header {
   text-align: center;
-  margin-top: 5px;
-  padding-top: 5px;
-  display: inline;
-  min-width: 50vw;
-  border-radius: 5px;
   color: darkgray;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  vertical-align: middle;
+  min-width: 100vw;
+  margin-bottom: 5px;
+  background-color: #3e4249;
+  border-radius: 3px;
+}
+
+.secondaryEvidence__evidence__header span {
+  vertical-align: middle;
+  padding-right: 5px;
+}
+
+.secondaryEvidence__evidence {
+  grid-area: secondaryEvidence;
+  min-width: 50vw;
+}
+
+@media (max-width: 1200px) {
+  .secondaryEvidence__evidence {
+    grid-area: secondaryEvidence;
+  }
+
+}
+
+@media (max-width: 1024px) {
+  .secondaryEvidence__evidence {
+    grid-area: secondaryEvidence;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .secondaryEvidence__evidence {
+    grid-area: secondaryEvidence;
+  }
+
+}
+
+@media (max-width: 480px) {
+  .secondaryEvidence__evidence {
+    grid-area: secondaryEvidence;
+    padding-left: 10px;
+    font-size: 0.9em;
+  }
+}
+
+.secondaryEvidence__evidence--item {
+  grid-area: secondaryEvidenceItem;
+  display: block;
 }
 
 .secondaryEvidence__evidence__header--open {
   color: white;
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
 }
 .secondaryEvidence__evidence__header:hover {
   cursor: pointer;
-  background-color: #3e4249;
   color: white;
 }
 
-ul.secondaryEvidence__evidence--visible {
-  justify-self: center;
-  padding-left: 15px;
-  transition: all 0.4s ease 0.4s;
-}
-
-ul.secondaryEvidence__evidence--visible li {
-  text-align: left;
-  list-style-type: none;
-  display: grid;
-  grid-template: "icons description";
-  grid-template-columns: 36px max-content;
-}
-
-ul.secondaryEvidence__evidence--hidden {
-  transition: all 0.4s ease 0.4s;
+.secondaryEvidence__evidence--hidden {
   display: none;
-  min-width: var(--main-width);
-  padding-left: 0;
-  padding-top: 0;
 }
 
 .secondaryEvidence__evidence--icons {
-  grid-area: icons;
-  justify-self: flex-end;
+  padding-right: 3px;
+  display: inline;
+}
+
+.secondaryEvidence__evidence--icons span {
   padding-right: 3px;
 }
 
-.secondaryEvidence__evidence__description {
-  grid-area: description;
-  border-left: 2px solid transparent;
-  border-radius: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100vw;
-}
-
-.secondaryEvidence__evidence__description span {
-  padding-left: 5px;
-}
-
-.secondaryEvidence__evidence__description--highlighted {
-  color: rgb(224, 224, 224);
-  opacity: 1;
-}
-
-.secondaryEvidence__evidence__description--disabled {
-  opacity: 0.35;
-}
-
-.secondaryEvidence__evidence--icons {
+.secondaryEvidence___description {
   display: inline;
-  vertical-align: middle;
+}
+
+.secondaryEvidence___description:hover {
+  color: lightgrey;
   cursor: pointer;
 }
 
-ul.secondaryEvidence__evidence--visible
-  li:hover
-  .secondaryEvidence__evidence__description:not(.secondaryEvidence__evidence__description--selected) {
-  color: darkgray;
-  border-left: 2px solid lightgray;
-  cursor: pointer;
+.secondaryEvidence___description span {
+  padding-left: 5px;
+  display: inline;
+}
+
+.secondaryEvidence___description--highlighted {
+  color: lightgrey;
+}
+
+.secondaryEvidence___description--highlighted:hover {
+  color: white;
+}
+
+.secondaryEvidence___description--disabled {
+  color: gray;
+}
+
+.secondaryEvidence__evidence--icon {
+  display: inline;
 }

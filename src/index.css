@@ -38,7 +38,7 @@ code {
     "ghostName"
     "evidence"
     "ghosts"
-    "controls"
+    "tools"
     "secondaryEvidence"
     "version";
 }
@@ -55,14 +55,16 @@ code {
 
 .main__evidence {
   grid-area: evidence;
+  background-color: #2f4858;
 }
 
 .main__ghosts {
   grid-area: ghosts;
+  padding-bottom: 5px;
 }
 
-.main__controls {
-  grid-area: controls;
+.main__tools {
+  grid-area: tools;
 }
 
 .main__timer {

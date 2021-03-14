@@ -5,9 +5,12 @@
     auto-fill,
     minmax(var(--auto-grid-min-size), 1fr)
   );
-  padding-top: 10px;
   grid-auto-rows: minmax(20px, 30px);
+  justify-items: center;
   grid-gap: 1rem;
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
+  align-items: center;
 }
 
 @media (max-width: 1200px) {
@@ -65,7 +68,6 @@
   }
 }
 
-
 .evidence__item {
   display: inline;
   vertical-align: middle;
@@ -93,16 +95,15 @@
   padding-left: 5px;
   padding-right: 5px;
   cursor: pointer;
-  opacity: 0.35;
-  color: white;
+  color: darkgray;
 }
 
 .evidence__name-confirmed {
-  opacity: 1;
+  color: white;
 }
 
 .evidence__name-excluded {
-  opacity: 0.35;
+  color: rgba(255, 0, 0, 0.5);
   text-decoration: line-through;
 }
 

@@ -58,14 +58,10 @@
 }
 
 .material-icons.expander {
-  text-align: center;
-  padding: 5px;
-  margin-bottom: 10px;
+  vertical-align: middle;
   cursor: pointer;
 }
 
-.material-icons {
-  padding-left: 5px;
-  display: inline;
-  vertical-align: middle;
+.material-icons.expander:hover {
+  color: white;
 }

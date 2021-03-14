@@ -2,7 +2,6 @@ import React from "react";
 import classNames from "classnames";
 import Icon from "../Icon";
 import { ITEMS, ITEM_TYPES, ITEM_TYPES_DESCRIPTION } from "./constants";
-import "./Tools.css";
 
 const Result = ({ item }) => (
   <span
@@ -90,7 +89,7 @@ const RandomItems = () => {
   );
 
   return state ? (
-    <section className="randomizer">
+    <React.Fragment>
       <span className="randomizer__label">Randomizer</span>
       <span className="randomizer__controls">
         {randomItemTypes.map(([type, icon]) => (
@@ -112,19 +111,23 @@ const RandomItems = () => {
       </span>
 
       <Result item={state.randomItem} />
-      <span className="randomizer__description">
+      {/* <span className="randomizer__description">
         <span
           className={classNames({
-            randomizer__hoverText: state.hoverText && state.hoverText !== state.selectedText,
-            randomizer__selectedText: (state.selectedText && !state.hoverText) || state.hoverText === state.selectedText,
+            randomizer__hoverText:
+              state.hoverText && state.hoverText !== state.selectedText,
+            randomizer__selectedText:
+              (state.selectedText && !state.hoverText) ||
+              state.hoverText === state.selectedText,
             randomizer__default: !state.selectedText && !state.hoverText,
           })}
         >
-          {console.log('description', { state })}
-          {(state.hoverText || state.selectedText) || "Click an icon to generate a random item"}
+          {state.hoverText ||
+            state.selectedText ||
+            "Click an icon to generate a random item"}
         </span>
-      </span>
-    </section>
+      </span> */}
+    </React.Fragment>
   ) : null;
 };
 

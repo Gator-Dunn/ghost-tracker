@@ -35,58 +35,70 @@ const Secondary = () => {
     <span className="secondaryEvidence">
       <span
         onClick={() => setVisible(!visible)}
-        className={classNames({
-          "secondaryEvidence__evidence__header": true,
+        className={classNames("secondaryEvidence__evidence__header", {
           "secondaryEvidence__evidence__header--open": visible,
         })}
       >
-        Secondary Evidence{" "}
+        <span>Secondary Evidence</span>
         <Icon
-          classes={["size-large", "expander"]}
+          classes={[
+            "size-large",
+            "expander",
+            "secondaryEvidence__header--expander",
+          ]}
           icon={visible ? "expand_less" : "expand_more"}
         />
       </span>
-      <ul
-        className={classNames({
-          "secondaryEvidence__evidence--visible": visible,
+      <span
+        className={classNames("secondaryEvidence__evidence", {
           "secondaryEvidence__evidence--hidden": !visible,
         })}
       >
         {SECONDARY_EVIDENCE.map(
           ({ description, icons = [], key, ...ghost }) => {
             return (
-              <li onClick={() => handleClick(ghost)} key={key}>
-                <React.Fragment>
-                  <span className="secondaryEvidence__evidence--icons">
-                    {icons.map(({ icon, classes }) => (
-                      <Icon
-                        key={`${key}_${icon}`}
-                        classes={classes}
-                        icon={icon}
-                      />
-                    ))}
-                  </span>
+              <React.Fragment>
+                <span
+                  onClick={() => handleClick(ghost)}
+                  key={key}
+                  className="secondaryEvidence__evidence--item"
+                >
+                  {icons.map(
+                    ({ icon, classes }) =>
+                      icon && (
+                        <React.Fragment>
+                          <Icon
+                            key={`${key}_${icon}`}
+                            classes={[
+                              ...classes,
+                              "secondaryEvidence__evidence--icon",
+                            ]}
+                            icon={icon}
+                          />
+                        </React.Fragment>
+                      )
+                  )}
                   <span
-                    className={classNames({
-                      "secondaryEvidence__evidence__description": true,
-                      "secondaryEvidence__evidence__description--highlighted": highlighted(
+                    className={classNames("secondaryEvidence___description", {
+                      "secondaryEvidence___description--highlighted": highlighted(
                         ghost.ghostName
                       ),
-                      "secondaryEvidence__evidence__description--disabled": !highlighted(
+                      "secondaryEvidence___description--disabled": !highlighted(
                         ghost.ghostName
                       ),
-                      "secondaryEvidence__evidence__description--selected":
+                      "secondaryEvidence___description--selected":
                         selectedGhost === ghost.ghostName,
                     })}
                   >
                     <span>{description}</span>
                   </span>
-                </React.Fragment>
-              </li>
+                </span>
+              </React.Fragment>
             );
           }
         )}
-      </ul>
+      </span>
+      {/* </ul> */}
     </span>
   );
 };

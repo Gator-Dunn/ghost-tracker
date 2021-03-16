@@ -3,7 +3,7 @@
 }
 
 .material-icons.red-stop {
-  color: #cf142b;
+  color: #cf142b !important;
 }
 
 .material-icons.orange-warning {
@@ -64,4 +64,8 @@
 
 .material-icons.expander:hover {
   color: white;
+}
+
+.material-icons {
+  vertical-align: middle;
 }

@@ -1,21 +1,11 @@
 import React from "react";
 import classNames from "classnames";
 import Icon from "../Icon";
-import { ITEMS, ITEM_TYPES, ITEM_TYPES_DESCRIPTION } from "./constants";
-
-const Result = ({ item }) => (
-  <span
-    key={(item && item.id) || "emptyResult"}
-    className={classNames("randomizer__result", "randomizer__fadeIn")}
-  >
-    <span>{(item && item.display) || ""}</span>
-  </span>
-);
+import { ITEMS, ITEM_TYPES } from "./constants";
 
 const randomItemTypes = Object.entries({
   evidence: "search",
   objectives: "check",
-  tools: "build",
   junk: "delete_outline",
 });
 
@@ -44,47 +34,91 @@ const RandomItems = () => {
       ...initialState,
       randomItem: null,
       activeType: null,
-      hoverText: null,
       selectedText: null,
+      unique: true,
+      spinning: false,
     };
     setState(initialState);
   }, []);
 
   const randomizer = (array) => array[Math.floor(Math.random() * array.length)];
+
+  const setRandomItem = (type) => {
+    const random = randomizer(state[type]);
+
+    if (!state.randomItem || state.randomItem.id !== random.id) {
+      const newItemList = state[type].filter((i) => i.id !== random.id);
+      updateState({
+        randomItem: newItemList.length === 0 ? state.randomItem : random,
+        [type]: newItemList,
+      });
+    }
+  };
+
   const handleClick = (e) => {
-    const { description, type } = e.target.dataset;
+    const { type } = e.target.dataset;
+
+    if (state.spinning || state[type].length === 0) {
+      return;
+    }
+
     updateState({
       activeType: type,
-      selectedText: description,
+      spinning: true,
     });
-    const limit = 15;
+
     let counter = 0;
+    let modifierCounter = 0;
+
     const spinner = setInterval(() => {
-      if (counter <= limit) {
-        const random = randomizer(state[type]);
-        if (!state.randomItem || state.randomItem.id !== random.id) {
+      if (modifierCounter < 2) {
+        if (counter < state[type].length) {
+          counter++;
           updateState({
-            randomItem: random,
+            randomItem: state[type][counter - 1],
           });
+        } else {
+          counter = 0;
+          modifierCounter++;
         }
-        counter++;
       } else {
+        setRandomItem(type);
+        updateState({
+          spinning: false,
+        });
         clearInterval(spinner);
       }
-    }, 25);
+    }, 55);
   };
-
-  const handleHoverIn = (e) => {
-    const { description } = e.target.dataset;
-    updateState({
-      hoverText: description,
-    });
-  };
-
-  const handleHoverOut = () => updateState({ hoverText: null });
 
   const isActive = React.useCallback(
     (type) => state && state.activeType === type,
+    [state]
+  );
+
+  const hasOptions = React.useCallback(
+    (type) => state && state[type] && state[type].length > 0,
+    [state]
+  );
+
+  const result = React.useMemo(
+    () => (
+      // <span className="randomizer__result__container">
+        <span
+          key={(state.randomItem && state.randomItem.id) || "emptyResult"}
+          className={classNames("randomizer__result")}
+        >
+          <span
+            className={classNames({
+              "randomizer__slideIn--spinning": state.spinning,
+              "randomizer__slideIn--not-spinning": !state.spinning,
+            })}
+          >
+            {(state.randomItem && state.randomItem.display) || ""}
+          </span>
+        </span>
+      // </span>
+    ),
     [state]
   );
 
@@ -98,35 +132,17 @@ const RandomItems = () => {
             icon={icon}
             key={type}
             data-type={ITEM_TYPES[type]}
-            data-description={ITEM_TYPES_DESCRIPTION[type]}
             classes={[
               "randomizer__controls--icon",
               isActive(ITEM_TYPES[type]) ? "grey-active" : "grey-inactive",
+              !hasOptions(ITEM_TYPES[type]) ? "red-stop" : "",
             ]}
             size="large"
-            onMouseEnter={handleHoverIn}
-            onMouseLeave={handleHoverOut}
           />
         ))}
       </span>
 
-      <Result item={state.randomItem} />
-      {/* <span className="randomizer__description">
-        <span
-          className={classNames({
-            randomizer__hoverText:
-              state.hoverText && state.hoverText !== state.selectedText,
-            randomizer__selectedText:
-              (state.selectedText && !state.hoverText) ||
-              state.hoverText === state.selectedText,
-            randomizer__default: !state.selectedText && !state.hoverText,
-          })}
-        >
-          {state.hoverText ||
-            state.selectedText ||
-            "Click an icon to generate a random item"}
-        </span>
-      </span> */}
+      {result}
     </React.Fragment>
   ) : null;
 };

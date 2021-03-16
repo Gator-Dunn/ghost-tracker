@@ -6,11 +6,11 @@
   display: grid;
   --auto-grid-min-size: 20rem;
   grid-template-columns: repeat(
-      auto-fill,
-      minmax(var(--auto-grid-min-size), 1fr)
-    );
+    auto-fill,
+    minmax(var(--auto-grid-min-size), 1fr)
+  );
   grid-auto-rows: 20px 20px 20px;
-  justify-items: center;
+  justify-content: space-evenly;
   grid-template-areas:
     "randomizerLabel randomizerControls randomizerResult"
     "divider divider divider"
@@ -26,9 +26,9 @@
     display: grid;
     --auto-grid-min-size: 18rem;
     grid-template-columns: repeat(
-        auto-fill,
-        minmax(var(--auto-grid-min-size), 1fr)
-      );
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
     grid-auto-rows: 20px 20px 20px;
     justify-items: center;
     grid-template-areas:
@@ -47,9 +47,9 @@
     display: grid;
     --auto-grid-min-size: 16rem;
     grid-template-columns: repeat(
-        auto-fill,
-        minmax(var(--auto-grid-min-size), 1fr)
-      );
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
     grid-auto-rows: 20px 20px 20px;
     justify-items: center;
     grid-template-areas:
@@ -66,9 +66,9 @@
     display: grid;
     --auto-grid-min-size: 14rem;
     grid-template-columns: repeat(
-        auto-fill,
-        minmax(var(--auto-grid-min-size), 1fr)
-      );
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
     grid-auto-rows: 30px 20px 30px;
     justify-items: center;
     align-items: flex-end;
@@ -113,24 +113,196 @@
   color: lightgray;
   align-self: center;
   padding-top: 10px;
+  justify-self: center;
 }
 
 .randomizer__label {
   grid-area: randomizerLabel;
   align-self: center;
+  justify-self: flex-end;
   color: lightgray;
   padding-top: 10px;
 }
 
+/* Slot Machine Effect */
+/* Set Variables */
 .randomizer__result {
-  align-self: center;
-  grid-area: randomizerResult;
-  padding-top: 10px;
+  --randomizer-result-left: 140px;
+  --randomizer-padding-top: 0px;
+  --randomizer-height: calc(100% + 20px);
+  --randomizer-width: 100%;
+  --randomizer-slideIn-bottom: -20px;
+  --randomizer-slideIn-bottom-35: -10px;
+  --randomizer-slideIn-bottom-65: 0px;
+  --randomizer-slideIn-bottom-100: 10px;
+  --randomizer-slideIn-not-spinning-bottom: 0px;
 }
 
-.randomizer__description {
-  grid-area: randomizerDescription;
-  min-width: 100vw;
+@media (max-width: 1200px) {
+  .randomizer__result {
+    --randomizer-result-left: 150px;
+    --randomizer-padding-top: 0px;
+    --randomizer-height: calc(100% + 20px);
+    --randomizer-slideIn-bottom: -25px;
+    --randomizer-slideIn-bottom-35: -25px;
+    --randomizer-slideIn-bottom-65: 0px;
+    --randomizer-slideIn-bottom-100: 15px;
+    --randomizer-slideIn-not-spinning-bottom: 5px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .randomizer__result {
+    --randomizer-result-left: 95px;
+    --randomizer-padding-top: 0px;
+    --randomizer-height: calc(100% + 20px);
+    --randomizer-slideIn-bottom: -25px;
+    --randomizer-slideIn-bottom-35: -25px;
+    --randomizer-slideIn-bottom-65: 0px;
+    --randomizer-slideIn-bottom-100: 15px;
+    --randomizer-slideIn-not-spinning-bottom: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .randomizer__result {
+    --randomizer-result-left: 90px;
+    --randomizer-padding-top: 0px;
+    --randomizer-height: calc(100% + 20px);
+    --randomizer-slideIn-bottom: -15px;
+    --randomizer-slideIn-bottom-35: -15px;
+    --randomizer-slideIn-bottom-65: 0px;
+    --randomizer-slideIn-bottom-100: 25px;
+    --randomizer-slideIn-not-spinning-bottom: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .randomizer__result {
+    --randomizer-result-left: 15px;
+    --randomizer-padding-top: 0px;
+    --randomizer-height: calc(100% + 20px);
+    --randomizer-slideIn-bottom: -25px;
+    --randomizer-slideIn-bottom-35: -25px;
+    --randomizer-slideIn-bottom-65: 0px;
+    --randomizer-slideIn-bottom-100: 20px;
+    --randomizer-slideIn-not-spinning-bottom: 5px;
+  }
+}
+
+@media (max-width: 375px) {
+  .randomizer__result {
+    --randomizer-padding-top: 0px;
+    --randomizer-height: calc(100% + 20px);
+    --randomizer-slideIn-bottom: -25px;
+    --randomizer-slideIn-bottom-35: -25px;
+    --randomizer-slideIn-bottom-65: 0px;
+    --randomizer-slideIn-bottom-100: 20px;
+    --randomizer-slideIn-not-spinning-bottom: 10px;
+  }
+}
+
+.randomizer__result {
+  grid-area: randomizerResult;
+  align-self: center;
+  overflow: hidden;
+  position: relative;
+  width: calc(100vw / 3);
+  height: var(--randomizer-height);
+  /* left: var(--randomizer-result-left); */
+  /* text-align: left; */
+  justify-self: center;
+}
+
+.randomizer__slideIn--spinning {
+  color: orangered;
+  position: absolute;
+  bottom: var(--randomizer-slideIn-bottom);
+  animation-name: slideup;
+  animation-duration: 0.05s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  filter: blur(1px) !important;
+}
+
+.randomizer__slideIn--not-spinning {
+  color: #5a87a3;
+  position: absolute;
+  bottom: var(--randomizer-slideIn-not-spinning-bottom);
+}
+
+@keyframes slideup {
+  0% {
+    bottom: var(--randomizer-slideIn-bottom);
+  }
+  35% {
+    bottom: var(--randomizer-slideIn-bottom-35);
+  }
+  65% {
+    bottom: var(--randomizer-slideIn-bottom-65);
+  }
+  100% {
+    bottom: var(--randomizer-slideIn-bottom-100);
+  }
+}
+
+@-moz-keyframes slideup {
+  0% {
+    bottom: var(--randomizer-slideIn-bottom);
+  }
+  35% {
+    bottom: var(--randomizer-slideIn-bottom-35);
+  }
+  65% {
+    bottom: var(--randomizer-slideIn-bottom-65);
+  }
+  100% {
+    bottom: var(--randomizer-slideIn-bottom-100);
+  }
+}
+
+@-webkit-keyframes slideup {
+  0% {
+    bottom: var(--randomizer-slideIn-bottom);
+  }
+  35% {
+    bottom: var(--randomizer-slideIn-bottom-35);
+  }
+  65% {
+    bottom: var(--randomizer-slideIn-bottom-65);
+  }
+  100% {
+    bottom: var(--randomizer-slideIn-bottom-100);
+  }
+}
+
+@-o-keyframes slideup {
+  0% {
+    bottom: var(--randomizer-slideIn-bottom);
+  }
+  35% {
+    bottom: var(--randomizer-slideIn-bottom-35);
+  }
+  65% {
+    bottom: var(--randomizer-slideIn-bottom-65);
+  }
+  100% {
+    bottom: var(--randomizer-slideIn-bottom-100);
+  }
+}
+
+@-ms-keyframes slideup {
+  0% {
+    bottom: var(--randomizer-slideIn-bottom);
+  }
+  35% {
+    bottom: var(--randomizer-slideIn-bottom-35);
+  }
+  65% {
+    bottom: var(--randomizer-slideIn-bottom-65);
+  }
+  100% {
+    bottom: var(--randomizer-slideIn-bottom-100);
+  }
 }
 
 .randomizer__controls span {
@@ -140,15 +312,7 @@
 
 .randomizer__controls--icon:hover {
   cursor: pointer;
-  color: white !important;
-}
-
-.randomizer__fadeIn span {
-  animation: fadeIn ease-out 1.2s;
-  -webkit-animation: fadeIn ease-out 1.2s;
-  -moz-animation: fadeIn ease-out 1.2s;
-  -o-animation: fadeIn ease-out 1.2s;
-  -ms-animation: fadeIn ease-out 1.2s;
+  color: white;
 }
 
 .randomizer__default {
@@ -163,109 +327,20 @@
   color: #f6ae2d;
 }
 
-.randomizer__result span {
-  color: #5a87a3;
-  display: inline;
-  vertical-align: middle;
-}
-
-@keyframes fadeIn {
-  0% {
-    filter: blur(1px);
-    opacity: 0.5;
-    color: #2f4858;
-  }
-  50% {
-    opacity: 0.75;
-    color: #42657a;
-  }
-  100% {
-    filter: none;
-    opacity: 1;
-    color: #5a87a3;
-  }
-}
-
-@-moz-keyframes fadeIn {
-  0% {
-    filter: blur(1px);
-    opacity: 0.5;
-    color: #466474;
-  }
-  50% {
-    opacity: 0.75;
-    color: #60869b;
-  }
-  100% {
-    filter: none;
-    opacity: 1;
-    color: #86bbd8;
-  }
-}
-
-@-webkit-keyframes fadeIn {
-  0% {
-    filter: blur(1px);
-    opacity: 0.5;
-    color: #466474;
-  }
-  50% {
-    opacity: 0.75;
-    color: #60869b;
-  }
-  100% {
-    filter: none;
-    opacity: 1;
-    color: #86bbd8;
-  }
-}
-
-@-o-keyframes fadeIn {
-  0% {
-    filter: blur(1px);
-    opacity: 0.5;
-    color: #466474;
-  }
-  50% {
-    opacity: 0.75;
-    color: #60869b;
-  }
-  100% {
-    filter: none;
-    opacity: 1;
-    color: #86bbd8;
-  }
-}
-
-@-ms-keyframes fadeIn {
-  0% {
-    filter: blur(1px);
-    opacity: 0.5;
-    color: #466474;
-  }
-  50% {
-    opacity: 0.75;
-    color: #60869b;
-  }
-  100% {
-    filter: none;
-    opacity: 1;
-    color: #86bbd8;
-  }
-}
-
 /* Timer */
 .timer__label {
   color: lightgray;
   grid-area: timerLabel;
   padding-bottom: 10px;
   align-self: center;
+  justify-self: flex-end;
 }
 
 .timer__options {
   grid-area: timerOptions;
   padding-bottom: 10px;
   align-self: center;
+  justify-self: center;
 }
 
 .timer__counter {
@@ -273,6 +348,7 @@
   color: darkgray;
   padding-bottom: 10px;
   align-self: center;
+  justify-self: flex-start;
 }
 
 .timer__options span {
@@ -282,7 +358,7 @@
 }
 
 .timer__options span:hover {
-  color: white !important;
+  color: white;
   cursor: pointer;
 }
 
@@ -317,7 +393,6 @@
     opacity: 0;
   }
 }
-
 
 /* Reset Button */
 .resetButton__button {

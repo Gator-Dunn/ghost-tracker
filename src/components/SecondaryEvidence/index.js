@@ -5,7 +5,7 @@ import { SECONDARY_EVIDENCE } from "./constants";
 import Icon from "../Icon";
 import "./SecondaryEvidence.css";
 
-const Secondary = () => {
+const SecondaryEvidence = () => {
   const {
     evidence: {
       state: { validGhosts },
@@ -57,7 +57,7 @@ const Secondary = () => {
         {SECONDARY_EVIDENCE.map(
           ({ description, icons = [], key, ...ghost }) => {
             return (
-              <React.Fragment>
+              <React.Fragment key={key}>
                 <span
                   onClick={() => handleClick(ghost)}
                   key={key}
@@ -66,7 +66,6 @@ const Secondary = () => {
                   {icons.map(
                     ({ icon, classes }) =>
                       icon && (
-                        <React.Fragment>
                           <Icon
                             key={`${key}_${icon}`}
                             classes={[
@@ -75,7 +74,6 @@ const Secondary = () => {
                             ]}
                             icon={icon}
                           />
-                        </React.Fragment>
                       )
                   )}
                   <span
@@ -98,9 +96,8 @@ const Secondary = () => {
           }
         )}
       </span>
-      {/* </ul> */}
     </span>
   );
 };
 
-export default Secondary;
+export default SecondaryEvidence;

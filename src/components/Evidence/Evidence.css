@@ -1,0 +1,158 @@
+.evidence__items {
+  --auto-grid-min-size: 10rem;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--auto-grid-min-size), 1fr)
+  );
+  grid-auto-rows: minmax(20px, 30px);
+  justify-items: center;
+  grid-gap: 1rem;
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
+  align-items: center;
+}
+
+@media (max-width: 1200px) {
+  .evidence__items {
+    --auto-grid-min-size: 8rem;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    grid-gap: 0;
+    justify-items: flex-start;
+  }
+}
+
+@media (max-width: 1024px) {
+  .evidence__items {
+    --auto-grid-min-size: 8rem;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    grid-gap: 0;
+    justify-items: center;
+    grid-auto-rows: minmax(10px, 25px);
+  }
+}
+
+@media (max-width: 768px) {
+  .evidence__items {
+    --auto-grid-min-size: 8rem;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    grid-gap: 0;
+    justify-items: center;
+    grid-auto-rows: minmax(10px, 25px);
+  }
+}
+@media (max-width: 480px) {
+  .evidence__items {
+    --auto-grid-min-size: 8rem;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    grid-gap: 0;
+    justify-items: flex-start;
+    grid-auto-rows: minmax(10px, 20px);
+    padding-left: 2rem;
+  }
+}
+
+.evidence__item {
+  display: inline;
+  vertical-align: middle;
+}
+
+.evidence__item--name {
+  transition: all 0.4s ease 0s;
+}
+
+.evidence__item .evidence__name {
+  opacity: 1;
+}
+
+.evidence__item:hover .evidence__name-confirmed,
+.evidence__item:hover .evidence__name-unconfirmed,
+.evidence__item:hover .evidence__name-excluded {
+  opacity: 1;
+}
+
+.evidence__name-confirmed,
+.evidence__name-unconfirmed,
+.evidence__name-excluded {
+  display: inline;
+  vertical-align: middle;
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+  color: darkgray;
+}
+
+.evidence__name-confirmed {
+  color: white;
+}
+
+.evidence__name-excluded {
+  color: rgba(255, 0, 0, 0.5);
+  text-decoration: line-through;
+}
+
+.evidence__emf::after {
+  content: "EMF Level 5";
+}
+
+.evidence__freezing::after {
+  content: "Freezing Temps";
+}
+
+.evidence__writing::after {
+  content: "Ghost Writing";
+}
+
+.evidence__fingerprints::after {
+  content: "Fingerprints";
+}
+
+.evidence__orbs::after {
+  content: "Ghost Orbs";
+}
+
+.evidence__box::after {
+  content: "Spirit Box";
+}
+
+@media only screen and (max-width: 768px) {
+  .evidence__emf::after {
+    content: "EMF 5";
+  }
+
+  .evidence__freezing::after {
+    content: "Freezing";
+  }
+
+  .evidence__writing::after {
+    content: "Writing";
+  }
+
+  .evidence__fingerprints::after {
+    content: "Fingerprints";
+  }
+
+  .evidence__orbs::after {
+    content: "Orbs";
+  }
+
+  .evidence__box::after {
+    content: "Spirit Box";
+  }
+}

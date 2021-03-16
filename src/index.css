@@ -1,17 +1,80 @@
 html {
   width: 100vw !important;
   overflow-x: hidden;
+  font-size: 17px;
+}
+
+@media (max-width: 900px) {
+  html { font-size: 15px; }
+}
+@media (max-width: 400px) {
+  html { font-size: 13px; }
+}
+
+h3 {
+  font-size: 1em;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #31343a;
+  font-family: "Indie Flower", cursive;
+  padding: 0;
+  margin: 0;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.main {
+  user-select: none;
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-areas:
+    "header"
+    "ghostName"
+    "evidence"
+    "ghosts"
+    "tools"
+    "secondaryEvidence"
+    "version";
+}
+
+.main__header {
+  grid-area: header;
+  font-size: 1.5rem;
+}
+
+.main__ghostName {
+  grid-area: ghostName;
+  background-color: #3e4249;
+}
+
+.main__evidence {
+  grid-area: evidence;
+  background-color: #2f4858;
+}
+
+.main__ghosts {
+  grid-area: ghosts;
+  padding-bottom: 5px;
+}
+
+.main__tools {
+  grid-area: tools;
+}
+
+.main__timer {
+  grid-area: timer;
+}
+
+.main__secondaryEvidence {
+  grid-area: secondaryEvidence;
+}
+
+.main__version {
+  grid-area: version;
 }

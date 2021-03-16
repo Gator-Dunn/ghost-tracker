@@ -1,0 +1,423 @@
+.tools__container {
+  width: 100vw;
+  background-color: #3e4249 !important;
+  border-bottom: 2px solid gray;
+  border-top: 2px solid gray;
+  display: grid;
+  --auto-grid-min-size: 20rem;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--auto-grid-min-size), 1fr)
+  );
+  grid-auto-rows: 20px 20px 20px;
+  justify-content: space-evenly;
+  grid-template-areas:
+    "randomizerLabel randomizerControls randomizerResult"
+    "divider divider divider"
+    "timerLabel timerOptions timerCounter";
+}
+
+@media (max-width: 1200px) {
+  .tools__container {
+    width: 100vw;
+    background-color: #3e4249 !important;
+    border-bottom: 2px solid gray;
+    border-top: 2px solid gray;
+    display: grid;
+    --auto-grid-min-size: 18rem;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    grid-auto-rows: 20px 20px 20px;
+    justify-items: center;
+    grid-template-areas:
+      "randomizerLabel randomizerControls randomizerResult"
+      "divider divider divider"
+      "timerLabel timerOptions timerCounter";
+  }
+}
+
+@media (max-width: 1024px) {
+  .tools__container {
+    width: 100vw;
+    background-color: #3e4249 !important;
+    border-bottom: 2px solid gray;
+    border-top: 2px solid gray;
+    display: grid;
+    --auto-grid-min-size: 16rem;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    grid-auto-rows: 20px 20px 20px;
+    justify-items: center;
+    grid-template-areas:
+      "randomizerLabel randomizerControls randomizerResult"
+      "divider divider divider"
+      "timerLabel timerOptions timerCounter";
+  }
+}
+
+@media (max-width: 768px) {
+  .tools__container {
+    width: 100vw;
+    background-color: #3e4249 !important;
+    display: grid;
+    --auto-grid-min-size: 14rem;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    grid-auto-rows: 30px 20px 30px;
+    justify-items: center;
+    align-items: flex-end;
+    grid-template-areas:
+      "randomizerLabel randomizerControls randomizerResult"
+      "divider divider divider"
+      "timerLabel timerOptions timerCounter";
+  }
+}
+@media (max-width: 480px) {
+  .tools__container {
+    font-size: 0.85em;
+    width: 100vw;
+    background-color: #3e4249 !important;
+    display: grid;
+    --auto-grid-min-size: 10em;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    grid-auto-rows: 25px 20px 25px;
+    justify-items: center;
+    align-items: flex-end;
+    grid-template-areas:
+      "randomizerLabel randomizerControls randomizerResult"
+      "divider divider divider"
+      "timerLabel timerOptions timerCounter";
+  }
+}
+
+.tools__divider {
+  width: 100vw;
+  grid-area: divider;
+  border: 0;
+  border-bottom: 1px solid rgb(99, 99, 99);
+  align-self: center;
+}
+
+/* RandomItem */
+.randomizer__controls {
+  grid-area: randomizerControls;
+  color: lightgray;
+  align-self: center;
+  padding-top: 10px;
+  justify-self: center;
+}
+
+.randomizer__label {
+  grid-area: randomizerLabel;
+  align-self: center;
+  justify-self: flex-end;
+  color: lightgray;
+  padding-top: 10px;
+}
+
+/* Slot Machine Effect */
+/* Set Variables */
+.randomizer__result {
+  --randomizer-result-left: 140px;
+  --randomizer-padding-top: 0px;
+  --randomizer-height: calc(100% + 20px);
+  --randomizer-width: 100%;
+  --randomizer-slideIn-bottom: -20px;
+  --randomizer-slideIn-bottom-35: -10px;
+  --randomizer-slideIn-bottom-65: 0px;
+  --randomizer-slideIn-bottom-100: 10px;
+  --randomizer-slideIn-not-spinning-bottom: 0px;
+}
+
+@media (max-width: 1200px) {
+  .randomizer__result {
+    --randomizer-result-left: 150px;
+    --randomizer-padding-top: 0px;
+    --randomizer-height: calc(100% + 20px);
+    --randomizer-slideIn-bottom: -25px;
+    --randomizer-slideIn-bottom-35: -25px;
+    --randomizer-slideIn-bottom-65: 0px;
+    --randomizer-slideIn-bottom-100: 15px;
+    --randomizer-slideIn-not-spinning-bottom: 5px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .randomizer__result {
+    --randomizer-result-left: 95px;
+    --randomizer-padding-top: 0px;
+    --randomizer-height: calc(100% + 20px);
+    --randomizer-slideIn-bottom: -25px;
+    --randomizer-slideIn-bottom-35: -25px;
+    --randomizer-slideIn-bottom-65: 0px;
+    --randomizer-slideIn-bottom-100: 15px;
+    --randomizer-slideIn-not-spinning-bottom: 5px;
+  }
+}
+
+@media (max-width: 768px) {
+  .randomizer__result {
+    --randomizer-result-left: 90px;
+    --randomizer-padding-top: 0px;
+    --randomizer-height: calc(100% + 20px);
+    --randomizer-slideIn-bottom: -15px;
+    --randomizer-slideIn-bottom-35: -15px;
+    --randomizer-slideIn-bottom-65: 0px;
+    --randomizer-slideIn-bottom-100: 25px;
+    --randomizer-slideIn-not-spinning-bottom: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .randomizer__result {
+    --randomizer-result-left: 15px;
+    --randomizer-padding-top: 0px;
+    --randomizer-height: calc(100% + 20px);
+    --randomizer-slideIn-bottom: -25px;
+    --randomizer-slideIn-bottom-35: -25px;
+    --randomizer-slideIn-bottom-65: 0px;
+    --randomizer-slideIn-bottom-100: 20px;
+    --randomizer-slideIn-not-spinning-bottom: 5px;
+  }
+}
+
+@media (max-width: 375px) {
+  .randomizer__result {
+    --randomizer-padding-top: 0px;
+    --randomizer-height: calc(100% + 20px);
+    --randomizer-slideIn-bottom: -25px;
+    --randomizer-slideIn-bottom-35: -25px;
+    --randomizer-slideIn-bottom-65: 0px;
+    --randomizer-slideIn-bottom-100: 20px;
+    --randomizer-slideIn-not-spinning-bottom: 10px;
+  }
+}
+
+.randomizer__result {
+  grid-area: randomizerResult;
+  align-self: center;
+  overflow: hidden;
+  position: relative;
+  width: calc(100vw / 3);
+  height: var(--randomizer-height);
+  /* left: var(--randomizer-result-left); */
+  /* text-align: left; */
+  justify-self: center;
+}
+
+.randomizer__slideIn--spinning {
+  color: orangered;
+  position: absolute;
+  bottom: var(--randomizer-slideIn-bottom);
+  animation-name: slideup;
+  animation-duration: 0.05s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in;
+  filter: blur(1px) !important;
+}
+
+.randomizer__slideIn--not-spinning {
+  color: #5a87a3;
+  position: absolute;
+  bottom: var(--randomizer-slideIn-not-spinning-bottom);
+}
+
+@keyframes slideup {
+  0% {
+    bottom: var(--randomizer-slideIn-bottom);
+  }
+  35% {
+    bottom: var(--randomizer-slideIn-bottom-35);
+  }
+  65% {
+    bottom: var(--randomizer-slideIn-bottom-65);
+  }
+  100% {
+    bottom: var(--randomizer-slideIn-bottom-100);
+  }
+}
+
+@-moz-keyframes slideup {
+  0% {
+    bottom: var(--randomizer-slideIn-bottom);
+  }
+  35% {
+    bottom: var(--randomizer-slideIn-bottom-35);
+  }
+  65% {
+    bottom: var(--randomizer-slideIn-bottom-65);
+  }
+  100% {
+    bottom: var(--randomizer-slideIn-bottom-100);
+  }
+}
+
+@-webkit-keyframes slideup {
+  0% {
+    bottom: var(--randomizer-slideIn-bottom);
+  }
+  35% {
+    bottom: var(--randomizer-slideIn-bottom-35);
+  }
+  65% {
+    bottom: var(--randomizer-slideIn-bottom-65);
+  }
+  100% {
+    bottom: var(--randomizer-slideIn-bottom-100);
+  }
+}
+
+@-o-keyframes slideup {
+  0% {
+    bottom: var(--randomizer-slideIn-bottom);
+  }
+  35% {
+    bottom: var(--randomizer-slideIn-bottom-35);
+  }
+  65% {
+    bottom: var(--randomizer-slideIn-bottom-65);
+  }
+  100% {
+    bottom: var(--randomizer-slideIn-bottom-100);
+  }
+}
+
+@-ms-keyframes slideup {
+  0% {
+    bottom: var(--randomizer-slideIn-bottom);
+  }
+  35% {
+    bottom: var(--randomizer-slideIn-bottom-35);
+  }
+  65% {
+    bottom: var(--randomizer-slideIn-bottom-65);
+  }
+  100% {
+    bottom: var(--randomizer-slideIn-bottom-100);
+  }
+}
+
+.randomizer__controls span {
+  padding: 3px 5px 3px 5px;
+  border-radius: 5px;
+}
+
+.randomizer__controls--icon:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.randomizer__default {
+  color: lightgray;
+}
+
+.randomizer__hoverText {
+  color: darkgray;
+}
+
+.randomizer__selectedText {
+  color: #f6ae2d;
+}
+
+/* Timer */
+.timer__label {
+  color: lightgray;
+  grid-area: timerLabel;
+  padding-bottom: 10px;
+  align-self: center;
+  justify-self: flex-end;
+}
+
+.timer__options {
+  grid-area: timerOptions;
+  padding-bottom: 10px;
+  align-self: center;
+  justify-self: center;
+}
+
+.timer__counter {
+  grid-area: timerCounter;
+  color: darkgray;
+  padding-bottom: 10px;
+  align-self: center;
+  justify-self: flex-start;
+}
+
+.timer__options span {
+  color: darkgray;
+  padding: 3px 5px 3px 5px;
+  border-radius: 5px;
+}
+
+.timer__options span:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.timer__counter--warning {
+  color: yellow !important;
+}
+
+.timer__counter--expiring {
+  color: orangered !important;
+}
+
+.timer__counter--expired span {
+  color: red;
+  animation: blinker 2s linear infinite;
+}
+
+.timer__counter span {
+  display: inline;
+  vertical-align: middle;
+}
+
+.timer__selected {
+  color: green !important;
+}
+
+.timer__options--expired {
+  color: rgba(255, 0, 0, 1) !important;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Reset Button */
+.resetButton__button {
+  grid-area: resetButton;
+  width: 144px;
+  color: rgb(224, 224, 224) !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: #9b201e;
+  border-radius: 7px;
+  display: inline-block;
+  border: none;
+  transition: all 0.4s ease 0s;
+  outline: none;
+  max-height: 40px;
+  min-height: 40px;
+}
+
+.resetButton__button:hover {
+  cursor: pointer !important;
+  color: white;
+  background: #d82f2c !important;
+}
+
+.resetButton__button:active {
+  color: #fff !important;
+  background: #9b201e !important;
+}

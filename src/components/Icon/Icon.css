@@ -3,7 +3,7 @@
 }
 
 .material-icons.red-stop {
-  color: #cf142b;
+  color: #cf142b !important;
 }
 
 .material-icons.orange-warning {
@@ -22,7 +22,19 @@
 }
 
 .material-icons.grey-disabled {
-  color: grey;
+  color: darkgray;
+}
+
+.material-icons.grey-inactive {
+  color: darkgray;
+}
+
+.material-icons.grey-inactive:hover {
+  color: lightgray;
+}
+
+.material-icons.grey-active {
+  color: white;
 }
 
 .material-icons.green-neon {
@@ -30,33 +42,30 @@
 }
 
 .material-icons.size-small {
-  font-size: 12px;
+  font-size: 0.5em;
 }
 
 .material-icons.size-medium {
-  font-size: 14px;
+  font-size: 0.75em;
 }
 
 .material-icons.size-large {
-  font-size: 16px;
+  font-size: 1.0em;
 }
 
 .material-icons.size-extra-large {
-  font-size: 18px;
+  font-size: 1.25em;
 }
 
 .material-icons.expander {
-  text-align: center;
-  padding: 5px;
-  margin-bottom: 10px;
+  vertical-align: middle;
   cursor: pointer;
 }
 
+.material-icons.expander:hover {
+  color: white;
+}
+
 .material-icons {
-  font-size: 18px;
-  padding: 0;
-  margin: 0;
-  padding-left: 5px;
-  display: inline;
   vertical-align: middle;
 }

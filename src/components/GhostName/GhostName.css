@@ -1,0 +1,76 @@
+.ghostname__container {
+  background-color: #3e4249;
+  border-top: 2px solid gray;
+  display: grid;
+  grid-gap: 2px;
+  justify-items: center;
+  width: 100vw;
+  min-width: 100vw;
+  padding: 5px;
+  grid-template: 
+    "ghostNameLabel"
+    "ghostNameResults"
+}
+
+.ghostname__options {
+  text-align: right;
+  display: inline;
+  vertical-align: middle;
+}
+
+.ghostname__item {
+  color: darkgray;
+  display: inline;
+  vertical-align: middle;
+  border-radius: 5px;
+  padding: 5px;
+  transition: all 0.1s ease 0s;
+}
+
+.ghostname__item:hover {
+  color: white;
+}
+
+.ghostname__item:hover {
+  background-color: #3e4249;
+  cursor: pointer;
+}
+
+.ghostname__label {
+  text-align: center;
+  display: block;
+  color: lightgray;
+  grid-area: ghostNameLabel;
+}
+
+.ghostname__result {
+  border-radius: 5px;
+  color: lightgray;
+  transition: all 0.4s ease 0s;
+  display: inline;
+  vertical-align: middle;
+}
+
+.ghostname__results {
+  grid-area: ghostNameResults;
+}
+
+.ghostname__results-reset {
+  display: inline;
+  vertical-align: middle;
+  color: darkgray;
+  padding-right: 7px !important;
+  transition: all 0.4s ease 0s;
+}
+
+.ghostname__results-reset:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.ghostname__results-reset:hover + span {
+  color: red;
+  text-decoration: line-through;
+  opacity: 0.95;
+}
+

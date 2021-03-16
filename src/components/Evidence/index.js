@@ -1,10 +1,14 @@
 import React from "react";
 import classNames from "classnames";
-import { Icon } from "./Icon";
-import { EVIDENCE_CSS_MAP, STATUS } from "../constants";
-import "../styles/Evidence.css";
+import { useStore } from "../../StoreProvider";
+import Icon from "../Icon";
+import { EVIDENCE_CSS_MAP, STATUS } from "./constants";
+import "./Evidence.css";
 
-export const Evidence = ({ evidence: { state, incrementStatus } }) => {
+const Evidence = () => {
+  const {
+    evidence: { incrementStatus, state },
+  } = useStore();
   const evidenceMap = React.useMemo(() => {
     const confirmed = state.confirmed.map((evidenceName) => ({
       class: STATUS.confirmed.class,
@@ -30,21 +34,28 @@ export const Evidence = ({ evidence: { state, incrementStatus } }) => {
     return all;
   }, [state]);
 
-  return evidenceMap.map((e, key) => (
-    <span
-      className="Evidence-item"
-      onClick={() => incrementStatus(e.evidenceName)}
-      key={key}
-    >
-      <span className="Evidence-status">
-        <Icon classes={[e.class]} icon={e.statusIcon} size="small" />
-      </span>
-      <span
-        className={classNames(
-          `Evidence-${EVIDENCE_CSS_MAP[e.evidenceName]}`,
-          `Evidence-name-${e.statusText}`
-        )}
-      ></span>
+  return (
+    <span className="evidence__items">
+      {evidenceMap.map((e, key) => (
+        <span
+          className="evidence__item"
+          onClick={() => incrementStatus(e.evidenceName)}
+          key={key}
+        >
+          <span className="evidence__status">
+            <Icon classes={[e.class]} icon={e.statusIcon} size="small" />
+          </span>
+          <span
+            className={classNames(
+              "evidence__item--name",
+              `evidence__${EVIDENCE_CSS_MAP[e.evidenceName]}`,
+              `evidence__name-${e.statusText}`
+            )}
+          ></span>
+        </span>
+      ))}
     </span>
-  ));
+  );
 };
+
+export default Evidence;

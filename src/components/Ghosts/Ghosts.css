@@ -1,0 +1,110 @@
+.ghost__list {
+  --auto-grid-min-size: 16rem;
+  display: grid;
+  grid-gap: 0.75em;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--auto-grid-min-size), 1fr)
+  );
+  padding: 10px;
+  justify-self: flex-start;
+  justify-items: stretch;
+  padding-right: 25px;
+}
+
+@media (max-width: 1200px) {
+  .ghost__list {
+    --auto-grid-min-size: 16rem;
+    display: grid;
+    grid-gap: 0.35em;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    padding: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .ghost__list {
+    --auto-grid-min-size: 10rem;
+    display: grid;
+    grid-gap: 0.95em;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    padding: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ghost__list {
+    --auto-grid-min-size: 12rem;
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    padding: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .ghost__list {
+    --auto-grid-min-size: 10rem;
+    display: grid;
+    grid-gap: 0.45em;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--auto-grid-min-size), 1fr)
+    );
+    padding: 10px;
+  }
+}
+
+.ghost__button {
+  border: 2px solid transparent !important;
+  background-color: #184e77;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 16px;
+  min-width: 8em;
+}
+
+.ghost__button-valid {
+  color: white;
+}
+
+.ghost__button-invalid {
+  background-color: #ddd;
+  color: black;
+  opacity: 0.15;
+}
+
+.ghost__button-invalid:hover,
+.ghost__button-valid:hover {
+  border: 2px solid white !important;
+  background-color: #1a759f;
+  color: white;
+  transition: all 0.4s ease 0s;
+}
+
+.ghost__button-last {
+  outline: none;
+  border-color: lightgray !important;
+  box-shadow: 0 0 10px #ed9e9e !important;
+  color: lightgray;
+  background-color: darkred;
+  transition: all 0.4s ease 0s;
+}
+
+.ghost__button-last:hover {
+  outline: none;
+  border-color: white !important;
+  box-shadow: 0 0 10px #ed9e9e !important;
+  color: white;
+  background-color: rgb(153, 1, 1);
+}

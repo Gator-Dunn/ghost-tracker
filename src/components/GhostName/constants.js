@@ -72,3 +72,11 @@ export const FIRST_NAME_FIRST_LETTERS = [
 export const SURNAME_FIRST_LETTERS = [
   ...new Set(GHOST_NAMES.surname.map((name) => name.slice(0, 1))),
 ].sort();
+
+export const HEADER_TEXT = {
+  first: "Select First Letter of Ghost's First Name",
+  second: "Select Ghost's First Name",
+  third: "Select First Letter of Ghost's Last Name",
+  fourth: "Select Ghost's Last Name",
+  fifth: "Ghost Name",
+}

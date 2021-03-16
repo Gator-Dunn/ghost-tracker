@@ -12,27 +12,27 @@ import { StoreProvider } from "./StoreProvider";
 function App() {
   const sections = [
     {
-      class: "ghostName",
+      key: "ghostName",
       render: <GhostName />,
     },
     {
-      class: "evidence",
+      key: "evidence",
       render: <Evidence />,
     },
     {
-      class: "ghosts",
+      key: "ghosts",
       render: <Ghosts />,
     },
     {
-      class: "tools",
+      key: "tools",
       render: <Tools />,
     },
     {
-      class: "secondaryEvidence",
+      key: "secondaryEvidence",
       render: <SecondaryEvidence />,
     },
     {
-      class: 'version',
+      key: 'version',
       render: <Version />,
     }
   ];
@@ -43,8 +43,10 @@ function App() {
         <Header className="main__header"></Header>
         {sections.map((section) => (
           <section
-            className={classNames("main__section", `main__${section.class}`)}
-            key={section.class}
+            id={`section-${section.key}`}
+            data-testid={`test-${section.key}`}
+            className={classNames("main__section", `main__${section.key}`)}
+            key={section.key}
           >
             {section.render}
           </section>

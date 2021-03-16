@@ -4,6 +4,7 @@ import {
   FIRST_NAMES,
   FIRST_NAME_FIRST_LETTERS,
   GHOST_NAMES,
+  HEADER_TEXT,
   SURNAME_FIRST_LETTERS,
 } from "./constants";
 import "./GhostName.css";
@@ -51,15 +52,17 @@ const GhostName = () => {
     <span className="ghostname__container">
       <span className="ghostname__label">
         {show.firstNameFirstLetter &&
-          "Select First Letter of Ghost's First Name"}
-        {show.firstName && "Select Ghost's First Name"}
-        {show.surnameFirstLetter && "Select First Letter of Ghost's Last Name"}
-        {show.surname && "Select Ghost's Last Name"}
-        {show.all && "Ghost Name"}
+          HEADER_TEXT.first}
+        {show.firstName && HEADER_TEXT.second}
+        {show.surnameFirstLetter && HEADER_TEXT.third}
+        {show.surname && HEADER_TEXT.fourth}
+        {show.all && HEADER_TEXT.fifth}
       </span>
       <span className="ghostname__results">
         {show.any && (
           <Icon
+            role="button"
+            id="ghostname-reset-button"
             onClick={handleClick}
             classes={["ghostname__results-reset", "size-medium"]}
             icon="backspace"
@@ -75,6 +78,7 @@ const GhostName = () => {
           {!firstNameFirstLetter &&
             FIRST_NAME_FIRST_LETTERS.map((x) => (
               <span
+                role="button"
                 key={x}
                 onClick={() => setFirstLetter(x)}
                 className="ghostname__item"
@@ -86,6 +90,7 @@ const GhostName = () => {
             !firstName &&
             filteredFirstNames.map((x) => (
               <span
+                role="button"
                 key={x}
                 onClick={() => setFirstName(x)}
                 className="ghostname__item"
@@ -97,6 +102,7 @@ const GhostName = () => {
             !surnameFirstLetter &&
             SURNAME_FIRST_LETTERS.map((x) => (
               <span
+                role="button"
                 key={x}
                 onClick={() => setSurnameFirstLetter(x)}
                 className="ghostname__item"
@@ -109,6 +115,7 @@ const GhostName = () => {
             !surname &&
             filteredSurnames.map((x) => (
               <span
+                role="button"
                 key={x}
                 onClick={() => setSurname(x)}
                 className="ghostname__item"

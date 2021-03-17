@@ -7,7 +7,7 @@ import "./Evidence.css";
 
 const Evidence = () => {
   const {
-    evidence: { incrementStatus, state },
+    evidence: { toggleExclude, toggleConfirm, state },
   } = useStore();
   const evidenceMap = React.useMemo(() => {
     const confirmed = state.confirmed.map((evidenceName) => ({
@@ -34,16 +34,49 @@ const Evidence = () => {
     return all;
   }, [state]);
 
+  const handleClick = (e) => {
+    const {
+      target: {
+        dataset: { evidence, action },
+      },
+    } = e;
+    // console.log("handleClick", { e, action, evidence });
+    switch (action) {
+      case "exclude":
+        toggleExclude(evidence);
+        break;
+      case "confirm":
+        toggleConfirm(evidence);
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <span className="evidence__items">
       {evidenceMap.map((e, key) => (
         <span
           className="evidence__item"
-          onClick={() => incrementStatus(e.evidenceName)}
           key={key}
         >
           <span className="evidence__status">
-            <Icon classes={[e.class]} icon={e.statusIcon} size="small" />
+            <span onClick={handleClick} className="evidence__status__exclude">
+              <Icon
+                data-evidence={e.evidenceName}
+                data-action="exclude"
+                icon="not_interested"
+                size="large"
+              />
+            </span>
+            <span onClick={handleClick} className="evidence__status__confirm">
+              <Icon
+                data-evidence={e.evidenceName}
+                data-action="confirm"
+                icon={e.statusIcon}
+                size="large"
+              />
+            </span>
           </span>
           <span
             className={classNames(

@@ -1,3 +1,26 @@
+:root {
+  --background-color: #31343a;
+  --section-background-color-primary: #3e4249;
+  --section-background-color-secondary: #2f4858;
+  --button-color: #184e77;
+  --button-color-active: #1a759f;
+  --button-color-invalid: #ddd;
+  --color-bright-yellow: #fff600;
+  --color-bright-red: #cf142b;
+  --color-dark-red: #9b201e;
+  --color-medium-yellow: #eed202;
+  --color-medium-orange: #f56414;
+  --color-medium-green: #0a6e14;
+  --color-dark-gray: #121212;
+  --color-medium-gray: #919090;
+  --color-bright-green: #39ff14;
+  --color-text-highlight: #ffffff;
+  --color-light-gray: #bfbfbf;
+  --color-text-accent-primary: #5a87a3;
+  --color-text-accent-secondary: #f6ae2d;
+  --color-dark-green: #045c04;
+}
+
 html {
   width: 100vw !important;
   overflow-x: hidden;
@@ -18,7 +41,7 @@ h3 {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #31343a;
+  background-color: var(--background-color);
   font-family: "Indie Flower", cursive;
   padding: 0;
   margin: 0;
@@ -50,12 +73,12 @@ code {
 
 .main__ghostName {
   grid-area: ghostName;
-  background-color: #3e4249;
+  background-color: var(--section-background-color-primary);
 }
 
 .main__evidence {
   grid-area: evidence;
-  background-color: #2f4858;
+  background-color: var(--section-background-color-secondary);
 }
 
 .main__ghosts {

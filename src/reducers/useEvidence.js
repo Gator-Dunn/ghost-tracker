@@ -7,6 +7,8 @@ export const actionTypes = {
     excluded: "ADD_EXCLUDED_EVIDENCE",
     unconfirmed: "ADD_UNCONFIRMED_EVIDENCE",
   },
+  confirm: "CONFIRM_EVIDENCE",
+  exclude: "EXCLUDE_EVIDENCE",
   reset: "RESET_EVIDENCE",
   toggleGhostEvidence: "TOGGLE_GHOST_EVIDENCE",
   validate: "VALIDATE_ALL_EVIDENCE",
@@ -24,6 +26,39 @@ export const reducer = (state = INITIAL_STATE.evidence, { type, payload }) => {
         confirmed: addWithoutDuplicates(state.confirmed, payload),
         excluded: state.excluded.filter((e) => e !== payload),
         unconfirmed: state.unconfirmed.filter((e) => e !== payload),
+      };
+    }
+    case actionTypes.exclude: {
+      const isExcluded = state.excluded.includes(payload);
+      const excluded = !isExcluded
+        ? addWithoutDuplicates(state.excluded, payload)
+        : state.excluded.filter((e) => e !== payload);
+
+      const unconfirmed = !isExcluded
+        ? state.unconfirmed.filter((e) => e !== payload)
+        : addWithoutDuplicates(state.unconfirmed, payload);
+      return {
+        ...state,
+        confirmed: state.confirmed.filter((e) => e !== payload),
+        excluded,
+        unconfirmed,
+      };
+    }
+    case actionTypes.confirm: {
+      const isConfirmed = state.confirmed.includes(payload);
+      const confirmed = !isConfirmed
+        ? addWithoutDuplicates(state.confirmed, payload)
+        : state.confirmed.filter((e) => e !== payload);
+
+      const unconfirmed = !isConfirmed
+        ? state.unconfirmed.filter((e) => e !== payload)
+        : addWithoutDuplicates(state.unconfirmed, payload);
+
+      return {
+        ...state,
+        confirmed,
+        excluded: state.excluded.filter((e) => e !== payload),
+        unconfirmed,
       };
     }
     case actionTypes.add.excluded: {
@@ -131,9 +166,7 @@ export const reducer = (state = INITIAL_STATE.evidence, { type, payload }) => {
       }
 
       const excluded = state.all.filter(
-        (e) =>
-          payloadExcluded(e) ||
-          !validEvidence.includes(e)
+        (e) => payloadExcluded(e) || !validEvidence.includes(e)
       );
 
       const unconfirmed = state.all.filter(
@@ -186,7 +219,19 @@ const useEvidence = () => {
 
   const resetEvidence = () => dispatch({ type: actionTypes.reset });
 
+  const toggleExclude = (payload) => {
+    dispatch({ type: actionTypes.exclude, payload });
+    dispatch({ payload, type: actionTypes.validate });
+  };
+
+  const toggleConfirm = (payload) => {
+    dispatch({ type: actionTypes.confirm, payload });
+    dispatch({ payload, type: actionTypes.validate });
+  };
+
   return {
+    toggleConfirm,
+    toggleExclude,
     incrementStatus,
     resetEvidence,
     state,

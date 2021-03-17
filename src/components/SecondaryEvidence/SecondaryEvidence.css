@@ -58,13 +58,13 @@
 
 .secondaryEvidence__evidence__header {
   text-align: center;
-  color: darkgray;
+  color: var(--color-medium-gray);
   border-top: 2px solid transparent;
   border-bottom: 2px solid transparent;
   vertical-align: middle;
   min-width: 100vw;
   margin-bottom: 5px;
-  background-color: #3e4249;
+  background-color: var(--section-background-color-primary);
   border-radius: 3px;
 }
 
@@ -75,7 +75,9 @@
 
 .secondaryEvidence__evidence {
   grid-area: secondaryEvidence;
-  min-width: 50vw;
+  min-width: 100vw;
+  justify-self: center;
+  text-align: center;
 }
 
 @media (max-width: 1200px) {
@@ -113,13 +115,13 @@
 }
 
 .secondaryEvidence__evidence__header--open {
-  color: white;
+  color: var(--color-text-highlight);
   border-top: 2px solid gray;
   border-bottom: 2px solid gray;
 }
 .secondaryEvidence__evidence__header:hover {
   cursor: pointer;
-  color: white;
+  color: var(--color-text-highlight);
 }
 
 .secondaryEvidence__evidence--hidden {
@@ -140,7 +142,7 @@
 }
 
 .secondaryEvidence___description:hover {
-  color: lightgrey;
+  color: var(--color-light-gray);
   cursor: pointer;
 }
 
@@ -150,15 +152,15 @@
 }
 
 .secondaryEvidence___description--highlighted {
-  color: lightgrey;
+  color: var(--color-light-gray);
 }
 
 .secondaryEvidence___description--highlighted:hover {
-  color: white;
+  color: var(--color-text-highlight);
 }
 
 .secondaryEvidence___description--disabled {
-  color: gray;
+  color: var(--color-medium-gray);
 }
 
 .secondaryEvidence__evidence--icon {

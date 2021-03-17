@@ -1,5 +1,5 @@
 .ghostname__container {
-  background-color: #3e4249;
+  background-color: var(--section-background-color-primary);
   border-top: 2px solid gray;
   display: grid;
   grid-gap: 2px;
@@ -19,7 +19,7 @@
 }
 
 .ghostname__item {
-  color: darkgray;
+  color: var(--color-medium-gray);
   display: inline;
   vertical-align: middle;
   border-radius: 5px;
@@ -28,24 +28,24 @@
 }
 
 .ghostname__item:hover {
-  color: white;
+  color: var(--color-text-highlight);
 }
 
 .ghostname__item:hover {
-  background-color: #3e4249;
+  background-color: var(--section-background-color-primary);
   cursor: pointer;
 }
 
 .ghostname__label {
   text-align: center;
   display: block;
-  color: lightgray;
+  color: var(--color-light-gray);
   grid-area: ghostNameLabel;
 }
 
 .ghostname__result {
   border-radius: 5px;
-  color: lightgray;
+  color: var(--color-light-gray);
   transition: all 0.4s ease 0s;
   display: inline;
   vertical-align: middle;
@@ -58,18 +58,18 @@
 .ghostname__results-reset {
   display: inline;
   vertical-align: middle;
-  color: darkgray;
+  color: var(--color-medium-gray);
   padding-right: 7px !important;
   transition: all 0.4s ease 0s;
 }
 
 .ghostname__results-reset:hover {
   cursor: pointer;
-  color: white;
+  color: var(--color-text-highlight);
 }
 
 .ghostname__results-reset:hover + span {
-  color: red;
+  color: var(--color-bright-red);
   text-decoration: line-through;
   opacity: 0.95;
 }

@@ -1,4 +1,4 @@
 .header__title {
-  color: white;
+  color: var(--color-text-highlight);
   text-align: center;
 }

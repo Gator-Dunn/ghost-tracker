@@ -1,44 +1,44 @@
 .material-icons.yellow-bright {
-  color: #fff600;
+  color: var(--color-bright-yellow);
 }
 
 .material-icons.red-stop {
-  color: #cf142b !important;
+  color: var(--color-bright-red) !important;
 }
 
 .material-icons.orange-warning {
-  color: orangered;
+  color: var(--color-medium-orange);
 }
 
 .material-icons.yellow-caution {
-  color: #eed202;
+  color: var(--color-medium-yellow);
 }
 
 .material-icons.green-good {
-  color: green;
+  color: var(--color-medium-green);
 }
 .material-icons.inverted {
-  color: rgb(0, 0, 0);
+  color: var(--color-dark-gray);
 }
 
 .material-icons.grey-disabled {
-  color: darkgray;
+  color: var(--color-medium-gray);
 }
 
 .material-icons.grey-inactive {
-  color: darkgray;
+  color: var(--color-medium-gray);
 }
 
 .material-icons.grey-inactive:hover {
-  color: lightgray;
+  color: var(--color-light-gray);
 }
 
 .material-icons.grey-active {
-  color: white;
+  color: var(--color-text-highlight);
 }
 
 .material-icons.green-neon {
-  color: #39ff14;
+  color: var(--color-bright-green);
 }
 
 .material-icons.size-small {
@@ -63,7 +63,7 @@
 }
 
 .material-icons.expander:hover {
-  color: white;
+  color: var(--color-text-highlight);
 }
 
 .material-icons {

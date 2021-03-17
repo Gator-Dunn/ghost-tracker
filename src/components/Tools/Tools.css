@@ -1,6 +1,6 @@
 .tools__container {
   width: 100vw;
-  background-color: #3e4249 !important;
+  background-color: var(--section-background-color-primary) !important;
   border-bottom: 2px solid gray;
   border-top: 2px solid gray;
   display: grid;
@@ -20,7 +20,7 @@
 @media (max-width: 1200px) {
   .tools__container {
     width: 100vw;
-    background-color: #3e4249 !important;
+    background-color: var(--section-background-color-primary) !important;
     border-bottom: 2px solid gray;
     border-top: 2px solid gray;
     display: grid;
@@ -41,7 +41,7 @@
 @media (max-width: 1024px) {
   .tools__container {
     width: 100vw;
-    background-color: #3e4249 !important;
+    background-color: var(--section-background-color-primary) !important;
     border-bottom: 2px solid gray;
     border-top: 2px solid gray;
     display: grid;
@@ -62,7 +62,7 @@
 @media (max-width: 768px) {
   .tools__container {
     width: 100vw;
-    background-color: #3e4249 !important;
+    background-color: var(--section-background-color-primary) !important;
     display: grid;
     --auto-grid-min-size: 14rem;
     grid-template-columns: repeat(
@@ -82,7 +82,7 @@
   .tools__container {
     font-size: 0.85em;
     width: 100vw;
-    background-color: #3e4249 !important;
+    background-color: var(--section-background-color-primary) !important;
     display: grid;
     --auto-grid-min-size: 10em;
     grid-template-columns: repeat(
@@ -110,7 +110,7 @@
 /* RandomItem */
 .randomizer__controls {
   grid-area: randomizerControls;
-  color: lightgray;
+  color: var(--color-light-gray);
   align-self: center;
   padding-top: 10px;
   justify-self: center;
@@ -120,7 +120,7 @@
   grid-area: randomizerLabel;
   align-self: center;
   justify-self: flex-end;
-  color: lightgray;
+  color: var(--color-light-gray);
   padding-top: 10px;
 }
 
@@ -214,7 +214,7 @@
 }
 
 .randomizer__slideIn--spinning {
-  color: orangered;
+  color: var(--color-medium-orange);
   position: absolute;
   bottom: var(--randomizer-slideIn-bottom);
   animation-name: slideup;
@@ -225,7 +225,7 @@
 }
 
 .randomizer__slideIn--not-spinning {
-  color: #5a87a3;
+  color: var(--color-text-accent-primary);
   position: absolute;
   bottom: var(--randomizer-slideIn-not-spinning-bottom);
 }
@@ -312,24 +312,24 @@
 
 .randomizer__controls--icon:hover {
   cursor: pointer;
-  color: white;
+  color: var(--color-text-highlight);
 }
 
 .randomizer__default {
-  color: lightgray;
+  color: var(--color-light-gray);
 }
 
 .randomizer__hoverText {
-  color: darkgray;
+  color: var(--color-medium-gray);
 }
 
 .randomizer__selectedText {
-  color: #f6ae2d;
+  color: var(--color-text-accent-secondary);
 }
 
 /* Timer */
 .timer__label {
-  color: lightgray;
+  color: var(--color-light-gray);
   grid-area: timerLabel;
   padding-bottom: 10px;
   align-self: center;
@@ -345,33 +345,33 @@
 
 .timer__counter {
   grid-area: timerCounter;
-  color: darkgray;
+  color: var(--color-medium-gray);
   padding-bottom: 10px;
   align-self: center;
   justify-self: flex-start;
 }
 
 .timer__options span {
-  color: darkgray;
+  color: var(--color-medium-gray);
   padding: 3px 5px 3px 5px;
   border-radius: 5px;
 }
 
 .timer__options span:hover {
-  color: white;
+  color: var(--color-text-highlight);
   cursor: pointer;
 }
 
 .timer__counter--warning {
-  color: yellow !important;
+  color: var(--color-bright-yellow) !important;
 }
 
 .timer__counter--expiring {
-  color: orangered !important;
+  color: var(--color-medium-orange) !important;
 }
 
 .timer__counter--expired span {
-  color: red;
+  color: var(--color-bright-red);
   animation: blinker 2s linear infinite;
 }
 
@@ -381,11 +381,11 @@
 }
 
 .timer__selected {
-  color: green !important;
+  color: var(--color-medium-green) !important;
 }
 
 .timer__options--expired {
-  color: rgba(255, 0, 0, 1) !important;
+  color: var(--color-bright-red) !important;
 }
 
 @keyframes blinker {
@@ -398,10 +398,10 @@
 .resetButton__button {
   grid-area: resetButton;
   width: 144px;
-  color: rgb(224, 224, 224) !important;
+  color: var(--color-text-highlight) !important;
   text-transform: uppercase;
   text-decoration: none;
-  background: #9b201e;
+  background: var(--color-dark-red);
   border-radius: 7px;
   display: inline-block;
   border: none;
@@ -413,11 +413,11 @@
 
 .resetButton__button:hover {
   cursor: pointer !important;
-  color: white;
-  background: #d82f2c !important;
+  color: var(--color-text-highlight);
+  background: var(--color-bright-red) !important;
 }
 
 .resetButton__button:active {
-  color: #fff !important;
-  background: #9b201e !important;
+  color: var(--color-text-highlight) !important;
+  background: var(--color-dark-red) !important;
 }

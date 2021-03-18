@@ -19,7 +19,45 @@
   --color-text-accent-primary: #5a87a3;
   --color-text-accent-secondary: #f6ae2d;
   --color-dark-green: #045c04;
+  --ghost-animation-from: -53%;
+  --ghost-animation-to: 100%;
 }
+
+
+@media (max-width: 1200px) {
+  :root {
+    --ghost-animation-from: -55%;
+    --ghost-animation-to: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --ghost-animation-from: -82%;
+    --ghost-animation-to: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --ghost-animation-from: -85%;
+    --ghost-animation-to: 100%;
+  }
+}
+@media (max-width: 480px) {
+  :root {
+    --ghost-animation-from: -125vw;
+    --ghost-animation-to: 50vw;
+  }
+}
+
+@media (max-width: 375px) {
+  :root {
+    --ghost-animation-from: -135vw;
+    --ghost-animation-to: 50vw;
+  }
+}
+
 
 html {
   width: 100vw !important;
@@ -28,10 +66,14 @@ html {
 }
 
 @media (max-width: 900px) {
-  html { font-size: 15px; }
+  html {
+    font-size: 15px;
+  }
 }
 @media (max-width: 400px) {
-  html { font-size: 13px; }
+  html {
+    font-size: 13px;
+  }
 }
 
 h3 {
@@ -48,7 +90,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -63,38 +105,43 @@ code {
     "ghosts"
     "tools"
     "secondaryEvidence"
-    "version";
+    "version ";
 }
 
 .main__header {
+  display: grid;
   grid-area: header;
   font-size: 1.5rem;
 }
 
 .main__ghostName {
+  display: grid;
   grid-area: ghostName;
   background-color: var(--section-background-color-primary);
 }
 
 .main__evidence {
+  display: grid;
   grid-area: evidence;
   background-color: var(--section-background-color-secondary);
+  border-top: 2px solid var(--color-medium-gray);
+  border-bottom: 2px solid var(--color-medium-gray);
+  width: 100vw;
 }
 
 .main__ghosts {
   grid-area: ghosts;
-  padding-bottom: 5px;
+  position: relative;
+  width: 100vw;
 }
 
 .main__tools {
+  display: grid;
   grid-area: tools;
 }
 
-.main__timer {
-  grid-area: timer;
-}
-
 .main__secondaryEvidence {
+  display: grid;
   grid-area: secondaryEvidence;
 }
 

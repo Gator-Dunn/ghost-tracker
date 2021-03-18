@@ -1,0 +1,40 @@
+.background__ghost {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 99;
+  pointer-events: none;
+  fill: var(--color-text-highlight);
+  animation-name: slider;
+  animation-duration: 2.0s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0,1,1,0);
+  animation-iteration-count: infinite;
+}
+
+@keyframes slider {
+  from {
+    left: var(--ghost-animation-from);
+  }
+  to {
+    left: var(--ghost-animation-to);
+  }
+}
+
+.background__opacity__0 {
+  opacity: 0;
+}
+
+.background__opacity__one_third {
+  opacity: 0.11 !important;
+}
+
+.background__opacity__two_third {
+  opacity: 0.25 !important;
+}
+
+.background__opacity__1 {
+  opacity: 0.75 !important;
+}

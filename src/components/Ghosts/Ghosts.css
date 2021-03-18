@@ -10,6 +10,7 @@
   justify-self: flex-start;
   justify-items: stretch;
   padding-right: 25px;
+  position: relative;
 }
 
 @media (max-width: 1200px) {

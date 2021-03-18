@@ -116,8 +116,8 @@
 
 .secondaryEvidence__evidence__header--open {
   color: var(--color-text-highlight);
-  border-top: 2px solid gray;
-  border-bottom: 2px solid gray;
+  border-top: 2px solid var(--color-medium-gray);
+  border-bottom: 2px solid var(--color-medium-gray);
 }
 .secondaryEvidence__evidence__header:hover {
   cursor: pointer;

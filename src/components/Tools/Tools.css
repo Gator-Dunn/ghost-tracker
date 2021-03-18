@@ -1,8 +1,8 @@
 .tools__container {
   width: 100vw;
   background-color: var(--section-background-color-primary) !important;
-  border-bottom: 2px solid gray;
-  border-top: 2px solid gray;
+  border-bottom: 2px solid var(--color-medium-gray);
+  border-top: 2px solid var(--color-medium-gray);
   display: grid;
   --auto-grid-min-size: 20rem;
   grid-template-columns: repeat(
@@ -21,8 +21,8 @@
   .tools__container {
     width: 100vw;
     background-color: var(--section-background-color-primary) !important;
-    border-bottom: 2px solid gray;
-    border-top: 2px solid gray;
+    border-bottom: 2px solid var(--color-medium-gray);
+    border-top: 2px solid var(--color-medium-gray);
     display: grid;
     --auto-grid-min-size: 18rem;
     grid-template-columns: repeat(
@@ -42,8 +42,8 @@
   .tools__container {
     width: 100vw;
     background-color: var(--section-background-color-primary) !important;
-    border-bottom: 2px solid gray;
-    border-top: 2px solid gray;
+    border-bottom: 2px solid var(--color-medium-gray);
+    border-top: 2px solid var(--color-medium-gray);
     display: grid;
     --auto-grid-min-size: 16rem;
     grid-template-columns: repeat(

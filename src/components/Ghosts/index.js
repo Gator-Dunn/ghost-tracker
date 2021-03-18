@@ -2,6 +2,8 @@ import React from "react";
 import classNames from "classnames";
 import { useStore } from "../../StoreProvider";
 import { actionTypes } from "../../reducers/useGhosts";
+import Background from "../Background";
+
 import "./Ghosts.css";
 
 const Ghosts = () => {
@@ -43,22 +45,23 @@ const Ghosts = () => {
   );
 
   return (
-    <span className="ghost__list">
-      {ghostMap
-        ? ghostMap.map((ghost) => (
-            <span
-              key={ghost.ghostName}
-              onClick={() => handleClick(ghost)}
-              className={classNames("ghost__button", {
-                [`ghost__button-${ghost.status}`]: true,
-                "ghost__button-last": isLastGhost(ghost.ghostName),
-              })}
-            >
-              {ghost.ghostName}
-            </span>
-          ))
-        : null}
-    </span>
+      <span className="ghost__list">
+        {ghostMap
+          ? ghostMap.map((ghost) => (
+              <span
+                key={ghost.ghostName}
+                onClick={() => handleClick(ghost)}
+                className={classNames("ghost__button", {
+                  [`ghost__button-${ghost.status}`]: true,
+                  "ghost__button-last": isLastGhost(ghost.ghostName),
+                })}
+              >
+                {ghost.ghostName}
+              </span>
+            ))
+          : null}
+          <Background />
+      </span>
   );
 };
 

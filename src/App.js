@@ -6,7 +6,7 @@ import Evidence from "./components/Evidence";
 import Ghosts from "./components/Ghosts";
 import GhostName from "./components/GhostName";
 import SecondaryEvidence from "./components/SecondaryEvidence";
-import Version from './components/Version';
+import Version from "./components/Version";
 import { StoreProvider } from "./StoreProvider";
 
 function App() {
@@ -32,9 +32,9 @@ function App() {
       render: <SecondaryEvidence />,
     },
     {
-      key: 'version',
+      key: "version",
       render: <Version />,
-    }
+    },
   ];
 
   return (

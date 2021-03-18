@@ -8,10 +8,42 @@
   pointer-events: none;
   fill: var(--color-text-highlight);
   animation-name: slider;
-  animation-duration: 2.0s;
+  animation-duration: 6.0s;
   animation-fill-mode: forwards;
-  animation-timing-function: cubic-bezier(0,1,1,0);
-  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0,0.5,0.5,0);
+  animation-iteration-count: 1;
+  /* opacity: 0; */
+}
+
+.background__opacity__0 {
+  opacity: 0;
+}
+
+.background__opacity__one_third {
+  opacity: 0.11 !important;
+  animation-name: slider;
+  animation-duration: 6.0s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0,0.5,0.5,0);
+  animation-iteration-count: 1;
+}
+
+.background__opacity__two_third {
+  opacity: 0.25 !important;
+  animation-name: slider;
+  animation-duration: 6.0s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0,0.5,0.5,0);
+  animation-iteration-count: 2;
+}
+
+.background__opacity__1 {
+  opacity: 0.75 !important;
+  animation-name: slider;
+  animation-duration: 6.0s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0,0.5,0.5,0);
+  animation-iteration-count: 3;
 }
 
 @keyframes slider {
@@ -21,20 +53,4 @@
   to {
     left: var(--ghost-animation-to);
   }
-}
-
-.background__opacity__0 {
-  opacity: 0;
-}
-
-.background__opacity__one_third {
-  opacity: 0.11 !important;
-}
-
-.background__opacity__two_third {
-  opacity: 0.25 !important;
-}
-
-.background__opacity__1 {
-  opacity: 0.75 !important;
 }

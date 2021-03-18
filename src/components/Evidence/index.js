@@ -9,6 +9,12 @@ const Evidence = () => {
   const {
     evidence: { toggleExclude, toggleConfirm, state },
   } = useStore();
+
+  const isActive = React.useCallback(
+    (evidence, type) => state[type].includes(evidence),
+    [state]
+  );
+
   const evidenceMap = React.useMemo(() => {
     const confirmed = state.confirmed.map((evidenceName) => ({
       class: STATUS.confirmed.class,
@@ -40,7 +46,6 @@ const Evidence = () => {
         dataset: { evidence, action },
       },
     } = e;
-    // console.log("handleClick", { e, action, evidence });
     switch (action) {
       case "exclude":
         toggleExclude(evidence);
@@ -56,24 +61,33 @@ const Evidence = () => {
   return (
     <span className="evidence__items">
       {evidenceMap.map((e, key) => (
-        <span
-          className="evidence__item"
-          key={key}
-        >
+        <span className="evidence__item" key={key}>
           <span className="evidence__status">
-            <span onClick={handleClick} className="evidence__status__exclude">
+            <span onClick={handleClick}>
               <Icon
                 data-evidence={e.evidenceName}
                 data-action="exclude"
                 icon="not_interested"
+                classes={[
+                  "evidence__status__exclude",
+                  isActive(e.evidenceName, "excluded")
+                    ? "red-stop"
+                    : "grey-disabled",
+                ]}
                 size="large"
               />
             </span>
-            <span onClick={handleClick} className="evidence__status__confirm">
+            <span onClick={handleClick}>
               <Icon
                 data-evidence={e.evidenceName}
                 data-action="confirm"
-                icon={e.statusIcon}
+                icon="task_alt"
+                classes={[
+                  "evidence__status__confirm",
+                  isActive(e.evidenceName, "confirmed")
+                    ? "green-good"
+                    : "grey-disabled",
+                ]}
                 size="large"
               />
             </span>

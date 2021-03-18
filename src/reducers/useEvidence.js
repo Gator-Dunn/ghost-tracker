@@ -196,22 +196,6 @@ export const reducer = (state = INITIAL_STATE.evidence, { type, payload }) => {
 const useEvidence = () => {
   const [state, dispatch] = React.useReducer(reducer, INITIAL_STATE.evidence);
 
-  const incrementStatus = (payload) => {
-    if (state.confirmed.includes(payload)) {
-      dispatch({ payload, type: actionTypes.add.excluded });
-    }
-
-    if (state.excluded.includes(payload)) {
-      dispatch({ payload, type: actionTypes.add.unconfirmed });
-    }
-
-    if (state.unconfirmed.includes(payload)) {
-      dispatch({ payload, type: actionTypes.add.confirmed });
-    }
-
-    dispatch({ payload, type: actionTypes.validate });
-  };
-
   const toggleGhostEvidence = (payload) => {
     dispatch({ payload, type: actionTypes.toggleGhostEvidence });
     dispatch({ payload, type: actionTypes.validate });
@@ -232,7 +216,6 @@ const useEvidence = () => {
   return {
     toggleConfirm,
     toggleExclude,
-    incrementStatus,
     resetEvidence,
     state,
     toggleGhostEvidence,

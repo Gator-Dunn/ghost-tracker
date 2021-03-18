@@ -10,7 +10,8 @@
   --color-dark-red: #9b201e;
   --color-medium-yellow: #eed202;
   --color-medium-orange: #f56414;
-  --color-medium-green: #0a6e14;
+  --color-medium-green: #259c31;
+  --color-dark-green: #045c04;
   --color-dark-gray: #121212;
   --color-medium-gray: #919090;
   --color-bright-green: #39ff14;
@@ -18,7 +19,6 @@
   --color-light-gray: #bfbfbf;
   --color-text-accent-primary: #5a87a3;
   --color-text-accent-secondary: #f6ae2d;
-  --color-dark-green: #045c04;
   --ghost-animation-from: -53%;
   --ghost-animation-to: 100%;
 }

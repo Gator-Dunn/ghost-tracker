@@ -7,12 +7,12 @@ import { ReactComponent as ScaryGhost } from "./ghost.svg";
 
 const Background = () => {
   const {
-    evidence: {
-      state: { confirmed },
-    },
+    ghosts: {
+      state: { valid },
+    }
   } = useStore();
 
-  const key = React.useMemo(() => confirmed && nanoid(), [confirmed]);
+  const key = React.useMemo(() => valid && nanoid(), [valid]);
 
   return (
     <div key={key} className={classNames("background__ghost")}>
@@ -20,7 +20,7 @@ const Background = () => {
         {
           0: <span  className="background__opacity__0">{" "}</span>,
           1: (
-            <span className="background__opacity__one_third">
+            <span className="background__opacity__1">
               <ScaryGhost height="100%" />
             </span>
           ),
@@ -30,11 +30,11 @@ const Background = () => {
             </span>
           ),
           3: (
-            <span  className="background__opacity__1">
+            <span  className="background__opacity__one_third">
               <ScaryGhost height="100%" />
             </span>
           ),
-        }[confirmed.length]
+        }[valid.length]
       }
     </div>
   );

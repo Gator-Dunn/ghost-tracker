@@ -47,14 +47,14 @@
 @media (max-width: 480px) {
   :root {
     --ghost-animation-from: -125vw;
-    --ghost-animation-to: 50vw;
+    --ghost-animation-to: 75vw;
   }
 }
 
 @media (max-width: 375px) {
   :root {
     --ghost-animation-from: -135vw;
-    --ghost-animation-to: 50vw;
+    --ghost-animation-to: 70vw;
   }
 }
 

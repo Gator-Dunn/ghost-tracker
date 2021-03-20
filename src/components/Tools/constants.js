@@ -68,7 +68,7 @@ export const ITEMS = [
     id: "flashlight",
     display: "Flashlight",
     category: ITEM_CATEGORIES.starter,
-    types: [ITEM_TYPES.evidence, ITEM_TYPES.light]
+    types: [ITEM_TYPES.light]
   },
   {
     id: "objectiveBoard",
@@ -170,7 +170,7 @@ export const ITEMS = [
     id: "parabolicMicrophone",
     display: "Parabolic Microphone",
     category: ITEM_CATEGORIES.purchasable,
-    types: [ITEM_TYPES.junk]
+    types: [ITEM_TYPES.objectives]
   },
   {
     id: "saltShaker",

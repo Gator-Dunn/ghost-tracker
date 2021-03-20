@@ -1,4 +1,5 @@
 .ghostname__container {
+  font-size: 1.4rem;
   background-color: var(--section-background-color-primary);
   border-top: 2px solid var(--color-medium-gray);
   display: grid;

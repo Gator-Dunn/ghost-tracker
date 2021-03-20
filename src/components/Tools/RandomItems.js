@@ -45,23 +45,34 @@ const RandomItems = () => {
 
   const setRandomItem = (type) => {
     const random = randomizer(state[type]);
+    let newItemList;
+
+    if (!random) {
+      return;
+    }
 
     if (!state.randomItem || state.randomItem.id !== random.id) {
-      const newItemList = state[type].filter((i) => i.id !== random.id);
+      newItemList = state[type].filter((i) => i.id !== random.id);
+    }
+
+    if (newItemList.length > 0) {
       updateState({
-        randomItem: newItemList.length === 0 ? state.randomItem : random,
+        randomItem: random,
         [type]: newItemList,
+      });
+    } else {
+      updateState({
+        randomItem: random,
+        [type]: ITEMS.filter((i) => i.types.includes(type))
       });
     }
   };
 
   const handleClick = (e) => {
     const { type } = e.target.dataset;
-
-    if (state.spinning || state[type].length === 0) {
+    if (state.spinning) {
       return;
     }
-
     updateState({
       activeType: type,
       spinning: true,
@@ -71,7 +82,7 @@ const RandomItems = () => {
     let modifierCounter = 0;
 
     const spinner = setInterval(() => {
-      if (modifierCounter < 2) {
+      if (modifierCounter <= 2) {
         if (counter < state[type].length) {
           counter++;
           updateState({
@@ -103,21 +114,19 @@ const RandomItems = () => {
 
   const result = React.useMemo(
     () => (
-      // <span className="randomizer__result__container">
+      <span
+        key={(state.randomItem && state.randomItem.id) || "emptyResult"}
+        className={classNames("randomizer__result")}
+      >
         <span
-          key={(state.randomItem && state.randomItem.id) || "emptyResult"}
-          className={classNames("randomizer__result")}
+          className={classNames({
+            "randomizer__slideIn--spinning": state.spinning,
+            "randomizer__slideIn--not-spinning": !state.spinning,
+          })}
         >
-          <span
-            className={classNames({
-              "randomizer__slideIn--spinning": state.spinning,
-              "randomizer__slideIn--not-spinning": !state.spinning,
-            })}
-          >
-            {(state.randomItem && state.randomItem.display) || ""}
-          </span>
+          {(state.randomItem && state.randomItem.display) || ""}
         </span>
-      // </span>
+      </span>
     ),
     [state]
   );

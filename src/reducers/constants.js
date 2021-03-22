@@ -35,4 +35,3 @@ export const INITIAL_STATE = {
     isCellPhoneSized: false,
   }
 };
-console.log('item types', INITIAL_STATE)

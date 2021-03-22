@@ -50,7 +50,7 @@ const Header = () => {
                   "randomizer__section_link--active":
                     state.randomizer.activeSection === id,
                 })}
-              >{console.log('state', state)}
+              >
                 {display}
               </span>
             ))}

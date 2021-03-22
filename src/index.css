@@ -1,7 +1,8 @@
 :root {
-  --background-color: #31343a;
-  --section-background-color-primary: #3e4249;
-  --section-background-color-secondary: #2f4858;
+  --background-color: #223;
+  --section-background-color-primary: #212f45;
+  --section-background-color-secondary: #303036;
+  --section-background-color-tertiary: #1b263b;
   --button-color: #184e77;
   --button-color-active: #1a759f;
   --button-color-invalid: #ddd;
@@ -19,10 +20,12 @@
   --color-light-gray: #bfbfbf;
   --color-text-accent-primary: #5a87a3;
   --color-text-accent-secondary: #f6ae2d;
+  --color-text-accent-tertiary: #8ab5cf;
   --ghost-animation-from: -53%;
   --ghost-animation-to: 100%;
+  /* Randomizer */
+  --randomizer-item-width: calc(100% / 4);
 }
-
 
 @media (max-width: 1200px) {
   :root {
@@ -48,6 +51,7 @@
   :root {
     --ghost-animation-from: -125vw;
     --ghost-animation-to: 75vw;
+    --randomizer-item-width: 120px;
   }
 }
 
@@ -55,14 +59,15 @@
   :root {
     --ghost-animation-from: -135vw;
     --ghost-animation-to: 70vw;
+    --randomizer-item-width: 100px;
   }
 }
-
 
 html {
   width: 100vw !important;
   overflow-x: hidden;
   font-size: 17px;
+  user-select: none;
 }
 
 @media (max-width: 900px) {
@@ -78,6 +83,7 @@ html {
 
 h3 {
   font-size: 1em;
+  font-weight: normal;
 }
 
 body {
@@ -85,7 +91,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--background-color);
   font-family: "Indie Flower", cursive;
-  padding: 0;
+  padding: 10px;
   margin: 0;
 }
 
@@ -93,46 +99,45 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.main {
+div#root {
+  display: grid;
   user-select: none;
   display: grid;
-  grid-template-columns: 100vw;
+  grid-template-columns: 1fr;
   grid-template-areas:
     "header"
-    "ghostName"
-    "evidence"
-    "ghosts"
-    "tools"
-    "secondaryEvidence"
+    "EvidenceWrapper"
+    "RandomizerWrapper"
     "version ";
+}
+.main {
 }
 
 .main__header {
   display: grid;
   grid-area: header;
   font-size: 1.5rem;
+  margin: 0 0 5px 0;
 }
 
 .main__ghostName {
   display: grid;
   grid-area: ghostName;
   background-color: var(--section-background-color-primary);
+  margin: 0 0 10px 0;
 }
 
 .main__evidence {
   display: grid;
   grid-area: evidence;
   background-color: var(--section-background-color-secondary);
-  border-top: 2px solid var(--color-medium-gray);
-  border-bottom: 2px solid var(--color-medium-gray);
-  width: 100vw;
+  border: 2px solid var(--color-medium-gray);
+  border-radius: 5px;
 }
 
 .main__ghosts {
   grid-area: ghosts;
   position: relative;
-  width: 100vw;
 }
 
 .main__tools {
@@ -146,5 +151,10 @@ code {
 }
 
 .main__version {
+  display: grid;
   grid-area: version;
+  font-size: 0.75em;
+  color: var(--color-medium-gray);
+  text-align: center;
+  padding: 15px;
 }

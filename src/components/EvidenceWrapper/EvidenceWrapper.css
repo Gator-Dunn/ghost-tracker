@@ -1,0 +1,15 @@
+.evidence__wrapper {
+  display: grid;
+  grid-area: EvidenceWrapper;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "ghostName"
+    "evidence"
+    "ghosts"
+    "tools"
+    "secondaryEvidence";
+  /* justify-content: center; */
+  /* grid-template-rows: repeat(auto-fill, 1fr); */
+  width: 95vw;
+  align-items: flex-start;
+}

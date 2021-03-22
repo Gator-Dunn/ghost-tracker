@@ -1,12 +1,11 @@
 .ghostname__container {
   font-size: 1.4rem;
   background-color: var(--section-background-color-primary);
-  border-top: 2px solid var(--color-medium-gray);
+  border: 2px solid var(--color-medium-gray);
+  border-radius: 5px;
   display: grid;
   grid-gap: 2px;
   justify-items: center;
-  width: 100vw;
-  min-width: 100vw;
   padding: 5px;
   grid-template: 
     "ghostNameLabel"

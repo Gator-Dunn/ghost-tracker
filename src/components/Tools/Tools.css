@@ -1,8 +1,8 @@
 .tools__container {
-  width: 100vw;
+  width: 95vw;
   background-color: var(--section-background-color-primary) !important;
-  border-bottom: 2px solid var(--color-medium-gray);
-  border-top: 2px solid var(--color-medium-gray);
+  border: 2px solid var(--color-medium-gray);
+  border-radius: 5px;
   display: grid;
   --auto-grid-min-size: 20rem;
   grid-template-columns: repeat(
@@ -19,10 +19,9 @@
 
 @media (max-width: 1200px) {
   .tools__container {
-    width: 100vw;
+    width: 95vw;
     background-color: var(--section-background-color-primary) !important;
     border-bottom: 2px solid var(--color-medium-gray);
-    border-top: 2px solid var(--color-medium-gray);
     display: grid;
     --auto-grid-min-size: 18rem;
     grid-template-columns: repeat(
@@ -40,10 +39,8 @@
 
 @media (max-width: 1024px) {
   .tools__container {
-    width: 100vw;
+    width: 95vw;
     background-color: var(--section-background-color-primary) !important;
-    border-bottom: 2px solid var(--color-medium-gray);
-    border-top: 2px solid var(--color-medium-gray);
     display: grid;
     --auto-grid-min-size: 16rem;
     grid-template-columns: repeat(
@@ -61,7 +58,7 @@
 
 @media (max-width: 768px) {
   .tools__container {
-    width: 100vw;
+    width: 95vw;
     background-color: var(--section-background-color-primary) !important;
     display: grid;
     --auto-grid-min-size: 14rem;
@@ -81,7 +78,7 @@
 @media (max-width: 480px) {
   .tools__container {
     font-size: 0.85em;
-    width: 100vw;
+    width: 95vw;
     background-color: var(--section-background-color-primary) !important;
     display: grid;
     --auto-grid-min-size: 10em;
@@ -100,7 +97,7 @@
 }
 
 .tools__divider {
-  width: 100vw;
+  width: 95vw;
   grid-area: divider;
   border: 0;
   border-bottom: 1px solid rgb(99, 99, 99);
@@ -208,8 +205,6 @@
   position: relative;
   width: calc(100vw / 3);
   height: var(--randomizer-height);
-  /* left: var(--randomizer-result-left); */
-  /* text-align: left; */
   justify-self: center;
 }
 

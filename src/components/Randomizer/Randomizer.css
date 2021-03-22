@@ -260,7 +260,6 @@
 }
 
 .randomizer__edit_items {
-  color: var(--color-medium-gray);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -279,4 +278,13 @@
 .randomizer__edit_items span label:hover {
   color: var(--color-text-highlight);
   cursor: pointer;
+}
+
+.randomizer__item_label--active {
+  color: var(--color-text-highlight);
+}
+
+.randomizer__item_label--inactive {
+  color: var(--color-medium-gray);
+  text-decoration: line-through;
 }

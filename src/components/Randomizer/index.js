@@ -59,16 +59,16 @@ const Randomizer = ({ label, filter, gridAreas, keyName, speed, ...props }) => {
           </span>
         </span>
         <span className="randomizer__results_section">
-            {state.selected && (
-              <RandomItem
-                className={classNames("randomizer__results", {
-                  "randomizer__results--spinning": state.spinning,
-                })}
-                key={`${keyName}_results`}
-                filter={filter}
-                item={state.selected}
-              />
-            )}
+          {state.selected && (
+            <RandomItem
+              className={classNames("randomizer__results", {
+                "randomizer__results--spinning": state.spinning,
+              })}
+              key={`${keyName}_results`}
+              filter={filter}
+              item={state.selected}
+            />
+          )}
         </span>
         <span className="randomizer__edit_section">
           <span className="randomizer__edit_details">
@@ -88,7 +88,13 @@ const Randomizer = ({ label, filter, gridAreas, keyName, speed, ...props }) => {
                   value={item.display}
                   onChange={handleCheckbox}
                 />
-                <label htmlFor={item.id}>
+                <label
+                  className={classNames({
+                    "randomizer__item_label--active": state.checkboxes[item.id],
+                    "randomizer__item_label--inactive": !state.checkboxes[item.id],
+                  })}
+                  htmlFor={item.id}
+                >
                   {appState.isDesktopSized ? item.display : item.displayShort}
                 </label>
               </span>

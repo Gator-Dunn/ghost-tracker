@@ -103,14 +103,13 @@ div#root {
   display: grid;
   user-select: none;
   display: grid;
+  justify-items: center;
   grid-template-columns: 1fr;
   grid-template-areas:
     "header"
     "EvidenceWrapper"
     "RandomizerWrapper"
     "version ";
-}
-.main {
 }
 
 .main__header {

@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/ghost-tracker/static/css/main.5a61f3d9.chunk.css",
-    "main.js": "/ghost-tracker/static/js/main.7248b037.chunk.js",
-    "main.js.map": "/ghost-tracker/static/js/main.7248b037.chunk.js.map",
+    "main.css": "/ghost-tracker/static/css/main.d402335f.chunk.css",
+    "main.js": "/ghost-tracker/static/js/main.6402b0ee.chunk.js",
+    "main.js.map": "/ghost-tracker/static/js/main.6402b0ee.chunk.js.map",
     "runtime-main.js": "/ghost-tracker/static/js/runtime-main.c56a5cc9.js",
     "runtime-main.js.map": "/ghost-tracker/static/js/runtime-main.c56a5cc9.js.map",
     "static/js/2.845602de.chunk.js": "/ghost-tracker/static/js/2.845602de.chunk.js",
@@ -10,14 +10,14 @@
     "static/js/3.97ca242a.chunk.js": "/ghost-tracker/static/js/3.97ca242a.chunk.js",
     "static/js/3.97ca242a.chunk.js.map": "/ghost-tracker/static/js/3.97ca242a.chunk.js.map",
     "index.html": "/ghost-tracker/index.html",
-    "static/css/main.5a61f3d9.chunk.css.map": "/ghost-tracker/static/css/main.5a61f3d9.chunk.css.map",
+    "static/css/main.d402335f.chunk.css.map": "/ghost-tracker/static/css/main.d402335f.chunk.css.map",
     "static/js/2.845602de.chunk.js.LICENSE.txt": "/ghost-tracker/static/js/2.845602de.chunk.js.LICENSE.txt",
     "static/media/ghost.d87487b2.svg": "/ghost-tracker/static/media/ghost.d87487b2.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.c56a5cc9.js",
     "static/js/2.845602de.chunk.js",
-    "static/css/main.5a61f3d9.chunk.css",
-    "static/js/main.7248b037.chunk.js"
+    "static/css/main.d402335f.chunk.css",
+    "static/js/main.6402b0ee.chunk.js"
   ]
 }

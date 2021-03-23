@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/ghost-tracker/static/css/main.d402335f.chunk.css",
-    "main.js": "/ghost-tracker/static/js/main.6402b0ee.chunk.js",
-    "main.js.map": "/ghost-tracker/static/js/main.6402b0ee.chunk.js.map",
-    "runtime-main.js": "/ghost-tracker/static/js/runtime-main.c56a5cc9.js",
-    "runtime-main.js.map": "/ghost-tracker/static/js/runtime-main.c56a5cc9.js.map",
-    "static/js/2.845602de.chunk.js": "/ghost-tracker/static/js/2.845602de.chunk.js",
-    "static/js/2.845602de.chunk.js.map": "/ghost-tracker/static/js/2.845602de.chunk.js.map",
-    "static/js/3.97ca242a.chunk.js": "/ghost-tracker/static/js/3.97ca242a.chunk.js",
-    "static/js/3.97ca242a.chunk.js.map": "/ghost-tracker/static/js/3.97ca242a.chunk.js.map",
+    "main.css": "/ghost-tracker/static/css/main.62df8f62.chunk.css",
+    "main.js": "/ghost-tracker/static/js/main.e3b8149e.chunk.js",
+    "main.js.map": "/ghost-tracker/static/js/main.e3b8149e.chunk.js.map",
+    "runtime-main.js": "/ghost-tracker/static/js/runtime-main.0215b082.js",
+    "runtime-main.js.map": "/ghost-tracker/static/js/runtime-main.0215b082.js.map",
+    "static/js/2.5e70a0b7.chunk.js": "/ghost-tracker/static/js/2.5e70a0b7.chunk.js",
+    "static/js/2.5e70a0b7.chunk.js.map": "/ghost-tracker/static/js/2.5e70a0b7.chunk.js.map",
+    "static/js/3.f28fc99c.chunk.js": "/ghost-tracker/static/js/3.f28fc99c.chunk.js",
+    "static/js/3.f28fc99c.chunk.js.map": "/ghost-tracker/static/js/3.f28fc99c.chunk.js.map",
     "index.html": "/ghost-tracker/index.html",
-    "static/css/main.d402335f.chunk.css.map": "/ghost-tracker/static/css/main.d402335f.chunk.css.map",
-    "static/js/2.845602de.chunk.js.LICENSE.txt": "/ghost-tracker/static/js/2.845602de.chunk.js.LICENSE.txt",
+    "static/css/main.62df8f62.chunk.css.map": "/ghost-tracker/static/css/main.62df8f62.chunk.css.map",
+    "static/js/2.5e70a0b7.chunk.js.LICENSE.txt": "/ghost-tracker/static/js/2.5e70a0b7.chunk.js.LICENSE.txt",
     "static/media/ghost.d87487b2.svg": "/ghost-tracker/static/media/ghost.d87487b2.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.c56a5cc9.js",
-    "static/js/2.845602de.chunk.js",
-    "static/css/main.d402335f.chunk.css",
-    "static/js/main.6402b0ee.chunk.js"
+    "static/js/runtime-main.0215b082.js",
+    "static/js/2.5e70a0b7.chunk.js",
+    "static/css/main.62df8f62.chunk.css",
+    "static/js/main.e3b8149e.chunk.js"
   ]
 }

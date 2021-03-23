@@ -6,14 +6,14 @@ import RandomizerWrapper from "../RandomizerWrapper";
 const Main = () => {
   const history = useHistory();
   const match = useRouteMatch({
-    path: "/ghost-tracker",
+    path: "/",
     exact: true,
   });
 
   React.useEffect(() => {
     const redirectFromRoot = () => {
       if (match) {
-        history.push("/ghost-tracker/investigation");
+        history.push("/investigation");
       }
     };
     redirectFromRoot();
@@ -21,10 +21,10 @@ const Main = () => {
 
   return (
     <Switch>
-      <Route path="/ghost-tracker/investigation">
+      <Route path="/investigation">
         <EvidenceWrapper />
       </Route>
-      <Route path="/ghost-tracker/randomizer">
+      <Route path="/randomizer">
         <RandomizerWrapper />
       </Route>
     </Switch>

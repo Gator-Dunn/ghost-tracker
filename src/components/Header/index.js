@@ -33,11 +33,11 @@ const HeaderSubLink = ({ label, to }) => {
 
 const Header = () => {
   const baseMatch = useRouteMatch({
-    path: "/ghost-tracker",
+    path: "/",
   });
 
   const investigationMatch = useRouteMatch({
-    path: "/ghost-tracker/investigation",
+    path: "/investigation",
   });
 
   return (
@@ -45,26 +45,26 @@ const Header = () => {
       <h3 className="header__title">Phasmophobia Toolbox</h3>
       <span className="header__links">
         <HeaderLink
-          to={`${baseMatch.path}/investigation`}
+          to={"/investigation"}
           label="Investigation"
         />
-        <HeaderLink match={`${baseMatch.path}/randomizer`} to={`${baseMatch.path}/randomizer/all`} label="Randomizer" />
+        <HeaderLink match={"/randomizer"} to={"/randomizer/all"} label="Randomizer" />
         {!investigationMatch && (
           <div>
             <HeaderSubLink
-              to={`${baseMatch.path}/randomizer/all`}
+              to={"/randomizer/all"}
               label="All Items"
             />
             <HeaderSubLink
-              to={`${baseMatch.path}/randomizer/evidence`}
+              to={"/randomizer/evidence"}
               label="Evidence"
             />
             <HeaderSubLink
-              to={`${baseMatch.path}/randomizer/objectives`}
+              to={"/randomizer/objectives"}
               label="Objectives"
             />
             <HeaderSubLink
-              to={`${baseMatch.path}/randomizer/junk`}
+              to={"/randomizer/junk"}
               label="Junk"
             />
           </div>

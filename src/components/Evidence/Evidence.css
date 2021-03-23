@@ -1,18 +1,26 @@
 .evidence__items {
   display: flex;
   flex-wrap: wrap;
-  padding: 10px;
-  justify-self: flex-end;
+  justify-content: space-between;
 }
 
 .evidence__item {
-  vertical-align: middle;
-  display: flex;
-  flex: 30%;
+  color: var(--color-medium-gray);
 }
 
+.evidence__item + .evidence__item {
+  margin-left: 2%;
+}
+
+.evidence__item:first-child {
+  margin-left: 2%;
+}
+
+.evidence__item:last-child {
+  margin-left: 0;
+}
 .evidence__status {
-  display: flex;
+  display: inline;
 }
 
 .evidence__item--name {

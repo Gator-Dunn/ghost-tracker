@@ -6,3 +6,9 @@
   grid-area: RandomizerWrapper;
   width: 95vw;
 }
+
+.randomizer__wrapper h3 {
+  color: var(--color-text-accent-tertiary);
+  text-align: center;
+  font-size: 1.2rem;
+}

@@ -13,35 +13,55 @@
   padding-top: 0;
 }
 
-.header__links span {
+.header__links a {
   padding: 0 10px 5px 0;
   cursor: pointer;
 }
 
-.header__link-active {
+.header__link--active a {
   color: var(--color-text-accent-secondary);
   text-decoration: underline;
 }
 
-.header__link-inactive {
+.header__link--inactive a {
   color: var(--color-medium-gray);
 }
-.header__link-inactive:hover {
+
+.header__link--inactive a:hover {
   color: var(--color-text-highlight);
   text-decoration: underline;
 }
 
-.randomizer__section_link {
+.randomizer__section_link a {
   color: var(--color-medium-gray);
   font-size: 0.8rem;
 }
 
-.randomizer__section_link:hover {
+.randomizer__section_link a:hover {
   color: var(--color-light-gray);
   text-decoration: underline;
 }
 
-.randomizer__section_link--active {
+.randomizer__section_link--active a {
   color: var(--color-text-accent-tertiary);
   text-decoration: underline;
+}
+
+.randomizer__section_link--active a:hover {
+  color: var(--color-text-accent-tertiary);
+  text-decoration: underline !important;
+}
+
+.randomizer__section_link--inactive a:hover {
+  color: var(--color-text-highlight);
+  text-decoration: underline !important;
+}
+
+.randomizer__section_link::after {
+  content: "| ";
+  color: var(--color-medium-gray);
+}
+
+.randomizer__section_link:last-child::after {
+  content: "";
 }

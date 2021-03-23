@@ -142,7 +142,7 @@ const useRandomizer = (initialState = defaultInitialState) => {
       if (count < state.original.items.length) {
         dispatch({
           type: actionTypes.set,
-          payload: state.items[count],
+          payload: state.original.items[count],
         });
         count++;
       } else {

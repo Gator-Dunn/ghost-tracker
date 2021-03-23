@@ -1,27 +1,29 @@
 import React from "react";
-import { useStore } from "../../StoreProvider";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 import Randomizer from "../Randomizer";
 import { RANDOMIZERS } from "./constants";
 import "./RandomizerWrapper.css";
 
 const RandomizerWrapper = () => {
-  const {
-    appState: { state },
-  } = useStore();
+  let match = useRouteMatch();
+
   return (
     <div className="randomizer__wrapper">
-      {RANDOMIZERS.filter((r) => r.filter === state.randomizer.activeSection).map(
-        ({ filter, gridAreas, key, label, speed }) => (
-          <Randomizer
-            filter={filter}
-            gridAreas={gridAreas}
-            key={key}
-            keyName={key}
-            label={label}
-            speed={speed}
-          />
-        )
-      )}
+      <Switch>
+        {RANDOMIZERS.map(({filter, key, path, speed}) => (
+          <Route key={`route_${key}`} path={`${match.path}/${path}`}>
+            <Randomizer
+              filter={filter}
+              key={key}
+              keyName={key}
+              speed={speed}
+            />
+          </Route>
+        ))}
+        <Route path={`${match.path}/`}>
+          <h3>Select an Item Category</h3>
+        </Route>
+      </Switch>
     </div>
   );
 };

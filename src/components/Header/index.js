@@ -1,62 +1,73 @@
 import classNames from "classnames";
 import React from "react";
-import { useStore } from "../../StoreProvider";
-import { RANDOMIZER_SECTIONS } from "./constants";
+import { Link, useRouteMatch } from "react-router-dom";
 import "./Header.css";
 
-const Header = () => {
-  const {
-    appState: { state, setActive, setActiveRandomizer },
-  } = useStore();
+const HeaderLink = ({ label, match, to }) => {
+  const routeMatch = useRouteMatch({
+    path: match || to,
+  });
 
-  const handleClick = ({
-    target: {
-      dataset: { section },
-    },
-  }) => {
-    setActive(section);
-  };
+  return (
+    <span className={routeMatch ? "header__link--active" : "header__link--inactive"}>
+      <Link to={to}>{label}</Link>
+    </span>
+  );
+};
+
+const HeaderSubLink = ({ label, to }) => {
+  const match = useRouteMatch({
+    path: to,
+  });
+  return (
+    <span
+      className={classNames("randomizer__section_link", {
+        "randomizer__section_link--active": match,
+        "randomizer__section_link--inactive": !match,
+      })}
+    >
+      <Link to={to}>{label}</Link>
+    </span>
+  );
+};
+
+const Header = () => {
+  const baseMatch = useRouteMatch({
+    path: "/ghost-tracker",
+  });
+
+  const investigationMatch = useRouteMatch({
+    path: "/ghost-tracker/investigation",
+  });
 
   return (
     <header className="main__header">
       <h3 className="header__title">Phasmophobia Toolbox</h3>
       <span className="header__links">
-        <span
-          className={`header__link-${
-            state.evidence.visible ? "active" : "inactive"
-          }`}
-          data-section="evidence"
-          onClick={handleClick}
-        >
-          Identification
-        </span>
-        <span
-          className={`header__link-${
-            state.randomizer.visible ? "active" : "inactive"
-          }`}
-          data-section="randomizer"
-          onClick={handleClick}
-        >
-          Randomizer
-        </span>
-        {state.randomizer.visible ? (
+        <HeaderLink
+          to={`${baseMatch.path}/investigation`}
+          label="Investigation"
+        />
+        <HeaderLink match={`${baseMatch.path}/randomizer`} to={`${baseMatch.path}/randomizer/all`} label="Randomizer" />
+        {!investigationMatch && (
           <div>
-            {RANDOMIZER_SECTIONS.map(({ id, display }) => (
-              <span
-                key={id}
-                onClick={() => setActiveRandomizer(id)}
-                role="link"
-                className={classNames("randomizer__section_link", {
-                  "randomizer__section_link--active":
-                    state.randomizer.activeSection === id,
-                })}
-              >
-                {display}
-              </span>
-            ))}
+            <HeaderSubLink
+              to={`${baseMatch.path}/randomizer/all`}
+              label="All Items"
+            />
+            <HeaderSubLink
+              to={`${baseMatch.path}/randomizer/evidence`}
+              label="Evidence"
+            />
+            <HeaderSubLink
+              to={`${baseMatch.path}/randomizer/objectives`}
+              label="Objectives"
+            />
+            <HeaderSubLink
+              to={`${baseMatch.path}/randomizer/junk`}
+              label="Junk"
+            />
           </div>
-        ) : (
-          ""
         )}
       </span>
     </header>

@@ -6,11 +6,11 @@ import useRandomizer from "../../reducers/useRandomizer";
 import { ITEM_TYPE_MAP } from "./constants";
 import "./Randomizer.css";
 
-const RandomItem = ({ filter, item: { display, id }, ...props }) => {
+const RandomItem = ({ colors, filter, item: { display, id }, ...props }) => {
   const colorIndex = ITEM_TYPE_MAP[filter].items.findIndex((i) => i.id === id);
-  const color = ITEM_TYPE_MAP[filter].colors[colorIndex];
-  return color && display ? (
-    <span style={{ color }} {...props}>
+
+  return display ? (
+    <span style={{ color: colors[colorIndex] }} {...props}>
       {display}
     </span>
   ) : (
@@ -18,11 +18,12 @@ const RandomItem = ({ filter, item: { display, id }, ...props }) => {
   );
 };
 
-const Randomizer = ({ label, filter, gridAreas, keyName, speed, ...props }) => {
+const Randomizer = ({ filter, keyName, speed }) => {
   const {
     appState: { state: appState },
   } = useStore();
-  const items = ITEM_TYPE_MAP[filter].items;
+
+  const { colors, items } = ITEM_TYPE_MAP[filter];
 
   const { getRandomItem, reset, state, toggleItem } = useRandomizer({
     items,
@@ -64,6 +65,7 @@ const Randomizer = ({ label, filter, gridAreas, keyName, speed, ...props }) => {
               className={classNames("randomizer__results", {
                 "randomizer__results--spinning": state.spinning,
               })}
+              colors={colors}
               key={`${keyName}_results`}
               filter={filter}
               item={state.selected}
@@ -91,7 +93,9 @@ const Randomizer = ({ label, filter, gridAreas, keyName, speed, ...props }) => {
                 <label
                   className={classNames({
                     "randomizer__item_label--active": state.checkboxes[item.id],
-                    "randomizer__item_label--inactive": !state.checkboxes[item.id],
+                    "randomizer__item_label--inactive": !state.checkboxes[
+                      item.id
+                    ],
                   })}
                   htmlFor={item.id}
                 >
@@ -101,33 +105,19 @@ const Randomizer = ({ label, filter, gridAreas, keyName, speed, ...props }) => {
             ))}
           </span>
         </span>
-        {/* <span
-          onClick={toggleEditItems}
-          role="button"
-          className={classNames("randomizer__expander_section", {
-            "randomizer__expander_section--active": state.showEditItems,
-          })}
-        >
-          Options
-          <Icon
-            classes={["size-large", "expander"]}
-            icon={state.showEditItems ? "unfold_less" : "unfold_more"}
-          />
-        </span> */}
       </span>
     )
   );
 };
 
 Randomizer.propTypes = {
-  label: PropTypes.string.isRequired,
   filter: PropTypes.string,
   keyName: PropTypes.string.isRequired,
   speed: PropTypes.number,
 };
 
 Randomizer.defaultProps = {
-  filter: "",
+  filter: "all",
   speed: 20,
 };
 

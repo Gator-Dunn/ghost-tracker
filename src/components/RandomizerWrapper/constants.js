@@ -1,41 +1,35 @@
 import { nanoid } from "nanoid";
 import { ITEM_TYPES } from "../Tools/constants";
 
-export const RANDOMIZERS = [
+const RANDOMIZERS = [
   {
-    label: "Evidence Items",
+    label: "All",
+    path: "all",
+    filter: ITEM_TYPES.all,
+    key: nanoid(),
+    speed: 55,
+  },
+  {
+    label: "Evidence",
+    path: "evidence",
     filter: ITEM_TYPES.evidence,
     key: nanoid(),
-    gridAreas: {
-      counter: "EvidenceCounter",
-      controls: "EvidenceControls",
-      result: "EvidenceResult",
-      items: "EvidenceItems",
-    },
     speed: 55,
   },
   {
-    label: "Objective Items",
+    label: "Objectives",
+    path: "objectives",
     filter: ITEM_TYPES.objectives,
     key: nanoid(),
-    gridAreas: {
-      counter: "ObjectivesCounter",
-      controls: "ObjectivesControls",
-      result: "ObjectivesResult",
-      items: "ObjectivesItems",
-    },
     speed: 55,
   },
   {
-    label: "Junk Items",
+    label: "Junk",
+    path: "junk",
     filter: ITEM_TYPES.junk,
     key: nanoid(),
     speed: 55,
-    gridAreas: {
-      counter: "JunkCounter",
-      controls: "JunkControls",
-      result: "JunkResult",
-      items: "JunkItems",
-    }
   },
 ];
+
+export { ITEM_TYPES, RANDOMIZERS };

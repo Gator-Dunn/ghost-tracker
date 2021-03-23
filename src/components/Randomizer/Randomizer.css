@@ -246,7 +246,7 @@
 }
 
 .randomizer__edit_details {
-  padding: 10px;
+  padding: 0 10px 0 5px;
   font-family: "Courier New", monospace !important;
   white-space: nowrap;
 }
@@ -261,14 +261,12 @@
 
 .randomizer__edit_items {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
-  flex: 1 1 0px;
 }
 
 .randomizer__edit_items span {
-  padding: 5px;
-  min-width: var(--randomizer-item-width);
+  padding: 0 0 5px 0;
+  flex: var(--randomizer-item-flex);
 }
 
 .randomizer__edit_items span label {

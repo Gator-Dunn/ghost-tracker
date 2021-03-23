@@ -23,8 +23,13 @@
   --color-text-accent-tertiary: #8ab5cf;
   --ghost-animation-from: -53%;
   --ghost-animation-to: 100%;
+  /* Evidence */
+  --evidence-item-flex: 1 1 0px;
+
   /* Randomizer */
-  --randomizer-item-width: calc(100% / 4);
+  --randomizer-item-width: calc(100% / 4 - 5px);
+  --randomizer-item-padding: calc(100% / 10);
+  --randomizer-item-flex: 33%;
 }
 
 @media (max-width: 1200px) {
@@ -38,6 +43,7 @@
   :root {
     --ghost-animation-from: -82%;
     --ghost-animation-to: 100%;
+    --evidence-item-flex: 1 1 120px;
   }
 }
 
@@ -45,13 +51,18 @@
   :root {
     --ghost-animation-from: -85%;
     --ghost-animation-to: 100%;
+    --randomizer-item-padding: calc(100% / 10);
+    --randomizer-item-flex: 1 1 120px;
   }
 }
 @media (max-width: 480px) {
   :root {
     --ghost-animation-from: -125vw;
     --ghost-animation-to: 75vw;
-    --randomizer-item-width: 120px;
+    --randomizer-item-width: calc(100% / 2);
+    --randomizer-item-padding: calc(100% / 10);
+    --randomizer-item-flex: 50%;
+    --evidence-item-flex: 1 1 120px;
   }
 }
 
@@ -59,7 +70,10 @@
   :root {
     --ghost-animation-from: -135vw;
     --ghost-animation-to: 70vw;
-    --randomizer-item-width: 100px;
+    --randomizer-item-width: calc(100% / 2);
+    --randomizer-item-padding: calc(100% / 10);
+    --randomizer-item-flex: 50%;
+    --evidence-item-flex: 1 1 120px;
   }
 }
 
@@ -79,6 +93,20 @@ html {
   html {
     font-size: 13px;
   }
+}
+
+a {
+  text-decoration: none;
+  outline: none;
+}
+a:visited { 
+  text-decoration: none; 
+  outline: none;
+}
+
+a:hover {
+  text-decoration: none !important;
+  outline: none;
 }
 
 h3 {

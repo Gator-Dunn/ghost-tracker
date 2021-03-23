@@ -14,16 +14,22 @@ const colorList = [
 ];
 
 const ITEM_TYPE_MAP = Object.values(ITEM_TYPES).reduce((types, type, index) => {
-  const items = ITEMS.filter((i) => i.types.includes(type));
+  let items = ITEMS.filter((i) => i.types.includes(type));
+  if (type === ITEM_TYPES.all) {
+    items = [ITEM_TYPES.evidence, ITEM_TYPES.objectives, ITEM_TYPES.junk]
+      .map((it) => ITEMS.filter((i) => i.types.includes(it)))
+      .flat();
+  }
   const colors = randomColor({
     count: items.length,
     luminosity: "bright",
     hue: colorList[index],
   });
+
   return {
     ...types,
     [type]: {
-      items,
+      items: [...new Set(items)].sort((a, b) => a.display.localeCompare(b.display)),
       colors,
     },
   };

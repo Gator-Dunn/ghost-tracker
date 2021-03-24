@@ -9,7 +9,9 @@ const HeaderLink = ({ label, match, to }) => {
   });
 
   return (
-    <span className={routeMatch ? "header__link--active" : "header__link--inactive"}>
+    <span
+      className={routeMatch ? "header__link--active" : "header__link--inactive"}
+    >
       <Link to={to}>{label}</Link>
     </span>
   );
@@ -32,10 +34,6 @@ const HeaderSubLink = ({ label, to }) => {
 };
 
 const Header = () => {
-  const baseMatch = useRouteMatch({
-    path: "/",
-  });
-
   const investigationMatch = useRouteMatch({
     path: "/investigation",
   });
@@ -44,29 +42,18 @@ const Header = () => {
     <header className="main__header">
       <h3 className="header__title">Phasmophobia Toolbox</h3>
       <span className="header__links">
+        <HeaderLink to={"/investigation"} label="Investigation" />
         <HeaderLink
-          to={"/investigation"}
-          label="Investigation"
+          match={"/randomizer"}
+          to={"/randomizer/all"}
+          label="Randomizer"
         />
-        <HeaderLink match={"/randomizer"} to={"/randomizer/all"} label="Randomizer" />
         {!investigationMatch && (
           <div>
-            <HeaderSubLink
-              to={"/randomizer/all"}
-              label="All Items"
-            />
-            <HeaderSubLink
-              to={"/randomizer/evidence"}
-              label="Evidence"
-            />
-            <HeaderSubLink
-              to={"/randomizer/objectives"}
-              label="Objectives"
-            />
-            <HeaderSubLink
-              to={"/randomizer/junk"}
-              label="Junk"
-            />
+            <HeaderSubLink to={"/randomizer/all"} label="All Items" />
+            <HeaderSubLink to={"/randomizer/evidence"} label="Evidence" />
+            <HeaderSubLink to={"/randomizer/objectives"} label="Objectives" />
+            <HeaderSubLink to={"/randomizer/junk"} label="Junk" />
           </div>
         )}
       </span>

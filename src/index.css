@@ -29,7 +29,7 @@
   /* Randomizer */
   --randomizer-item-width: calc(100% / 4 - 5px);
   --randomizer-item-padding: calc(100% / 10);
-  --randomizer-item-flex: 33%;
+  --randomizer-item-flex: 50%;
 }
 
 @media (max-width: 1200px) {

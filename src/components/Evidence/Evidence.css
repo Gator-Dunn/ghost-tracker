@@ -1,24 +1,14 @@
 .evidence__items {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-self: var(--evidence-item-justify-self);
 }
 
 .evidence__item {
   color: var(--color-medium-gray);
+  flex: var(--evidence-item-flex);
 }
 
-.evidence__item + .evidence__item {
-  margin-left: 2%;
-}
-
-.evidence__item:first-child {
-  margin-left: 2%;
-}
-
-.evidence__item:last-child {
-  margin-left: 0;
-}
 .evidence__status {
   display: inline;
 }

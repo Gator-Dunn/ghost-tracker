@@ -25,6 +25,7 @@
   --ghost-animation-to: 100%;
   /* Evidence */
   --evidence-item-flex: 1 1 0px;
+  --evidence-item-justify-self: stretch;
 
   /* Randomizer */
   --randomizer-item-width: calc(100% / 4 - 5px);
@@ -43,7 +44,8 @@
   :root {
     --ghost-animation-from: -82%;
     --ghost-animation-to: 100%;
-    --evidence-item-flex: 1 1 120px;
+    --evidence-item-flex: 33.33%;
+    --evidence-item-justify-self: center;
   }
 }
 
@@ -53,6 +55,8 @@
     --ghost-animation-to: 100%;
     --randomizer-item-padding: calc(100% / 10);
     --randomizer-item-flex: 1 1 120px;
+    --evidence-item-flex: 33.33%;
+    --evidence-item-justify-self: center;
   }
 }
 @media (max-width: 480px) {
@@ -62,7 +66,8 @@
     --randomizer-item-width: calc(100% / 2);
     --randomizer-item-padding: calc(100% / 10);
     --randomizer-item-flex: 50%;
-    --evidence-item-flex: 1 1 120px;
+    --evidence-item-flex: 33.33%;
+    --evidence-item-justify-self: center;
   }
 }
 
@@ -73,7 +78,8 @@
     --randomizer-item-width: calc(100% / 2);
     --randomizer-item-padding: calc(100% / 10);
     --randomizer-item-flex: 50%;
-    --evidence-item-flex: 1 1 120px;
+    --evidence-item-flex: 33.33%;
+    --evidence-item-justify-self: center;
   }
 }
 

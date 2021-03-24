@@ -26,12 +26,13 @@ const GhostName = () => {
     [surnameFirstLetter]
   );
 
-  const handleClick = () => {
+  const handleResetClick = () => {
     setFirstLetter();
     setFirstName();
     setSurnameFirstLetter();
     setSurname();
   };
+
   const show = React.useMemo(
     () => ({
       firstNameFirstLetter:
@@ -63,7 +64,7 @@ const GhostName = () => {
           <Icon
             role="button"
             id="ghostname-reset-button"
-            onClick={handleClick}
+            onClick={handleResetClick}
             classes={["ghostname__results-reset", "size-medium"]}
             icon="backspace"
           />

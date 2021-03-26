@@ -1,20 +1,51 @@
 import React from "react";
+import { INITIAL_STATE } from "./constants";
 
 const actionTypes = {
+  applyFilters: "APPLY_ITEM_FILTERS",
+  loading: "SET_LOADING_STATE",
+  toggleFilter: "TOGGLE_ITEM_FILTER",
   disableItem: "DISABLE_ITEM",
   disableSpinning: "DISABLE_SPINNING",
   enableSpinning: "ENABLE_SPINNING",
   hideEditItems: "HIDE_EDIT_ITEMS",
   reset: "RESET_ITEMS",
+  removeItem: "REMOVE_ITEM",
   set: "SET_ITEM",
-  setAndRemove: "SET_ITEM_AND_REMOVE",
+  uncheckItem: "UNCHECK_ITEM",
   showEditItems: "SHOW_EDIT_ITEMS",
   toggleEditItems: "TOGGLE_EDIT_ITEMS",
   toggleItem: "TOGGLE_ITEM",
 };
 
+const filterItems = (state) =>
+  state.original.items.filter((i) => i.types.every((t) => state.filters[t]));
+
 export const reducer = (state = {}, { type, payload }) => {
   switch (type) {
+    case actionTypes.applyFilters: {
+      const items = filterItems(state);
+      return {
+        ...state,
+        items,
+        loading: false,
+      };
+    }
+    case actionTypes.loading: {
+      return {
+        ...state,
+        loading: payload,
+      };
+    }
+    case actionTypes.toggleFilter: {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          [payload]: !state.filters[payload],
+        },
+      };
+    }
     case actionTypes.disableSpinning: {
       return {
         ...state,
@@ -30,9 +61,10 @@ export const reducer = (state = {}, { type, payload }) => {
     case actionTypes.reset: {
       return {
         ...state,
-        items: state.original.items,
-        checkboxes: state.original.checkboxes,
-      }
+        items: filterItems(state),
+        // filters: state.original.filters,
+        selected: "",
+      };
     }
     case actionTypes.set: {
       return {
@@ -40,21 +72,26 @@ export const reducer = (state = {}, { type, payload }) => {
         selected: payload,
       };
     }
-    case actionTypes.setAndRemove: {
-      let items = state.items.filter((i) => i.id !== payload.id);
-      let checkboxes = {
-        ...state.checkboxes,
-        [payload.id]: false,
-      }
-      if (items.length === 0) {
-        items = state.original.items;
-        checkboxes = state.original.checkboxes;
-      }
+    case actionTypes.uncheckItem: {
+      const lastItem =
+        state.items.filter((i) => i.checked === true).length === 1;
+
+      const selected = {
+        ...payload,
+        checked: false,
+      };
+
+      const items = lastItem
+        ? filterItems(state)
+        : state.items.map((item) => ({
+            ...item,
+            checked: item.id === payload.id ? !item.checked : item.checked,
+          }));
+
       return {
         ...state,
-        checkboxes,
         items,
-        selected: payload,
+        selected,
       };
     }
     case actionTypes.toggleEditItems: {
@@ -78,79 +115,73 @@ export const reducer = (state = {}, { type, payload }) => {
     case actionTypes.disableItem: {
       return {
         ...state,
-        items: state.items.filter((i) => i.id !== payload),
-        checkboxes: {
-          ...state.checkboxes,
-          [payload]: false,
-        }
+        items: state.items.map((item) => ({
+          ...item,
+          disabled: item.id === payload,
+          checked: item.id === payload && false,
+        })),
+      };
+    }
+    case actionTypes.removeItem: {
+      const items = state.items.filter((i) => i.id !== payload);
+      return {
+        ...state,
+        items,
       };
     }
     case actionTypes.toggleItem: {
-      const itemAvailable = state.items.find((i) => i.id === payload);
-      if (itemAvailable) {
-        return {
-          ...state,
-          items: state.items.filter((i) => i.id !== payload),
-          checkboxes: {
-            ...state.checkboxes,
-            [payload]: false,
-          }
-        }
-      }
-      const item = state.original.items.filter((i) => i.id === payload);
       return {
         ...state,
-        items: [
-          ...state.items,
+        items: state.items.map((item) => ({
           ...item,
-        ],
-        checkboxes: {
-          ...state.checkboxes,
-          [payload]: true,
-        }
-      }
+          checked: item.id === payload ? !item.checked : item.checked,
+        })),
+      };
     }
     default:
       return state;
   }
 };
-const defaultInitialState = {
-  items: [],
-}
-const useRandomizer = (initialState = defaultInitialState) => {
-  const checkboxes = initialState.items.reduce(
-    (checks, check) => ({ ...checks, [check.id]: true }),
-    {}
+
+const useRandomizer = () => {
+  const items = INITIAL_STATE.randomizer.all.sort((a, b) =>
+    a.id.localeCompare(b.id)
   );
+
   const [state, dispatch] = React.useReducer(reducer, {
-    ...initialState,
-    checkboxes,
-    original: {
-      ...initialState,
-      checkboxes,
-    }
+    items,
+    original: { items, filters: INITIAL_STATE.randomizer.filters },
+    filters: INITIAL_STATE.randomizer.filters,
   });
 
-  const getRandomItem = ({ removeDuplicate = true } = {}) => {
+  React.useEffect(() => {
+    dispatch({ type: actionTypes.applyFilters });
+  }, [state.filters]);
+
+  const getRandomItem = () => {
     if (state.spinning) return;
 
     dispatch({
       type: actionTypes.enableSpinning,
     });
+
     let count = 0;
+    let availableItems = state.items.filter((i) => i.checked === true);
     const spinner = setInterval(() => {
-      if (count < state.original.items.length) {
+      if (count < availableItems.length) {
         dispatch({
           type: actionTypes.set,
-          payload: state.original.items[count],
+          payload: availableItems[count],
         });
         count++;
       } else {
-        const randomItemIndex = Math.floor(Math.random() * state.items.length);
+        const randomItemIndex = Math.floor(
+          Math.random() * availableItems.length
+        );
 
         dispatch({
-          type: removeDuplicate ? actionTypes.setAndRemove : actionTypes.set,
-          payload: state.items[randomItemIndex],
+          type: actionTypes.uncheckItem,
+          payload: availableItems[randomItemIndex],
         });
 
         clearInterval(spinner);
@@ -158,7 +189,7 @@ const useRandomizer = (initialState = defaultInitialState) => {
           type: actionTypes.disableSpinning,
         });
       }
-    }, state.speed || 55);
+    }, state.speed || 35);
   };
 
   const toggleEditItems = () =>
@@ -179,11 +210,21 @@ const useRandomizer = (initialState = defaultInitialState) => {
       payload,
     });
 
-  const reset = () => dispatch({type: actionTypes.reset});
+  const reset = () => dispatch({ type: actionTypes.reset });
+
+  const removeItem = (payload) =>
+    dispatch({ type: actionTypes.removeItem, payload });
+
+  const toggleFilter = (payload) => {
+    dispatch({ type: actionTypes.loading, payload: true });
+    dispatch({ type: actionTypes.toggleFilter, payload });
+  };
 
   return {
+    toggleFilter,
     disableItem,
     getRandomItem,
+    removeItem,
     reset,
     state,
     toggleEditItems,

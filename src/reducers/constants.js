@@ -1,10 +1,21 @@
+import randomColor from "randomcolor";
+import { EVIDENCE_NAMES, GHOSTS, GHOST_NAMES, STATUS } from "../constants";
+
 import {
-  EVIDENCE_NAMES,
-  GHOSTS,
-  GHOST_NAMES,
-  STATUS,
-} from "../constants";
-import { ITEM_TYPES } from "../components/Tools/constants";
+  ITEMS,
+  ITEM_CATEGORIES,
+  ITEM_TYPES,
+} from "../components/Tools/constants";
+
+const COLORS = randomColor({ count: ITEMS.length });
+const RANDOMIZER_ITEMS = ITEMS.filter(
+  (item) =>
+    ![ITEM_CATEGORIES.onsite, ITEM_CATEGORIES.van].includes(item.category)
+).map((item, index) => ({
+  ...item,
+  color: COLORS[index],
+  checked: true,
+}));
 
 export const INITIAL_STATE = {
   evidence: {
@@ -22,6 +33,17 @@ export const INITIAL_STATE = {
     invalid: [],
     evidence: GHOSTS,
   },
+  randomizer: {
+    all: RANDOMIZER_ITEMS,
+    filters: Object.values(ITEM_TYPES).reduce(
+      (filters, filter) => ({
+        ...filters,
+        [filter]: true,
+      }),
+      {}
+    ),
+    loading: true,
+  },
   appState: {
     evidence: {
       visible: true,
@@ -33,5 +55,5 @@ export const INITIAL_STATE = {
     isDesktopSized: true,
     isTabletSized: false,
     isCellPhoneSized: false,
-  }
+  },
 };

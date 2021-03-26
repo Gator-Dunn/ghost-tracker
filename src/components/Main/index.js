@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, useHistory, useRouteMatch, Route } from "react-router-dom";
 import EvidenceWrapper from "../EvidenceWrapper";
-import RandomizerWrapper from "../RandomizerWrapper";
+import Randomizer from "../Randomizer";
 
 const Main = () => {
   const history = useHistory();
@@ -17,6 +17,7 @@ const Main = () => {
       }
     };
     redirectFromRoot();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -25,7 +26,10 @@ const Main = () => {
         <EvidenceWrapper />
       </Route>
       <Route path="/randomizer">
-        <RandomizerWrapper />
+        <Randomizer
+          key="route_randomizer"
+          keyName="route_randomizer"
+        />
       </Route>
     </Switch>
   );

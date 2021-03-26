@@ -23,6 +23,7 @@
   --color-text-accent-tertiary: #8ab5cf;
   --ghost-animation-from: -53%;
   --ghost-animation-to: 100%;
+
   /* Evidence */
   --evidence-item-flex: 1 1 0px;
   --evidence-item-justify-self: stretch;
@@ -31,6 +32,7 @@
   --randomizer-item-width: calc(100% / 4 - 5px);
   --randomizer-item-padding: calc(100% / 10);
   --randomizer-item-flex: 50%;
+  --randomizer-edit-section-height: 24rem;
 }
 
 @media (max-width: 1200px) {

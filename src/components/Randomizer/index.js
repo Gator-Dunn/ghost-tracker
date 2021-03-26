@@ -1,16 +1,24 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import { nanoid } from "nanoid";
 import { useStore } from "../../StoreProvider";
 import useRandomizer from "../../reducers/useRandomizer";
-import { ITEM_TYPE_MAP } from "./constants";
+import { ITEM_TYPES } from "../Tools/constants";
+import Icon from "../Icon";
 import "./Randomizer.css";
 
-const RandomItem = ({ colors, filter, item: { display, id }, ...props }) => {
-  const colorIndex = ITEM_TYPE_MAP[filter].items.findIndex((i) => i.id === id);
-
+const RandomItem = ({ item: { display, color }, spinning }) => {
+  const key = nanoid();
   return display ? (
-    <span style={{ color: colors[colorIndex] }} {...props}>
+    <span
+      className={classNames("randomizer__results", {
+        "randomizer__results--spinning": spinning,
+      })}
+      key={key}
+      id={key}
+      style={{ color }}
+    >
       {display}
     </span>
   ) : (
@@ -18,25 +26,31 @@ const RandomItem = ({ colors, filter, item: { display, id }, ...props }) => {
   );
 };
 
-const Randomizer = ({ filter, keyName, speed }) => {
+const Randomizer = () => {
   const {
     appState: { state: appState },
   } = useStore();
 
-  const { colors, items } = ITEM_TYPE_MAP[filter];
-
-  const { getRandomItem, reset, state, toggleItem } = useRandomizer({
-    items,
-    speed,
-    showEditItems: false,
-  });
+  const {
+    getRandomItem,
+    removeItem,
+    reset,
+    state,
+    toggleItem,
+    toggleFilter,
+  } = useRandomizer();
 
   const handleCheckbox = ({ target: { id } }) => {
     toggleItem(id);
   };
 
+  const remainingItems = React.useMemo(
+    () => state.items.filter((i) => i.checked === true).length,
+    [state]
+  );
+
   const isReady = React.useMemo(
-    () => Object.keys(state.checkboxes).length > 0,
+    () => state && state.original && state.original.items.length > 0,
     [state]
   );
 
@@ -61,30 +75,36 @@ const Randomizer = ({ filter, keyName, speed }) => {
         </span>
         <span className="randomizer__results_section">
           {state.selected && (
-            <RandomItem
-              className={classNames("randomizer__results", {
-                "randomizer__results--spinning": state.spinning,
-              })}
-              colors={colors}
-              key={`${keyName}_results`}
-              filter={filter}
-              item={state.selected}
-            />
+            <RandomItem spinning={state.spinning} item={state.selected} />
           )}
         </span>
         <span className="randomizer__edit_section">
           <span className="randomizer__edit_details">
             <h3>Item Count</h3>
             <h3>
-              {state.items.length} / {state.original.items.length}
+              {remainingItems} / {state.items.length}
             </h3>
           </span>
-          <span className="randomizer__edit_items">
-            {items.map((item) => (
-              <span key={`checkbox_${item.id}`}>
+          <span
+            className={classNames("randomizer__edit_items", {
+              "randomizer__edit_items--loading": state.spinning,
+            })}
+          >
+            {state.items.map((item) => (
+              <span
+                className={`randomizer__${item.category.replace(" ", "")}`}
+                key={`checkbox_${item.id}`}
+              >
+                <Icon
+                  classes={["randomizer__remove_item"]}
+                  icon="delete"
+                  iconHover="delete_forever"
+                  size="large"
+                  onClick={() => removeItem(item.id)}
+                />
                 <input
                   type="checkbox"
-                  checked={state.checkboxes[item.id]}
+                  checked={item.checked}
                   id={item.id}
                   name={item.id}
                   value={item.display}
@@ -92,10 +112,8 @@ const Randomizer = ({ filter, keyName, speed }) => {
                 />
                 <label
                   className={classNames({
-                    "randomizer__item_label--active": state.checkboxes[item.id],
-                    "randomizer__item_label--inactive": !state.checkboxes[
-                      item.id
-                    ],
+                    "randomizer__item_label--active": item.checked,
+                    "randomizer__item_label--inactive": !item.checked,
                   })}
                   htmlFor={item.id}
                 >
@@ -104,6 +122,20 @@ const Randomizer = ({ filter, keyName, speed }) => {
               </span>
             ))}
           </span>
+        </span>
+        <span className="randomizer__item_type_filters">
+          {Object.entries(ITEM_TYPES).map(([key, val]) => (
+            <span
+              className={classNames("randomizer__item_type_filter", {
+                "randomizer__item_type_filter--selected": state.filters[val],
+                "randomizer__item_type_filter--unselected": !state.filters[val],
+              })}
+              onClick={() => toggleFilter(val)}
+              key={key}
+            >
+              <span>{key}</span>
+            </span>
+          ))}
         </span>
       </span>
     )

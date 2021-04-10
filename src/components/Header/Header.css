@@ -1,14 +1,18 @@
 .header__title {
   color: var(--color-text-highlight);
-  text-align: center;
-  padding-bottom: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  margin-top: 5px;
+  display: inline;
+  font-family: 'Roboto' sans-serif;
+  margin: 5px 10px 0 0;
+  padding: 0 10px 0 0;
+  border-right: 2px solid var(--color-light-gray);
+  text-transform: capitalize;
 }
 
 .header__links {
+  display: inline;
   font-size: 1.1rem;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
   text-align: center;
   padding-top: 0;
 }

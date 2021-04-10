@@ -22,7 +22,7 @@ const RandomItem = ({ item: { display, color }, spinning }) => {
       {display}
     </span>
   ) : (
-    "Random Item"
+    null
   );
 };
 
@@ -92,9 +92,17 @@ const Randomizer = () => {
           >
             {state.items.map((item) => (
               <span
-                className={`randomizer__${item.category.replace(" ", "")}`}
+                onClick={handleCheckbox}
+                className={classNames("randomizer__item_label", {
+                  "randomizer__item_label--active": item.checked,
+                  "randomizer__item_label--inactive": item.disabled,
+                  "randomizer__item_label--removed": item.removed,
+                  "randomizer__item_label--selected":
+                    !state.spinning && item.id === state.selected.id,
+                })}
                 key={`checkbox_${item.id}`}
               >
+                {console.log("state", { item, sel: state.selected })}
                 <Icon
                   classes={["randomizer__remove_item"]}
                   icon="delete"
@@ -102,23 +110,9 @@ const Randomizer = () => {
                   size="large"
                   onClick={() => removeItem(item.id)}
                 />
-                <input
-                  type="checkbox"
-                  checked={item.checked}
-                  id={item.id}
-                  name={item.id}
-                  value={item.display}
-                  onChange={handleCheckbox}
-                />
-                <label
-                  className={classNames({
-                    "randomizer__item_label--active": item.checked,
-                    "randomizer__item_label--inactive": !item.checked,
-                  })}
-                  htmlFor={item.id}
-                >
+                <span id={item.id}>
                   {appState.isDesktopSized ? item.display : item.displayShort}
-                </label>
+                </span>
               </span>
             ))}
           </span>

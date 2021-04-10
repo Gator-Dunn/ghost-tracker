@@ -15,6 +15,8 @@ const RANDOMIZER_ITEMS = ITEMS.filter(
   ...item,
   color: COLORS[index],
   checked: true,
+  disabled: false,
+  removed: false,
 }));
 
 export const INITIAL_STATE = {
@@ -42,7 +44,6 @@ export const INITIAL_STATE = {
       }),
       {}
     ),
-    loading: true,
   },
   appState: {
     evidence: {

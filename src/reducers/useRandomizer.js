@@ -24,7 +24,14 @@ const filterItems = (state) =>
 export const reducer = (state = {}, { type, payload }) => {
   switch (type) {
     case actionTypes.applyFilters: {
-      const items = filterItems(state);
+      // const items = filterItems(state).sort((a, b) =>
+      //   a.removed === b.removed ? 0 : a.removed ? -1 : 1
+      // );
+      const items = state.items.map((item) => ({
+        ...item,
+        removed: !item.types.some((t) => state.filters[t]),
+      }));
+      console.log("applyFilters", items);
       return {
         ...state,
         items,
@@ -62,8 +69,7 @@ export const reducer = (state = {}, { type, payload }) => {
       return {
         ...state,
         items: filterItems(state),
-        // filters: state.original.filters,
-        selected: "",
+        selected: {},
       };
     }
     case actionTypes.set: {
@@ -123,10 +129,12 @@ export const reducer = (state = {}, { type, payload }) => {
       };
     }
     case actionTypes.removeItem: {
-      const items = state.items.filter((i) => i.id !== payload);
       return {
         ...state,
-        items,
+        items: state.items.map((item) => ({
+          ...item,
+          removed: item.id === payload,
+        })),
       };
     }
     case actionTypes.toggleItem: {
@@ -152,6 +160,8 @@ const useRandomizer = () => {
     items,
     original: { items, filters: INITIAL_STATE.randomizer.filters },
     filters: INITIAL_STATE.randomizer.filters,
+    loading: true,
+    selected: {}
   });
 
   React.useEffect(() => {

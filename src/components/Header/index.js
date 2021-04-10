@@ -18,8 +18,9 @@ const HeaderLink = ({ label, match, to }) => {
 
 const Header = () => (
   <header className="main__header">
-    <h3 className="header__title">Phasmophobia Toolbox</h3>
+    {/* <h3 className="header__title">Phasmophobia Toolbox</h3> */}
     <span className="header__links">
+      <span className="header__title">Phasmophobia Toolbox</span>
       <HeaderLink to={"/investigation"} label="Investigation" />
       <HeaderLink match={"/randomizer"} to={"/randomizer"} label="Randomizer" />
     </span>

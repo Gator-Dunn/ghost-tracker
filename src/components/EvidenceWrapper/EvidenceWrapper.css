@@ -6,10 +6,8 @@
     "ghostName"
     "evidence"
     "ghosts"
-    "tools"
-    "secondaryEvidence";
-  /* justify-content: center; */
-  /* grid-template-rows: repeat(auto-fill, 1fr); */
+    "secondaryEvidence"
+    "tools";
   width: 95vw;
   align-items: flex-start;
 }

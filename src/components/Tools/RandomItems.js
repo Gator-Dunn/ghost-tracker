@@ -55,7 +55,7 @@ const RandomItems = () => {
       newItemList = state[type].filter((i) => i.id !== random.id);
     }
 
-    if (newItemList.length > 0) {
+    if (newItemList && newItemList.length > 0) {
       updateState({
         randomItem: random,
         [type]: newItemList,
